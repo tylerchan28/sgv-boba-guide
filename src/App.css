@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "proxima";
+  src: local("proxima"), url(./fonts/FontsFree-Net-Proxima-Nova-Light.otf)
+}
+body {
+  background-color: #E5D3b3;
+  font-family: proxima;
+}
+img {
+  width: 200px;
+  height: 175px;
+}
+
+/* Header */
+.header-container {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  width: 100%;
+}
+
+.header-title {
+  font-size: 24px;
+  margin: 15px auto;
+}
+
+/* Restaurant */
+
+.image-container {
+  align-items: left;
+  
+}
+
+.restaurant-card {
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 3px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  height: 175px;
+  margin: 10px auto;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.restaurant-card:hover {
+  background-color: rgb(34, 34, 34);
+}
+
+.restaurant-contact {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin: auto 5% auto auto;
+}
+
+.restaurant-name {
+  font-size: 24px;
+  margin: auto auto auto 20%;
+  text-align: left;
+}
+
+.restaurant-name-container {
+  margin: auto auto auto 10%;
+  text-align: left;
+  width: 300px;
+}
