@@ -6,9 +6,11 @@ body {
   background-color: #E5D3b3;
   font-family: proxima;
 }
-img {
-  width: 200px;
+.feed-img {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
   height: 175px;
+  width: 200px;
 }
 
 /* Header */
@@ -24,7 +26,7 @@ img {
 
 .header-title {
   font-size: 24px;
-  margin: 15px auto;
+  margin: 30px auto;
 }
 
 /* Restaurant */
@@ -34,10 +36,14 @@ img {
   
 }
 
+.link {
+  text-decoration: none;
+}
+
 .restaurant-card {
   background-color: black;
   border: 1px solid black;
-  border-radius: 3px;
+  border-radius: 10px;
   color: white;
   display: flex;
   flex-direction: row;
@@ -60,6 +66,7 @@ img {
 
 .restaurant-name {
   font-size: 24px;
+  font-weight: bold;
   margin: auto auto auto 20%;
   text-align: left;
 }
@@ -68,4 +75,42 @@ img {
   margin: auto auto auto 10%;
   text-align: left;
   width: 300px;
+}
+
+/* Restaurant Page */
+.restaurant-page-contact {
+  font-size: 18px;
+  margin: 10px auto;
+}
+
+.restaurant-page-container {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: center;
+  margin: 10px auto;
+  text-align: center;
+  width: 80%;
+}
+
+.restaurant-page-image {
+  width: 20%;
+  height: 20%;
+  margin-top: 10px;
+}
+
+.restaurant-page-name {
+  font-size: 32px;
+  margin: 10px auto;
+}
+
+
+/* Review */
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 300px;
 }
