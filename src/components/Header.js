@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 const Header = () => (
     <div className="header-container">
-        <div className="header-title">San Gabriel Valley Boba Guide</div>
-        <div>These are the top 40 boba shops in the San Gabriel Valley with the ability to add ratings for more than just drinks.</div>
+        <Link className="link" to="/">
+            <div className="header-title">San Gabriel Valley Boba Guide</div>
+        </Link>
+        <div>The top 50 boba shops in the San Gabriel Valley with a comprehensive rating system.</div>
     </div>
 )
 

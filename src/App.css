@@ -27,6 +27,11 @@ body {
 .header-title {
   font-size: 24px;
   margin: 30px auto;
+  text-decoration: none;
+}
+
+.header-title:hover {
+  color: red;
 }
 
 /* Restaurant */
@@ -37,6 +42,7 @@ body {
 }
 
 .link {
+  color: white;
   text-decoration: none;
 }
 
@@ -85,25 +91,30 @@ body {
 
 .restaurant-page-container {
   align-items: center;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   height: 80%;
   justify-content: center;
-  margin: 10px auto;
+  margin: 0 auto;
   text-align: center;
-  width: 80%;
+  /* width: 80%; */
 }
 
 .restaurant-page-image {
+  width: 380px;
+  height: 380px;
+  margin-top: 10px;
+}
+
+.restaurant-page-image:active {
+  cursor: zoom-in;
   width: 20%;
   height: 20%;
-  margin-top: 10px;
 }
 
 .restaurant-page-name {
   font-size: 32px;
-  margin: 10px auto;
+  margin: 40px auto;
 }
 
 
@@ -112,5 +123,5 @@ body {
 .review-form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 300px;
+  margin: 100px auto;
 }

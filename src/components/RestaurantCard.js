@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import shops from "./fixtures/shops";
-// require('dotenv').config();
+require('dotenv').config();
 // const axios = require("axios");
 
 const RestaurantCard = () => {
@@ -17,11 +17,11 @@ const RestaurantCard = () => {
     
     // yelpRequest("/businesses/search", {
     //     params: {
-    //         term: "boba",
+    //         term: "boba, milk tea",
     //         latitude: 34.0333,
     //         longitude: -118.105667,
-    //         radius: 40000,
-    //         limit: 40,
+    //         radius: 20000,
+    //         limit: 50,
     //         sort_by: "rating",
     //     },
     //   }).then(({ data }) => { // data.businesses gets just array of businesses
