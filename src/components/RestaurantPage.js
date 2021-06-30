@@ -5,37 +5,33 @@ import NotFoundPage from "./NotFoundPage";
 const axios = require("axios");
 
 const RestaurantPage = (props) => { // useEffect to load comments if comment's restaurantId matches???
+    const [restaurantReviews, setRestaurantReviews] = useState([]);
+
+    const fetchReviews = async () => {
+        await axios.get("http://localhost:3000/reviews")
+        .then(({ data }) => {
+        // get restaurants only with matching restaurant ids to prop.match.params.id
+        let pageReviews = data.filter((review) => review.restaurantId === props.match.params.id)
+        setRestaurantReviews(pageReviews)
+        })
+    }
+    
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 
     useEffect(() => { // makes axios req to localhost:3000/reviews
-        let apiRequest = axios.create({
-            baseURL: "http://localhost:3000",
-            headers: {
-                "Access-Control-Allow-Origin": "http://localhost:3000",
-                "Content-Type": "application/json"
-            }
-        })
-        apiRequest("/reviews", {
-            params: {
-                restaurantId: props.match.params.id
-            },
-        }).then(({ data }) => {
-            console.log(data) 
-            // get restaurants only with matching restaurant ids to prop.match.params.id
-        })
+        fetchReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     const foundShop = shops.find((shop) => shop.id === props.match.params.id);
     
-    // const [restaurantReviews, setRestaurantReviews] = useState([]);
     const [review, setReview] = useState("");
     const [foodRating, setFoodRating] = useState("");
     const [drinkRating, setDrinkRating] = useState("");
     const [hangoutRating, setHangoutRating] = useState("");
     const [studyRating, setStudyRating] = useState("");
-
 
     const onReviewChange = (e) => {
         const review = e.target.value;
@@ -82,12 +78,13 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
         })
 
         axios.post("http://localhost:3000/reviews/add", submittedContent)
-            .then(res => console.log(res.data))
 
         setReview("");
         setFoodRating("");
         setDrinkRating("");
         setHangoutRating("");
+        setStudyRating("");
+        fetchReviews();
     }
    
     return foundShop ? 
@@ -139,12 +136,17 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
                 id="study-rating"
                 name="study-rating"
                 onChange={onStudyRatingChange}
-                value={studyRating}
+                value={studyRating} 
             />
             <button type="submit">Submit Review</button>
-        </form>
-        <div>
-            Review list section here. 
+        </form> 
+        <div> 
+            Read {restaurantReviews.length} reviews:
+            {restaurantReviews.map((review) => ( // put into own component
+                <div className="review" key={review._id}>
+                    {review.review}
+                </div> 
+            ))}
         </div>
     </div>
         :
@@ -153,4 +155,5 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
     
 
 export default RestaurantPage;
+
 
