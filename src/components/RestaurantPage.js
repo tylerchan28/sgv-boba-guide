@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import shops from "./fixtures/shops"; 
 import Header from "./Header";
 import NotFoundPage from "./NotFoundPage";
+import moment from "moment";
 const axios = require("axios");
 
 const RestaurantPage = (props) => { // useEffect to load comments if comment's restaurantId matches???
@@ -73,6 +74,7 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
             foodRating,
             drinkRating,
             hangoutRating,
+            studyRating,
             restaurantId: props.match.params.id,
             date: Date.now()
         })
@@ -87,8 +89,8 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
         fetchReviews();
     }
    
-    return foundShop ? 
-    <div className="restaurant-page-container">
+    return foundShop ? // put into own component
+    <div className="restaurant-page-container"> 
         <Header />
         <div className="restaurant-page-name"> {foundShop.name} </div>
         <div className="restaurant-page-contact"> 
@@ -107,7 +109,7 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
                 value={review}
             />
             <label htmlFor="food-rating">Food Rating:</label>
-            <input  // maybe use star rating system/dropdown
+            <input 
                 type="string"
                 id="food-rating"
                 name="food-rating"
@@ -115,7 +117,7 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
                 value={foodRating}
             />
             <label htmlFor="drink-rating">Drink Rating:</label>
-            <input  // maybe use star rating system/dropdown
+            <input  
                 type="string"
                 id="drink-rating"
                 name="drink-rating"
@@ -123,7 +125,7 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
                 value={drinkRating}
             />
             <label htmlFor="hangout-rating">Hangout Rating:</label>
-            <input  // maybe use star rating system/dropdown
+            <input 
                 type="string"
                 id="hangout-rating"
                 name="hangout-rating"
@@ -131,7 +133,7 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
                 value={hangoutRating}
             />
             <label htmlFor="study-rating">Study Rating:</label>
-            <input  // maybe use star rating system/dropdown
+            <input  
                 type="string"
                 id="study-rating"
                 name="study-rating"
@@ -140,14 +142,29 @@ const RestaurantPage = (props) => { // useEffect to load comments if comment's r
             />
             <button type="submit">Submit Review</button>
         </form> 
-        <div> 
-            Read {restaurantReviews.length} reviews:
-            {restaurantReviews.map((review) => ( // put into own component
-                <div className="review" key={review._id}>
-                    {review.review}
-                </div> 
-            ))}
-        </div>
+        {restaurantReviews.length > 0 && <div className="review-container"> 
+            <div className="review-count">  
+                Read {restaurantReviews.length} reviews:
+            </div>
+            <div className="review-item-container">
+                {restaurantReviews.map((review) => ( // put into own component
+                    <div className="review" key={review._id}>
+                        <div className="review-ratings">
+                            Drinks: {review.drinkRating}<br></br><br></br>
+                            Food: {review.foodRating}<br></br><br></br>
+                            Hangout: {review.hangoutRating}<br></br><br></br>
+                            Study: {review.studyRating}<br></br><br></br>
+                        </div>
+                        <div className="review-content">
+                            {review.review}
+                        </div>
+                        <div className="review-details">
+                            posted {moment(review.date).format("MM/DD/YYYY")} by ADD USER HERE
+                        </div>
+                    </div> 
+                ))}
+            </div>
+        </div>}
     </div>
         :
     <NotFoundPage />

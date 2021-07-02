@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import shops from "./fixtures/shops"; 
 
 const RestaurantList = () => (
-    
-    
     <div>
         {shops.map((shop, idx) => {
-            return ( // add key to the div
+            return (
                 <Link className="link" key={idx+1} to={`/shop/${shop.id}`}>
                     <div className="restaurant-card">
                         <div className="image-container">
