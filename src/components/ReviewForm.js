@@ -66,7 +66,7 @@ const ReviewForm = (props) => {
 
     return (
         <form className="review-form" onSubmit={onSubmit}>
-            <label htmlFor="review">Write a Review:</label>
+            <label htmlFor="review" className="review-form-title">Add a Review (Ratings Optional):</label>
             <textarea 
                 type="text"
                 placeholder="Write a review..."
@@ -74,39 +74,45 @@ const ReviewForm = (props) => {
                 onChange={onReviewChange}
                 value={review}
             />
-            <label htmlFor="food-rating">Food Rating:</label>
-            <input 
-                type="string"
-                id="food-rating"
-                name="food-rating"
-                onChange={onFoodRatingChange}
-                value={foodRating}
-            />
-            <label htmlFor="drink-rating">Drink Rating:</label>
-            <input  
-                type="string"
-                id="drink-rating"
-                name="drink-rating"
-                onChange={onDrinkRatingChange}
-                value={drinkRating}
-            />
-            <label htmlFor="hangout-rating">Hangout Rating:</label>
-            <input 
-                type="string"
-                id="hangout-rating"
-                name="hangout-rating"
-                onChange={onHangoutRatingChange}
-                value={hangoutRating}
-            />
-            <label htmlFor="study-rating">Study Rating:</label>
-            <input  
-                type="string"
-                id="study-rating"
-                name="study-rating"
-                onChange={onStudyRatingChange}
-                value={studyRating} 
-            />
-            <button type="submit">Submit Review</button>
+            <div className="review-rating-container">
+                <label htmlFor="food-rating" className="rating-label">Food Rating:</label>
+                <input 
+                    type="string"
+                    id="food-rating"
+                    name="food-rating"
+                    onChange={onFoodRatingChange}
+                    value={foodRating}
+                    className="review-form-rating"
+                />
+                <label htmlFor="drink-rating" className="rating-label">Drink Rating:</label>
+                <input  
+                    type="string"
+                    id="drink-rating"
+                    name="drink-rating"
+                    onChange={onDrinkRatingChange}
+                    value={drinkRating}
+                    className="review-form-rating"
+                />
+                <label htmlFor="hangout-rating" className="rating-label">Hangout Rating:</label>
+                <input 
+                    type="string"
+                    id="hangout-rating"
+                    name="hangout-rating"
+                    onChange={onHangoutRatingChange}
+                    value={hangoutRating}
+                    className="review-form-rating"
+                />
+                <label htmlFor="study-rating" className="rating-label">Study Rating:</label>
+                <input  
+                    type="string"
+                    id="study-rating"
+                    name="study-rating"
+                    onChange={onStudyRatingChange}
+                    value={studyRating}
+                    className="review-form-rating"
+                />
+            </div>
+            <button type="submit" className="review-submit">Submit Review</button>
         </form> 
     )
 }
