@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
-const SignUpPage = () => {
+const SignUpPage = (props) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
     const onSubmit = (e) => {
         e.preventDefault();
         const signupDetails = {
@@ -14,11 +14,11 @@ const SignUpPage = () => {
             lastName,
             username,
             password,
+            userId: uuidv4()
         }
-        console.log(signupDetails)
-        
         axios.post("http://localhost:3000/users/signup", signupDetails)
         .then(() => alert("Signup successful!"))
+        .then(() => props.history.push("/"))
         .catch(function (error) {
             if (error.response) {
               const errorMsg = error.response.data.errors.errors[0].msg;
@@ -29,7 +29,6 @@ const SignUpPage = () => {
               console.log('Error', error.message);
             }
         })
-        // redirect after sign up to city page
     }
     
     return (

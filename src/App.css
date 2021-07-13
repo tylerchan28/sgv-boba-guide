@@ -25,6 +25,33 @@ textarea {
   width: 200px;
 }
 
+/* Cities */
+
+.city {
+  background-color: black;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+  margin: 50px auto 50px auto;
+  height: 175px;
+  text-align: center;
+  width: 60%;
+}
+
+.city-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.city-name {
+  color: white;
+  margin-top: 77px;
+  font-family: proxima;
+  font-weight: bolder;
+}
+
 /* Header */
 .header-container {
   align-items: center;
@@ -236,14 +263,21 @@ textarea {
 
 /* Login */
 
-.login { 
-  margin-bottom: 10px;
+.login-link { 
+  color: white;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  color: red;
+  cursor: pointer;
 }
 /* fix this, position changes when going to a restaurant page */
 
 .logsign-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: absolute;
   right: 30px;
   top: 30px;
@@ -261,6 +295,7 @@ textarea {
 
 .signup-btn:hover {
   color: red;
+  cursor: pointer;
 }
 
 .signup-container {
@@ -295,4 +330,14 @@ textarea {
   height: 100vh;
   justify-content: center;
   width: 100vw;
+}
+
+.signup-link {
+  color: white;
+  text-decoration: none;
+}
+
+.signup-link:hover {
+  color: red;
+  cursor: pointer;
 }

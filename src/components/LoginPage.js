@@ -1,23 +1,61 @@
 import React, { useState } from "react";
-import axios from "axios";
+import Axios from "axios";
+import Header from "./Header";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
 
+    const [data, setData] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     
     const onSubmit = (e) => {
         e.preventDefault();
-        const entry = {
+        const data = {
             username,
             password
         }
-        console.log(entry)
+        // axios.post("http://localhost:3000/users/login", data)
+        Axios({
+            method: "POST",
+            data: {
+              username: username,
+              password: password,
+            },
+            withCredentials: true,
+            url: "http://localhost:3000/users/login",
+        })
+        // axios({
+        //     method: "POST",
+        //     data: {
+        //         username: username,
+        //         password: password,
+        //     },
+        //     headers: {
+        //         "Access-Control-Allow-Origin": "http://localhost:3001/login"
+        //     },
+        //     withCredentials: true,
+        //     url: "http://localhost:3000/users/login",
+        // })
+
+        .then((res) => {
+            props.getUser(res.data.username)
+            setData(res.data)
+        })
+        .then(() => alert("Login successful!"))
+        .catch(function (error) {
+            if (error) {
+                alert("Incorrect username or password.")
+                setUsername("")
+                setPassword("")
+            }
+        })
         // redirect after login to city page
+        // serializeUser, deserializeUser not working in API
     }
 
     return (
         <div>
+            <Header />
             <form onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label>
                 <input
@@ -41,6 +79,7 @@ const LoginPage = () => {
                 />
                 <button type="submit">Log In</button>
             </form>
+        { data.username ? <h1> Welcome {data.username} </h1> : <h1> Welcome </h1>}
         </div>
     )
 }
