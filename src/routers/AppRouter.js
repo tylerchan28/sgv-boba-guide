@@ -26,9 +26,10 @@ const AppRouter = () => {
                     <Route path="/" component={App} exact={true} />
                     <Route path="/cities" component={CityPage} />
                     <Route path="/shop/:id" component={RestaurantPage} />
-                    <Route path="/login" render={(props) => (
-                        <LoginPage getUser={getUser} />
+                    <Route path="/loginTest" render={(props) => (
+                        <LoginPage getUser={getUser} {...props} />
                       )} />
+                    <Route path="/login" component={LoginPage} />
                     <Route path="/signup" component={SignUpPage} />
                     <Route component={NotFoundPage} />
                 </Switch>

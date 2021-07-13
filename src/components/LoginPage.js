@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 import Header from "./Header";
 
 const LoginPage = (props) => {
@@ -10,12 +10,8 @@ const LoginPage = (props) => {
     
     const onSubmit = (e) => {
         e.preventDefault();
-        const data = {
-            username,
-            password
-        }
-        // axios.post("http://localhost:3000/users/login", data)
-        Axios({
+        console.log(props)
+        axios({
             method: "POST",
             data: {
               username: username,
@@ -24,24 +20,23 @@ const LoginPage = (props) => {
             withCredentials: true,
             url: "http://localhost:3000/users/login",
         })
-        // axios({
-        //     method: "POST",
-        //     data: {
-        //         username: username,
-        //         password: password,
-        //     },
-        //     headers: {
-        //         "Access-Control-Allow-Origin": "http://localhost:3001/login"
-        //     },
-        //     withCredentials: true,
-        //     url: "http://localhost:3000/users/login",
-        // })
-
         .then((res) => {
-            props.getUser(res.data.username)
-            setData(res.data)
+            console.log(res.data)
+            setData(res.data.user.username)
+            console.log(data)
         })
+        // .then(() => 
+        //     axios({
+        //     method: "GET",
+        //     withCredentials: true,
+        //     url: "http://localhost:3000/users/user"
+        // }))
+        // .then((res) => {
+        //     props.getUser(res.data.username)
+        //     setData(res.data)
+        // })
         .then(() => alert("Login successful!"))
+        .then(() => props.history.push("/"))
         .catch(function (error) {
             if (error) {
                 alert("Incorrect username or password.")
@@ -79,7 +74,7 @@ const LoginPage = (props) => {
                 />
                 <button type="submit">Log In</button>
             </form>
-        { data.username ? <h1> Welcome {data.username} </h1> : <h1> Welcome </h1>}
+        { data ? <h1> Welcome {data} </h1> : <h1> Welcome </h1>}
         </div>
     )
 }

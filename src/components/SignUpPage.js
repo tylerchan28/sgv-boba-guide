@@ -9,6 +9,7 @@ const SignUpPage = (props) => {
     const [password, setPassword] = useState("");
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(props)
         const signupDetails = {
             firstName,
             lastName,
