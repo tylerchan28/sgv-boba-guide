@@ -21,20 +21,11 @@ const LoginPage = (props) => {
             url: "http://localhost:3000/users/login",
         })
         .then((res) => {
-            console.log(res.data)
+            sessionStorage.setItem("token", res.data.token)
+            sessionStorage.setItem("username", res.data.user.username)
+            console.log(res.data.user.username)
             setData(res.data.user.username)
-            console.log(data)
         })
-        // .then(() => 
-        //     axios({
-        //     method: "GET",
-        //     withCredentials: true,
-        //     url: "http://localhost:3000/users/user"
-        // }))
-        // .then((res) => {
-        //     props.getUser(res.data.username)
-        //     setData(res.data)
-        // })
         .then(() => alert("Login successful!"))
         .then(() => props.history.push("/"))
         .catch(function (error) {

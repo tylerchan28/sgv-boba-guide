@@ -33,7 +33,10 @@ const RestaurantPage = (props) => {
     }
     
     const onSubmit = (entry) => {
-        axios.post("http://localhost:3000/reviews/add", entry).then(() => fetchReviews())
+        const token = sessionStorage.getItem("token");
+        axios.post("http://localhost:3000/reviews/add", entry, {
+            headers: {"Authorization": token}
+        }).then(() => fetchReviews())
     }
 
     useEffect(() => {

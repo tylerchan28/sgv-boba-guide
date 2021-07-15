@@ -43,6 +43,8 @@ const ReviewForm = (props) => {
     const onSubmit = (e) => { // make onSubmit that calls props.onSubmit (from RestaurantPage)
         // that one will handle axios posting and review fetching
         e.preventDefault();
+        // const username = sessionStorage.getItem("username");
+        // console.log(username)
         const submittedContent = ({ // add user id later
             review,
             foodRating,
@@ -50,11 +52,14 @@ const ReviewForm = (props) => {
             hangoutRating,
             studyRating,
             restaurantId: props.restaurantid,
+            // user: username,
             date: Date.now()
         })
 
         props.onSubmit(submittedContent)
-        // axios.post("http://localhost:3000/reviews/add", submittedContent)
+        // axios.post("http://localhost:3000/reviews/add", submittedContent, {
+        //     headers: {"Authorization": token}
+        // })
 
         setReview("");
         setFoodRating("");
