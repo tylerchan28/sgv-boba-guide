@@ -3,10 +3,9 @@ import axios from "axios";
 import Header from "./Header";
 
 const LoginPage = (props) => {
-
-    const [data, setData] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     
     const onSubmit = (e) => {
         e.preventDefault();
@@ -23,20 +22,16 @@ const LoginPage = (props) => {
         .then((res) => {
             sessionStorage.setItem("token", res.data.token)
             sessionStorage.setItem("username", res.data.user.username)
-            console.log(res.data.user.username)
-            setData(res.data.user.username)
         })
         .then(() => alert("Login successful!"))
         .then(() => props.history.push("/"))
         .catch(function (error) {
             if (error) {
-                alert("Incorrect username or password.")
+                setError(error.response.data)
                 setUsername("")
                 setPassword("")
             }
         })
-        // redirect after login to city page
-        // serializeUser, deserializeUser not working in API
     }
 
     return (
@@ -65,7 +60,7 @@ const LoginPage = (props) => {
                 />
                 <button type="submit">Log In</button>
             </form>
-        { data ? <h1> Welcome {data} </h1> : <h1> Welcome </h1>}
+            { error && <div> {error} </div> }
         </div>
     )
 }

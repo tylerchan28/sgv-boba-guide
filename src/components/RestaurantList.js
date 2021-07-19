@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import shops from "./fixtures/shops"; 
+import axios from "axios";
 
 const RestaurantList = () => {
+    
+    const [restaurants, setRestaurants] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/cities/san-gabriel")   
+            .then((res) => {
+                setRestaurants(res.data[0].restaurants)
+            })
+    }, []);
+    
     return (
         <div>
-            {shops.map((shop, idx) => {
+            {restaurants.map((shop, idx) => {
                 return (
                     <Link className="link" key={idx+1} to={`/shop/${shop.id}`}>
                         <div className="restaurant-card">

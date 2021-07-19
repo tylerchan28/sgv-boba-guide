@@ -32,3 +32,12 @@ export default CityPage;
 // when choosing a location, direct to a RestaurantList.js and db for 
 // that specific location (pull restaurants from db)
 // route to {cityname} on click
+
+// make link to san-gabriel, new york, san francisco
+    // render component and pass city name as props
+// if san gabriel is clicked, load RestaurantList with props = san-gabriel
+    // <RestaurantList city={san-gabriel}
+    // in RestaurantList, call axios.get(`http://localhost:3000/cities/${props.city}`) 
+
+
+// back button on restaurant pages so it goes to same list

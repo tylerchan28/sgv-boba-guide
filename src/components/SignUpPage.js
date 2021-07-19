@@ -6,7 +6,9 @@ const SignUpPage = (props) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(props)
@@ -15,15 +17,21 @@ const SignUpPage = (props) => {
             lastName,
             username,
             password,
+            email,
             userId: uuidv4()
         }
         axios.post("http://localhost:3000/users/signup", signupDetails)
         .then(() => alert("Signup successful!"))
-        .then(() => props.history.push("/"))
+        .then(() => props.history.push("/login"))
         .catch(function (error) {
             if (error.response) {
               const errorMsg = error.response.data.errors.errors[0].msg;
-              alert(errorMsg)
+              setError(errorMsg)
+              setFirstName("")
+              setLastName("")
+              setUsername("")
+              setPassword("")   
+              setEmail("")
             } else if (error.request) {
               console.log(error.request);
             } else {
@@ -66,6 +74,16 @@ const SignUpPage = (props) => {
                         className="signup-input"
                         required
                     />
+                    <label htmlFor="email">E-mail</label>
+                    <input
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        id="email"
+                        name="email"
+                        value={email}
+                        className="signup-input"
+                        required
+                    />
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"
@@ -78,6 +96,7 @@ const SignUpPage = (props) => {
                     />
                     <button type="submit" className="signup-btn">Sign Up</button>
                 </form>
+                { error && <div>{error}</div>}
             </div>
         </div>
     )

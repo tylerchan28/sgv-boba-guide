@@ -9,6 +9,10 @@ body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 textarea {
   font-family: proxima;
   font-size: 16px;
@@ -227,6 +231,7 @@ textarea {
 .review-details {
   margin-top: 100px;
   padding: 10px;
+  width: 300px;
 }
 
 .review-rating-container {
@@ -278,6 +283,20 @@ textarea {
 .logsign-container {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+.no-login {
+  margin: 50px auto;
+}
+
+/* Logout */
+
+.logout-container {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   right: 30px;
   top: 30px;

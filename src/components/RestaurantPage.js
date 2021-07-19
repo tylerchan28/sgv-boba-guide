@@ -9,29 +9,62 @@ const axios = require("axios");
 const RestaurantPage = (props) => { 
     const [restaurantReviews, setRestaurantReviews] = useState([]);
     const [drinkAvg, setDrinkAvg] = useState("");
+    const [foodAvg, setFoodAvg] = useState("");
+    const [hangoutAvg, setHangoutAvg] = useState("");
+    const [studyAvg, setStudyAvg] = useState("");
+
+    const getRatingAverage = (pageReviews, ratingType) => {
+        let ratings = pageReviews.filter((review) => review[ratingType] !== "N/A")
+            .map((review) => parseInt(review[ratingType]));
+        if (ratings.length === 0) {
+            return "N/A";
+        } else {
+            let ratingAvg = (ratings.reduce((value, accumulator) => accumulator + value)) / ratings.length;
+            return ratingAvg;
+        }
+    }
 
     const fetchReviews = async () => {
         await axios.get("http://localhost:3000/reviews")
-        .then(({ data }) => {
-        let pageReviews = data.filter((review) => review.restaurantId === props.match.params.id)
-
-        let drinkRatings = []; // make this update on every post addition
-        pageReviews.forEach((review) => drinkRatings.push(review.drinkRating))
-        let drinkRatingTotal = 0
-        for (let i = 0; i < drinkRatings.length; i++) {
-            if (!isNaN(parseInt(drinkRatings[i]))) {
-                drinkRatingTotal += parseInt(drinkRatings[i]);
-            }
-        }
-        let drinkRatingLength = drinkRatings.filter((rating) => rating !== "N/A")
-        let drinkRatingAvg = drinkRatingTotal/drinkRatingLength.length;
-        setDrinkAvg(Math.trunc(drinkRatingAvg))
-            
-
-        setRestaurantReviews(pageReviews)
-        })
+            .then(({ data }) => {
+                let pageReviews = data.filter((review) => review.restaurantId === props.match.params.id)
+                setRestaurantReviews(pageReviews)
+                
+                if (pageReviews.length > 0) {
+                    let drinkRatingAvg = getRatingAverage(pageReviews, "drinkRating")
+                    if (drinkRatingAvg === "N/A") {
+                        setDrinkAvg("N/A")
+                    } else {
+                        setDrinkAvg((Math.floor(drinkRatingAvg * 10) / 10)) 
+                    }
+                    
+                    let foodRatingAvg = getRatingAverage(pageReviews, "foodRating");  
+                    if (foodRatingAvg === "N/A") {
+                        setFoodAvg("N/A")
+                    } else {
+                    setFoodAvg((Math.floor(foodRatingAvg * 10) / 10))   
+                    } 
+                    
+                    let hangoutRatingAvg = getRatingAverage(pageReviews, "hangoutRating")
+                    if (hangoutRatingAvg === "N/A") {
+                        setHangoutAvg("N/A")
+                    } else {
+                        setHangoutAvg((Math.floor(hangoutRatingAvg * 10) / 10)) 
+                    }
+                    
+                    let studyRatingAvg = getRatingAverage(pageReviews, "studyRating");  
+                    if (studyRatingAvg === "N/A") {
+                        setStudyAvg("N/A")
+                    } else {
+                        setStudyAvg((Math.floor(studyRatingAvg * 10) / 10))
+                    }
+                
+                    // right now, no reviews put a 0 average
+                }
+                
+            })
     }
-    
+        
     const onSubmit = (entry) => {
         const token = sessionStorage.getItem("token");
         axios.post("http://localhost:3000/reviews/add", entry, {
@@ -48,9 +81,11 @@ const RestaurantPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
+    const token = sessionStorage.getItem("token");
+
     const foundShop = shops.find((shop) => shop.id === props.match.params.id);
    
-    return foundShop ? // put into own component
+    return foundShop ? 
     <div className="restaurant-page-container"> 
         <Header />
         <div className="restaurant-page-name"> {foundShop.name} </div>
@@ -59,8 +94,21 @@ const RestaurantPage = (props) => {
             {foundShop.display_phone} 
         </div>
         <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
-        {drinkAvg}
-        <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} />
+        {restaurantReviews.length > 0 &&    
+            <div>
+                Drinks: {drinkAvg}<br></br>
+                Food: {foodAvg}<br></br>
+                Hangout: {hangoutAvg}<br></br>
+                Study: {studyAvg}<br></br>
+            </div>
+        } 
+
+        { token ? 
+            <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
+            : 
+            <div className="no-login">Sign up or log in to write a review.</div>
+        }
+        
         {restaurantReviews.length > 0 && 
         <div className="review-container"> 
             <div className="review-count">  

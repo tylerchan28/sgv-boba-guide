@@ -40,19 +40,19 @@ const ReviewForm = (props) => {
         }
     }
 
+
     const onSubmit = (e) => { // make onSubmit that calls props.onSubmit (from RestaurantPage)
         // that one will handle axios posting and review fetching
         e.preventDefault();
-        // const username = sessionStorage.getItem("username");
-        // console.log(username)
-        const submittedContent = ({ // add user id later
+        const user = sessionStorage.getItem("username");
+        const submittedContent = ({
             review,
             foodRating,
             drinkRating,
             hangoutRating,
             studyRating,
             restaurantId: props.restaurantid,
-            // user: username,
+            user,
             date: Date.now()
         })
 
@@ -80,15 +80,6 @@ const ReviewForm = (props) => {
                 value={review}
             />
             <div className="review-rating-container">
-                <label htmlFor="food-rating" className="rating-label">Food Rating:</label>
-                <input 
-                    type="string"
-                    id="food-rating"
-                    name="food-rating"
-                    onChange={onFoodRatingChange}
-                    value={foodRating}
-                    className="review-form-rating"
-                />
                 <label htmlFor="drink-rating" className="rating-label">Drink Rating:</label>
                 <input  
                     type="string"
@@ -96,6 +87,15 @@ const ReviewForm = (props) => {
                     name="drink-rating"
                     onChange={onDrinkRatingChange}
                     value={drinkRating}
+                    className="review-form-rating"
+                />    
+                <label htmlFor="food-rating" className="rating-label">Food Rating:</label>
+                <input 
+                    type="string"
+                    id="food-rating"
+                    name="food-rating"
+                    onChange={onFoodRatingChange}
+                    value={foodRating}
                     className="review-form-rating"
                 />
                 <label htmlFor="hangout-rating" className="rating-label">Hangout Rating:</label>
