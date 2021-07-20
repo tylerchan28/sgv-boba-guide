@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const RestaurantList = () => {
     
+    let city = useLocation();
+
     const [restaurants, setRestaurants] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/cities/san-gabriel")   
+        axios.get(`http://localhost:3000/cities/${city.state.city}`)   
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
             })
     }, []);
     
+
     return (
         <div>
             {restaurants.map((shop, idx) => {
                 return (
-                    <Link className="link" key={idx+1} to={`/shop/${shop.id}`}>
+                    <Link className="link" key={idx+1} to={{ pathname: `/shop/${shop.id}`, state: { restaurants: restaurants }}}>
                         <div className="restaurant-card">
                             <div className="image-container">
                                 <img src={shop.image_url} className="feed-img" alt="A depiction representative of the restaurant" />

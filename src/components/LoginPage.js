@@ -24,7 +24,7 @@ const LoginPage = (props) => {
             sessionStorage.setItem("username", res.data.user.username)
         })
         .then(() => alert("Login successful!"))
-        .then(() => props.history.push("/"))
+        .then(() => props.history.push("/cities"))
         .catch(function (error) {
             if (error) {
                 setError(error.response.data)

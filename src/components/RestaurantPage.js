@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import shops from "./fixtures/shops"; 
 import Header from "./Header";
 import NotFoundPage from "./NotFoundPage";
@@ -7,6 +8,10 @@ import ReviewItem from "./ReviewItem";
 const axios = require("axios");
 
 const RestaurantPage = (props) => { 
+    
+    let restaurants = useLocation();
+    let cityShops = restaurants.state.restaurants;
+
     const [restaurantReviews, setRestaurantReviews] = useState([]);
     const [drinkAvg, setDrinkAvg] = useState("");
     const [foodAvg, setFoodAvg] = useState("");
@@ -58,8 +63,7 @@ const RestaurantPage = (props) => {
                     } else {
                         setStudyAvg((Math.floor(studyRatingAvg * 10) / 10))
                     }
-                
-                    // right now, no reviews put a 0 average
+
                 }
                 
             })
@@ -83,7 +87,7 @@ const RestaurantPage = (props) => {
     
     const token = sessionStorage.getItem("token");
 
-    const foundShop = shops.find((shop) => shop.id === props.match.params.id);
+    const foundShop = cityShops.find((shop) => shop.id === props.match.params.id);
    
     return foundShop ? 
     <div className="restaurant-page-container"> 

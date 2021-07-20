@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import App from "../App";
@@ -18,6 +18,9 @@ const AppRouter = () => {
                     <Route path="/" component={App} exact={true} />
                     <Route path="/cities" component={CityPage} />
                     <Route path="/shop/:id" component={RestaurantPage} />
+                    <Route path="/loginTest" render={(props) => (
+                        <LoginPage {...props} />
+                      )} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/signup" component={SignUpPage} />
                     <Route component={NotFoundPage} />

@@ -1,20 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 const CityPage = () => (
     <div>
         <Header />
         <div className="city-container">
-            <div className="city">
+            <Link to={
+                    { 
+                        pathname: "/",
+                        state: { city: "san-gabriel"}
+                    }
+                } 
+                className="city">
                 <div className="city-name">  
                     San Gabriel Valley
                 </div>  
-            </div>
-            <div className="city">
-                <div className="city-name">
+            </Link>
+            <Link to={
+                    { 
+                        pathname: "/",
+                        state: { city: "san-francisco"}
+                    }
+                } 
+                className="city">
+                <div className="city-name">  
                     San Francisco
                 </div>  
-            </div>
+            </Link>
             <div className="city">
                 <div className="city-name">
                     New York
