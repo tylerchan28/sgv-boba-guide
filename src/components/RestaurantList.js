@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Header from "./Header";
 import axios from "axios";
 
 const RestaurantList = () => {
@@ -13,14 +14,16 @@ const RestaurantList = () => {
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
             })
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
+
 
     return (
         <div>
+            <Header />
             {restaurants.map((shop, idx) => {
                 return (
-                    <Link className="link" key={idx+1} to={{ pathname: `/shop/${shop.id}`, state: { restaurants: restaurants }}}>
+                    <Link className="restaurant-link" key={idx+1} to={{ pathname: `/shop/${shop.id}`, state: { restaurants: restaurants }}}>
                         <div className="restaurant-card">
                             <div className="image-container">
                                 <img src={shop.image_url} className="feed-img" alt="A depiction representative of the restaurant" />

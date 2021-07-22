@@ -8,8 +8,8 @@ const CityPage = () => (
         <div className="city-container">
             <Link to={
                     { 
-                        pathname: "/",
-                        state: { city: "san-gabriel"}
+                        pathname: "/cities/san-gabriel",
+                        state: { city: "san-gabriel" }
                     }
                 } 
                 className="city">
@@ -19,8 +19,8 @@ const CityPage = () => (
             </Link>
             <Link to={
                     { 
-                        pathname: "/",
-                        state: { city: "san-francisco"}
+                        pathname: "/cities/san-francisco",
+                        state: { city: "san-francisco" }
                     }
                 } 
                 className="city">
@@ -28,11 +28,17 @@ const CityPage = () => (
                     San Francisco
                 </div>  
             </Link>
-            <div className="city">
-                <div className="city-name">
-                    New York
+            <Link to={
+                    { 
+                        pathname: "/cities/manhattan",
+                        state: { city: "manhattan" }
+                    }
+                } 
+                className="city">
+                <div className="city-name">  
+                    Manhattan
                 </div>  
-            </div>
+            </Link>
         </div>
     </div>
 )

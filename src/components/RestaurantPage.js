@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import shops from "./fixtures/shops"; 
+import { useLocation } from "react-router-dom"; 
 import Header from "./Header";
 import NotFoundPage from "./NotFoundPage";
 import ReviewForm from "./ReviewForm";

@@ -45,6 +45,7 @@ const ReviewForm = (props) => {
         // that one will handle axios posting and review fetching
         e.preventDefault();
         const user = sessionStorage.getItem("username");
+        const userId = sessionStorage.getItem("userId")
         const submittedContent = ({
             review,
             foodRating,
@@ -53,6 +54,7 @@ const ReviewForm = (props) => {
             studyRating,
             restaurantId: props.restaurantid,
             user,
+            userId,
             date: Date.now()
         })
 

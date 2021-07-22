@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Header from "./Header";
 
 const LoginPage = (props) => {
     const [username, setUsername] = useState("");
@@ -9,7 +8,6 @@ const LoginPage = (props) => {
     
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(props)
         axios({
             method: "POST",
             data: {
@@ -22,9 +20,10 @@ const LoginPage = (props) => {
         .then((res) => {
             sessionStorage.setItem("token", res.data.token)
             sessionStorage.setItem("username", res.data.user.username)
+            sessionStorage.setItem("userId", res.data.user.userId)
         })
-        .then(() => alert("Login successful!"))
-        .then(() => props.history.push("/cities"))
+        // .then(() => alert("Login successful!"))
+        .then(() => props.history.push("/"))
         .catch(function (error) {
             if (error) {
                 setError(error.response.data)
@@ -36,7 +35,6 @@ const LoginPage = (props) => {
 
     return (
         <div>
-            <Header />
             <form onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label>
                 <input

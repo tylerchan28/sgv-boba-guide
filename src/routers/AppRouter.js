@@ -15,8 +15,8 @@ const AppRouter = () => {
         <Router history={history} >
             <div>
                 <Switch>
-                    <Route path="/" component={App} exact={true} />
-                    <Route path="/cities" component={CityPage} />
+                    <Route path="/cities/:name" component={App}  />
+                    <Route path="/" component={CityPage} exact={true} />
                     <Route path="/shop/:id" component={RestaurantPage} />
                     <Route path="/loginTest" render={(props) => (
                         <LoginPage {...props} />

@@ -15,8 +15,8 @@ const Header = () => {
     return (
         <div className="header-layout">
             <div className="header-container">
-                <Link className="link" to="/cities">
-                    <div className="header-title">San Gabriel Valley Boba Guide </div>
+                <Link className="link" to="/">
+                    <div className="header-title"> Boba Guide </div>
                 </Link>               
                 { username ? 
                     <div className="logout-container">
