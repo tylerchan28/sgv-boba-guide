@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 const ReviewForm = (props) => {
     const [review, setReview] = useState("");
@@ -48,6 +49,7 @@ const ReviewForm = (props) => {
         const userId = sessionStorage.getItem("userId")
         const submittedContent = ({
             review,
+            reviewId: uuidv4(),
             foodRating,
             drinkRating,
             hangoutRating,
@@ -59,16 +61,11 @@ const ReviewForm = (props) => {
         })
 
         props.onSubmit(submittedContent)
-        // axios.post("http://localhost:3000/reviews/add", submittedContent, {
-        //     headers: {"Authorization": token}
-        // })
-
         setReview("");
         setFoodRating("");
         setDrinkRating("");
         setHangoutRating("");
         setStudyRating("");
-        // fetchReviews();
     }
 
     return (
