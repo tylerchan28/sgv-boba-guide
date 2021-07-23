@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import UpdateForm from "./UpdateForm";
 import moment from "moment";
 import axios from "axios";
+import Modal from "react-modal";
 
 const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, review, date, user, userId, reviewId }) => {
+    let [modal, showModal] = useState(false);
     let currentUserId = sessionStorage.getItem("userId")
     let token = sessionStorage.getItem("token");
+
     const removeReview = (reviewId) => {
+        window.confirm("Are you sure you want to delete this review?") &&
         axios.delete("http://localhost:3000/reviews/delete", {
             headers: {
                 "Authorization": token
@@ -16,8 +21,19 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
         }).then(window.location.reload())
     }
 
-    const updateReview = () => {
-        // axios update(?) request here
+    const updateReview = ({ review, foodRating, drinkRating, studyRating, hangoutRating }) => { // get data from form into updates (still not working, maybe UpdateForm doesn't work)
+        const inputs = {
+            reviewId,
+            review,
+            foodRating,
+            drinkRating,
+            studyRating,
+            hangoutRating
+        }
+        axios.put("http://localhost:3000/reviews/update", inputs)
+        .then((res) => console.log(res))
+        .then(window.location.reload())
+        showModal(false)
     }
 
     return (
@@ -32,14 +48,28 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
                 {review}
             </div>
             <div className="review-details">
-                {userId === currentUserId &&<div>
-                    <button onClick={() => removeReview(reviewId)}>Remove</button>
-                    <button>Edit</button>
-                </div>}
-                <div>
+                {userId === currentUserId &&
+                    <div className="button-container">
+                        <button className="review-btn" onClick={() => removeReview(reviewId)}>Remove</button>
+                        <button className="review-btn" onClick={() => showModal(true)}>Edit</button>
+                    </div>
+                }
+                <div className="review-date">
                     posted {moment(date).format("MM/DD/YYYY")} by {user}
                 </div>
             </div>
+            {modal && 
+                <Modal
+                    isOpen={!!modal} 
+                    onRequestClose={() => showModal(false)}
+                    contentLabel="Update form" 
+                    ariaHideApp={false}
+                    closeTimeoutMS={200}
+                    className="modal" 
+                >
+                    <UpdateForm onSubmit={updateReview} /> 
+                </Modal>
+            }
         </div> 
         
     )

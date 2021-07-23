@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
 
-const ReviewForm = (props) => {
+const UpdateForm = (props) => {
     const [review, setReview] = useState("");
     const [foodRating, setFoodRating] = useState("");
     const [drinkRating, setDrinkRating] = useState("");
@@ -44,22 +43,14 @@ const ReviewForm = (props) => {
 
     const onSubmit = (e) => { 
         e.preventDefault();
-        const user = sessionStorage.getItem("username");
-        const userId = sessionStorage.getItem("userId")
-        const submittedContent = ({
+
+        props.onSubmit(({
             review,
-            reviewId: uuidv4(),
             foodRating,
             drinkRating,
             hangoutRating,
             studyRating,
-            restaurantId: props.restaurantid,
-            user,
-            userId,
-            date: Date.now()
-        })
-
-        props.onSubmit(submittedContent)
+        }))
         setReview("");
         setFoodRating("");
         setDrinkRating("");
@@ -69,7 +60,7 @@ const ReviewForm = (props) => {
 
     return (
         <form className="review-form" onSubmit={onSubmit}>
-            <label htmlFor="review" className="review-form-title">Add a Review (Ratings Optional):</label>
+            <label htmlFor="review" className="review-form-title">Update Review (Ratings Optional):</label>
             <textarea 
                 type="text"
                 placeholder="Write a review..."
@@ -115,10 +106,10 @@ const ReviewForm = (props) => {
                     className="review-form-rating"
                 />
             </div>
-            <button type="submit" className="review-submit">Submit Review</button>
+            <button type="submit" className="review-submit">Update Review</button>
         </form> 
     )
 }
 
 
-export default ReviewForm;
+export default UpdateForm;

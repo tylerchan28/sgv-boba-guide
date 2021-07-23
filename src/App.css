@@ -29,6 +29,22 @@ textarea {
   width: 200px;
 }
 
+/* Buttons */
+
+.review-btn {
+  color: gray;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.review-btn {
+  color: gray;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
 /* Cities */
 
 .city {
@@ -171,10 +187,15 @@ textarea {
 
 /* Review */
 
+.review-date {
+  color: gray;
+  font-size: 14px;
+  font-style: italic;
+}
+
 .rating-label {
   margin-right: 10px;
 }
-
 
 .review {
   background-color: white;
@@ -239,7 +260,10 @@ textarea {
 }
 
 .review-details {
-  align-self: flex-end;
+  /* align-self: flex-end; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   text-align: right;
   width: 300px;

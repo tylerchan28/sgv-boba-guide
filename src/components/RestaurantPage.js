@@ -69,6 +69,7 @@ const RestaurantPage = (props) => {
     }
         
     const onSubmit = (entry) => {
+        console.log(entry)
         const token = sessionStorage.getItem("token");
         axios.post("http://localhost:3000/reviews/add", entry, {
             headers: {"Authorization": token}
