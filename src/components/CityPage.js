@@ -12,7 +12,7 @@ const CityPage = () => (
                         state: { city: "san-gabriel" }
                     }
                 } 
-                className="city">
+                className="city city--san-gabriel">
                 <div className="city-name">  
                     San Gabriel Valley
                 </div>  
@@ -23,7 +23,7 @@ const CityPage = () => (
                         state: { city: "san-francisco" }
                     }
                 } 
-                className="city">
+                className="city city--san-francisco">
                 <div className="city-name">  
                     San Francisco
                 </div>  
@@ -34,7 +34,7 @@ const CityPage = () => (
                         state: { city: "manhattan" }
                     }
                 } 
-                className="city">
+                className="city city--manhattan">
                 <div className="city-name">  
                     Manhattan
                 </div>  

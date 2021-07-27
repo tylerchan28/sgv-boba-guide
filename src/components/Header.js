@@ -11,7 +11,7 @@ const Header = () => {
         axios.get("http://localhost:3000/users/logout")
         window.location.reload();
     }
-    
+
     return (
         <div className="header-layout">
             <div className="header-container">
@@ -26,6 +26,9 @@ const Header = () => {
                         <button onClick={logout}>
                             Logout
                         </button>
+                        <Link className="link" to="/verify">
+                            Verify your email.
+                        </Link>
                     </div>
                     : 
                     <div className="logsign-container">

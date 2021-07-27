@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const LoginPage = (props) => {
     const [username, setUsername] = useState("");
@@ -21,6 +22,7 @@ const LoginPage = (props) => {
             sessionStorage.setItem("token", res.data.token)
             sessionStorage.setItem("username", res.data.user.username)
             sessionStorage.setItem("userId", res.data.user.userId)
+            sessionStorage.setItem("id", res.data.user._id)
         })
         // .then(() => alert("Login successful!"))
         .then(() => props.history.push("/"))
@@ -34,31 +36,39 @@ const LoginPage = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="username">Username</label>
-                <input
-                    type="text"
-                    onChange={(e) => setUsername(e.target.value)}
-                    id="username"
-                    name="username"
-                    value={username}
-                    className="signup-input"
-                    required
-                />
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    id="password"
-                    name="password"
-                    value={password}
-                    className="signup-input"
-                    required
-                />
-                <button type="submit">Log In</button>
-            </form>
-            { error && <div> {error} </div> }
+        <div className="signup-layout">
+            <div className="signup-container">
+                <form className="signup-form" onSubmit={onSubmit}>
+                    <label htmlFor="username">Username</label>
+                    <input
+                        type="text"
+                        onChange={(e) => setUsername(e.target.value)}
+                        id="username"
+                        name="username"
+                        value={username}
+                        className="signup-input"
+                        required
+                    />
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        id="password"
+                        name="password"
+                        value={password}
+                        className="signup-input"
+                        required
+                    />
+                    <button className="signup-btn" type="submit">Log In</button>
+                </form>
+                <Link className="link" to="/forgot-password">Forgot Password</Link>
+                <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
+                { error && 
+                    <div className="error">
+                        {error}
+                    </div> 
+                }
+            </div>
         </div>
     )
 }

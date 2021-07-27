@@ -7,7 +7,6 @@ import ReviewItem from "./ReviewItem";
 const axios = require("axios");
 
 const RestaurantPage = (props) => { 
-    
     let restaurants = useLocation();
     let cityShops = restaurants.state.restaurants;
 

@@ -30,7 +30,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
             studyRating,
             hangoutRating
         }
-        axios.put("http://localhost:3000/reviews/update", inputs)
+        axios.put("http://localhost:3000/reviews/update", inputs, { headers: { "Authorization": token }})
         .then((res) => console.log(res))
         .then(window.location.reload())
         showModal(false)

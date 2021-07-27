@@ -67,6 +67,7 @@ const UpdateForm = (props) => {
                 id="review"
                 onChange={onReviewChange}
                 value={review}
+                required
             />
             <div className="review-rating-container">
                 <label htmlFor="drink-rating" className="rating-label">Drink Rating:</label>

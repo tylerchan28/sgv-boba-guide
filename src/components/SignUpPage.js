@@ -96,7 +96,12 @@ const SignUpPage = (props) => {
                     />
                     <button type="submit" className="signup-btn">Sign Up</button>
                 </form>
-                { error && <div>{error}</div>}
+                <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
+                { error && 
+                    <div className="error">
+                        {error}
+                    </div>
+                }
             </div>
         </div>
     )
