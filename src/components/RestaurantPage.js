@@ -9,6 +9,7 @@ const axios = require("axios");
 const RestaurantPage = (props) => { 
     let restaurants = useLocation();
     let cityShops = restaurants.state.restaurants;
+    const verified = sessionStorage.getItem("verified");
 
     const [restaurantReviews, setRestaurantReviews] = useState([]);
     const [drinkAvg, setDrinkAvg] = useState("");
@@ -68,7 +69,6 @@ const RestaurantPage = (props) => {
     }
         
     const onSubmit = (entry) => {
-        console.log(entry)
         const token = sessionStorage.getItem("token");
         axios.post("http://localhost:3000/reviews/add", entry, {
             headers: {"Authorization": token}
@@ -106,10 +106,10 @@ const RestaurantPage = (props) => {
             </div>
         } 
 
-        { token ? 
+        { (token && verified === "true") ? 
             <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
             : 
-            <div className="no-login">Sign up or log in to write a review.</div>
+            <div className="no-login">Log in and verify your account to write a review.</div>
         }
         
         {restaurantReviews.length > 0 && 

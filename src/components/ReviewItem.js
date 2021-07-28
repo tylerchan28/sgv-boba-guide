@@ -48,7 +48,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
                 {review}
             </div>
             <div className="review-details">
-                {userId === currentUserId &&
+                {(userId === currentUserId && token) &&
                     <div className="button-container">
                         <button className="review-btn" onClick={() => removeReview(reviewId)}>Remove</button>
                         <button className="review-btn" onClick={() => showModal(true)}>Edit</button>

@@ -2,36 +2,35 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const VerifyPage = (props) => {
-    // const [error, setError] = useState("");
-    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const token = sessionStorage.getItem("token");
+    const currentEmail = sessionStorage.getItem("email");
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+
+    const sendEmail = (e) => {
+        e.preventDefault()
         const details = {
-            email
+            email: currentEmail
         }
         axios.post("http://localhost:3000/users/verify", details)
-            .then(console.log("email sent"))
+            .then((res) => setMessage(res.data.msg))
     }
+
     return (
-        <div className="signup-layout">
-            <div className="signup-container">
-                <form className="signup-form" onSubmit={onSubmit}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        id="email"
-                        name="email"
-                        value={email}
-                        className="signup-input"
-                        required
-                    />
-                    <button className="signup-btn" type="submit">Send Verification Email</button>
-                </form>
-                <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
+            <div className="signup-layout">
+                <div className="signup-container">
+                    {token ?
+                        <button onClick={sendEmail}>
+                            Send verification email.
+                        </button> : 
+                        <div> 
+                            Please log in to access this page. 
+                        </div>
+                    }
+                    <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
+                    { message && <div className="error">{message}</div>}
+                </div>
             </div>
-        </div>
     )
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 // form onsubmit sends api call?
 // need to send to users email
@@ -6,16 +7,16 @@ import React, { useState } from "react";
 // if no email match, send error message
 
 const ForgotPasswordPage = (props) => {
-    const [error, setError] = useState("");
+    const [message, setMessage] = useState("");
     const [email, setEmail] = useState("");
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const data = {
             email
         }
-        console.log(data)
+        axios.post("http://localhost:3000/users/send-forgot-email", data)
+            .then((res) => setMessage(res.data.msg))
     }
 
     return (
@@ -32,12 +33,12 @@ const ForgotPasswordPage = (props) => {
                         className="signup-input"
                         required
                     />
-                    <button className="signup-btn" type="submit">Reset Password</button>
+                    <button className="signup-btn" type="submit">Request Reset Email</button>
                 </form>
                 <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
-                { error && 
+                { message && 
                     <div className="error">
-                        {error}
+                        {message}
                     </div> 
                 }
             </div>

@@ -7,6 +7,7 @@ import ConfirmVerificationPage from "../components/ConfirmVerificationPage";
 import ForgotPasswordPage from "../components/ForgotPasswordPage";
 import LoginPage from "../components/LoginPage";
 import NotFoundPage from "../components/NotFoundPage";
+import ResetPasswordPage from "../components/ResetPasswordPage";
 import RestaurantPage from "../components/RestaurantPage";
 import SignUpPage from "../components/SignUpPage";
 import VerifyPage from "../components/VerifyPage";
@@ -22,6 +23,7 @@ const AppRouter = () => {
                     <Route path="/" component={CityPage} exact={true} />
                     <Route path="/shop/:id" component={RestaurantPage} />
                     <Route path="/forgot-password" component={ForgotPasswordPage} />
+                    <Route path="/reset-password/:id" component={ResetPasswordPage} />
                     <Route path="/verify" component={VerifyPage} />
                     <Route path="/confirm/:id" component={ConfirmVerificationPage} />
                     <Route path="/login" component={LoginPage} />
