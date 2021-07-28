@@ -154,6 +154,7 @@ textarea {
 
 .restaurant-card:hover {
   background-color: rgb(34, 34, 34);
+  border-radius: 10px;
 }
 
 .restaurant-contact {
@@ -211,6 +212,7 @@ textarea {
 /* Review */
 
 .review-date {
+  align-self: flex-end;
   color: gray;
   font-size: 14px;
   font-style: italic;

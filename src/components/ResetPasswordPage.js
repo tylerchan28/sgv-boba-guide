@@ -2,14 +2,15 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const ResetPasswordPage = (props) => {
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("");
     const [password, setPassword] = useState("");
+    const [secretCode, setSecretCode] = useState("");
     
     const onSubmit = (e) => {
         // axios here
         e.preventDefault();
         const id = props.match.params.id;
-        axios.post(`http://localhost:3000/users/reset-password/${id}`, { password: password })
+        axios.post(`http://localhost:3000/users/reset-password/${id}`, { password: password, secretCode: secretCode })
             .then((res) => setMessage(res.data.msg))
     }
     
@@ -24,6 +25,16 @@ const ResetPasswordPage = (props) => {
                         id="password"
                         name="password"
                         value={password}
+                        className="signup-input"
+                        required
+                    />
+                    <label htmlFor="secretCode">Secret Code</label>
+                    <input
+                        type="text"
+                        onChange={(e) => setSecretCode(e.target.value)}
+                        id="secretCode"
+                        name="secretCode"
+                        value={secretCode}
                         className="signup-input"
                         required
                     />

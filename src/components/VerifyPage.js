@@ -20,8 +20,8 @@ const VerifyPage = (props) => {
             <div className="signup-layout">
                 <div className="signup-container">
                     {token ?
-                        <button onClick={sendEmail}>
-                            Send verification email.
+                        <button  className="signup-btn" onClick={sendEmail}>
+                            Send verification email
                         </button> : 
                         <div> 
                             Please log in to access this page. 

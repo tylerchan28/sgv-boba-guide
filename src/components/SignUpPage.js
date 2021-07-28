@@ -3,20 +3,18 @@ import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 
 const SignUpPage = (props) => {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [secretCode, setSecretCode] = useState("");
     const [error, setError] = useState("");
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(props)
         const signupDetails = {
-            firstName,
-            lastName,
             username,
             password,
+            secretCode,
             email,
             userId: uuidv4()
         }
@@ -27,10 +25,9 @@ const SignUpPage = (props) => {
             if (error.response) {
               const errorMsg = error.response.data.errors.errors[0].msg;
               setError(errorMsg)
-              setFirstName("")
-              setLastName("")
               setUsername("")
               setPassword("")   
+              setSecretCode("")
               setEmail("")
             } else if (error.request) {
               console.log(error.request);
@@ -44,23 +41,13 @@ const SignUpPage = (props) => {
         <div className="signup-layout">
             <div className="signup-container"> 
                 <form className="signup-form" onSubmit={onSubmit}>
-                    <label htmlFor="first-name">First Name</label>
+                    <label htmlFor="email">E-mail</label>
                     <input
-                        type="text"
-                        onChange={(e) => setFirstName(e.target.value)}
-                        id="firstName"
-                        name="firstName"
-                        value={firstName}
-                        className="signup-input"
-                        required
-                    />
-                    <label htmlFor="last-name">Last Name</label>
-                    <input
-                        type="text"
-                        onChange={(e) => setLastName(e.target.value)}
-                        id="lastName"
-                        name="lastName"
-                        value={lastName}
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        id="email"
+                        name="email"
+                        value={email}
                         className="signup-input"
                         required
                     />
@@ -74,16 +61,6 @@ const SignUpPage = (props) => {
                         className="signup-input"
                         required
                     />
-                    <label htmlFor="email">E-mail</label>
-                    <input
-                        type="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        id="email"
-                        name="email"
-                        value={email}
-                        className="signup-input"
-                        required
-                    />
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"
@@ -91,6 +68,16 @@ const SignUpPage = (props) => {
                         id="password"
                         name="password"
                         value={password}
+                        className="signup-input"
+                        required
+                    />
+                    <label htmlFor="secretCode">Secret Code</label>
+                    <input
+                        type="text"
+                        onChange={(e) => setSecretCode(e.target.value)}
+                        id="secretCode"
+                        name="secretCode"
+                        value={secretCode}
                         className="signup-input"
                         required
                     />
