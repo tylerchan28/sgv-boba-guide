@@ -6,11 +6,13 @@ const ResetPasswordPage = (props) => {
     const [password, setPassword] = useState("");
     const [secretCode, setSecretCode] = useState("");
     
+    const email = sessionStorage.getItem("email");
+
     const onSubmit = (e) => {
         // axios here
         e.preventDefault();
         const id = props.match.params.id;
-        axios.post(`http://localhost:3000/users/reset-password/${id}`, { password: password, secretCode: secretCode })
+        axios.post(`http://localhost:3000/users/reset-password/${id}`, { password: password, secretCode: secretCode, email: email })
             .then((res) => setMessage(res.data.msg))
     }
     
@@ -28,7 +30,7 @@ const ResetPasswordPage = (props) => {
                         className="signup-input"
                         required
                     />
-                    <label htmlFor="secretCode">Secret Code</label>
+                    <label htmlFor="secretCode">Enter Code</label>
                     <input
                         type="text"
                         onChange={(e) => setSecretCode(e.target.value)}

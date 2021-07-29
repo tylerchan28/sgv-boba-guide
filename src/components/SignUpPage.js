@@ -6,7 +6,6 @@ const SignUpPage = (props) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [secretCode, setSecretCode] = useState("");
     const [error, setError] = useState("");
     const onSubmit = (e) => {
         e.preventDefault();
@@ -14,7 +13,6 @@ const SignUpPage = (props) => {
         const signupDetails = {
             username,
             password,
-            secretCode,
             email,
             userId: uuidv4()
         }
@@ -27,7 +25,6 @@ const SignUpPage = (props) => {
               setError(errorMsg)
               setUsername("")
               setPassword("")   
-              setSecretCode("")
               setEmail("")
             } else if (error.request) {
               console.log(error.request);
@@ -68,16 +65,6 @@ const SignUpPage = (props) => {
                         id="password"
                         name="password"
                         value={password}
-                        className="signup-input"
-                        required
-                    />
-                    <label htmlFor="secretCode">Secret Code</label>
-                    <input
-                        type="text"
-                        onChange={(e) => setSecretCode(e.target.value)}
-                        id="secretCode"
-                        name="secretCode"
-                        value={secretCode}
                         className="signup-input"
                         required
                     />

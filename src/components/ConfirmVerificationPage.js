@@ -15,6 +15,7 @@ const ConfirmVerificationPage = (props) => {
             alert("Invalid user.")
             props.history.push("/")
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

@@ -30,14 +30,6 @@ textarea {
 }
 
 /* Buttons */
-
-.review-btn {
-  color: gray;
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
 .review-btn {
   color: gray;
   cursor: pointer;
@@ -212,11 +204,13 @@ textarea {
 /* Review */
 
 .review-date {
-  align-self: flex-end;
   color: gray;
   font-size: 14px;
   font-style: italic;
+  margin-right: 3px;
+  width: 300px;
 }
+
 
 .rating-label {
   margin-right: 10px;
@@ -224,7 +218,7 @@ textarea {
 
 .review {
   background-color: white;
-  border: 3px solid white;
+  border: 3px solid #b2bea8;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -285,9 +279,9 @@ textarea {
 }
 
 .review-details {
-  /* align-self: flex-end; */
   display: flex;
   flex-direction: column;
+  height: 138px;
   justify-content: space-between;
   padding: 10px;
   text-align: right;

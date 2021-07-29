@@ -47,17 +47,20 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
             <div className="review-content">
                 {review}
             </div>
-            <div className="review-details">
-                {(userId === currentUserId && token) &&
+            {(userId === currentUserId && token) ?
+                <div className="review-details">
                     <div className="button-container">
                         <button className="review-btn" onClick={() => removeReview(reviewId)}>Remove</button>
                         <button className="review-btn" onClick={() => showModal(true)}>Edit</button>
                     </div>
-                }
-                <div className="review-date">
-                    posted {moment(date).format("MM/DD/YYYY")} by {user}
+                    <div className="review-date"> posted {moment(date).format("MM/DD/YYYY")} by {user} </div>
                 </div>
-            </div>
+                :
+                <div className="review-details"> 
+                    <div></div>
+                    <div className="review-date"> posted {moment(date).format("MM/DD/YYYY")} by {user} </div>
+                </div>
+            }
             {modal && 
                 <Modal
                     isOpen={!!modal} 
