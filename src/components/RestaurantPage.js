@@ -75,6 +75,12 @@ const RestaurantPage = (props) => {
         }).then(() => fetchReviews())
     }
 
+    const colorCode = (ratingType) => {
+        if (ratingType > 0 && ratingType < 4) {
+            return <div className="rating-item rating-item--red"></div>
+        }
+    }
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -96,15 +102,19 @@ const RestaurantPage = (props) => {
             {foundShop.location.address1 + " " + foundShop.location.city + ", " + foundShop.location.state + ", " + foundShop.location.zip_code}<br></br><br></br>
             {foundShop.display_phone} 
         </div>
-        <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
-        {restaurantReviews.length > 0 &&    
-            <div>
-                Drinks: {drinkAvg}<br></br>
-                Food: {foodAvg}<br></br>
-                Hangout: {hangoutAvg}<br></br>
-                Study: {studyAvg}<br></br>
-            </div>
-        } 
+        { restaurantReviews.length > 0 ? 
+            <div className="image-rating-container">
+                <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />   
+                <div>
+                    <div className="rating-item">Drinks: {drinkAvg}</div>
+                    <div className="rating-item">Food: {foodAvg}</div>
+                    <div className="rating-item">Hangout: {hangoutAvg}</div>
+                    <div className="rating-item">Study: {studyAvg}<br></br></div>
+                </div>
+            </div> 
+            :
+            <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
+        }
 
         { (token && verified === "true") ? 
             <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 

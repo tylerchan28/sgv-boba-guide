@@ -19,10 +19,10 @@ const Header = () => {
                 </Link>               
                 { username ? 
                     <div className="logout-container">
-                        <div> 
+                        <div className="welcome"> 
                             Welcome {username} 
                         </div> 
-                        <button onClick={logout}>
+                        <button className="signup-btn" onClick={logout}>
                             Logout
                         </button>
                         {(verified === "false") && <Link className="link" to="/verify">

@@ -189,8 +189,8 @@ textarea {
 .restaurant-page-image {
   border: 2px solid black;
   border-radius: 50%;
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   margin-top: 10px;
 }
 
@@ -211,6 +211,13 @@ textarea {
   width: 300px;
 }
 
+.rating-item {
+  font-size: 24px;
+}
+
+.rating-item rating-item--red {
+  color: red;
+}
 
 .rating-label {
   margin-right: 10px;
@@ -442,4 +449,48 @@ textarea {
   color: white;
   height: 10px;
   margin-top: 10px;
+}
+
+.image-rating-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+}
+
+.welcome {
+  font-size: 14px;
+}
+
+/* Loader */
+
+.loader {
+  height: 15px;
+  margin-top: 10px;
+  width: 15px;
+}
+
+/* Modal */
+
+.ReactModalPortal > div { 
+  opacity: 0;
+}
+.ReactModalPortal .ReactModal__Overlay {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.modal {
+  background-color: rgb(228, 228, 228);
+  padding: 5px 30px;
 }
