@@ -76,8 +76,12 @@ const RestaurantPage = (props) => {
     }
 
     const colorCode = (ratingType) => {
-        if (ratingType > 0 && ratingType < 4) {
-            return <div className="rating-item rating-item--red"></div>
+        if (ratingType >= 0 && ratingType <= 4) {
+            return <div className="rating-item rating-item--red">{ratingType}</div>
+        } else if (ratingType >= 4 && ratingType <= 7.5) {
+            return <div className="rating-item rating-item--yellow">{ratingType}</div>
+        } else {
+            return <div className="rating-item rating-item--green">{ratingType}</div>
         }
     }
 
@@ -106,10 +110,10 @@ const RestaurantPage = (props) => {
             <div className="image-rating-container">
                 <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />   
                 <div>
-                    <div className="rating-item">Drinks: {drinkAvg}</div>
-                    <div className="rating-item">Food: {foodAvg}</div>
-                    <div className="rating-item">Hangout: {hangoutAvg}</div>
-                    <div className="rating-item">Study: {studyAvg}<br></br></div>
+                    <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
+                    <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
+                    <div className="rating-item">Hangout &#128107;: {colorCode(hangoutAvg)}</div>
+                    <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}<br></br></div>
                 </div>
             </div> 
             :

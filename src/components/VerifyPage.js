@@ -35,7 +35,7 @@ const VerifyPage = (props) => {
                     }
                     <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
                     { loading && 
-                        <img className="loader" src={Loader} />                
+                        <img className="loader" src={Loader} alt="Loading spinner to signify verification email was sent" />                
                     }
                     { message && <div className="error">{message}</div>}
                 </div>

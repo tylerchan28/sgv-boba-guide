@@ -50,7 +50,7 @@ const ResetPasswordPage = (props) => {
                     <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
                 </form>
                 { loading && 
-                    <img className="loader" src={Loader} />                
+                    <img className="loader" src={Loader} alt="Loading spinner to signify password reset" />                
                 }
                 { message && <div className="message">{message}</div>}
             </div>

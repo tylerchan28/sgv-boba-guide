@@ -192,6 +192,7 @@ textarea {
   width: 450px;
   height: 450px;
   margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 
@@ -213,10 +214,23 @@ textarea {
 
 .rating-item {
   font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.rating-item rating-item--red {
-  color: red;
+.rating-item--red {
+  color: rgb(240, 35, 35);
+  margin-top: 5px;
+}
+
+.rating-item--yellow {
+  color: rgb(255, 255, 0);
+  margin-top: 5px;
+}
+
+.rating-item--green {
+  color: green;
+  margin-top: 5px;
 }
 
 .rating-label {
@@ -254,7 +268,7 @@ textarea {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 .review-form-rating {
@@ -371,6 +385,7 @@ textarea {
   display: flex;
   flex-direction: column;
   position: absolute;
+  justify-content: space-between;
   right: 30px;
   top: 30px;
 }
@@ -491,6 +506,6 @@ textarea {
 }
 
 .modal {
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(199, 199, 199);
   padding: 5px 30px;
 }
