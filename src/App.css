@@ -2,6 +2,7 @@
   font-family: "proxima";
   src: local("proxima"), url(./fonts/FontsFree-Net-Proxima-Nova-Light.otf)
 }
+
 body {
   background-color: #E5D3b3;
   font-family: proxima;
@@ -35,6 +36,30 @@ textarea {
   cursor: pointer;
   background: none;
   border: none;
+}
+
+.go-top-btn {
+  background-color: black;
+  border: none;
+  border-radius: 20px;
+  bottom: 10px;
+  color: white;
+  cursor: pointer;
+  font-family: proxima;
+  font-weight: bold;
+  right: 10px;
+  padding: 10px 15px;
+  position: fixed;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  left: 725px;
+  font-size: 36px;
+  position: absolute;
+  top: 160px;
 }
 
 /* Cities */
@@ -111,7 +136,6 @@ textarea {
 
 .image-container {
   align-items: left;
-  
 }
 
 .link {
@@ -123,6 +147,17 @@ textarea {
 .link:hover {
   color: red;
 }
+
+.verify-link {
+  color: white;
+  text-decoration: none;
+  text-align: right;
+}
+
+.verify-link:hover {
+  color: red;
+}
+
 
 
 .restaurant-link {
@@ -216,6 +251,7 @@ textarea {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  
 }
 
 .rating-item--red {
@@ -302,9 +338,8 @@ textarea {
 .review-details {
   display: flex;
   flex-direction: column;
-  height: 138px;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
   text-align: right;
   width: 300px;
 }
@@ -375,7 +410,7 @@ textarea {
 }
 
 .no-login {
-  margin: 50px auto;
+  margin: 25px auto;
   font-style: italic;
 }
 
@@ -386,10 +421,23 @@ textarea {
   flex-direction: column;
   position: absolute;
   justify-content: space-between;
+  font-size: 14px;
+  grid-gap: 5px;
   right: 30px;
   top: 30px;
 }
 
+.logout-btn {
+  color: white;
+  background-color: black;
+  border: none;
+  text-align: right;
+}
+
+.logout-btn:hover {
+  color: red;
+  cursor: pointer;
+}
 
 /* Sign up */
 
@@ -469,8 +517,9 @@ textarea {
 .image-rating-container {
   align-items: center;
   display: flex;
-  flex-direction: column;
-  grid-gap: 10px;
+  flex-direction: row;
+  margin-top: 30px;
+  grid-gap: 50px;
 }
 
 .welcome {

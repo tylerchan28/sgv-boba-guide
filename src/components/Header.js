@@ -22,12 +22,13 @@ const Header = () => {
                         <div className="welcome"> 
                             Welcome {username} 
                         </div> 
-                        <button className="signup-btn" onClick={logout}>
-                            Logout
-                        </button>
-                        {(verified === "false") && <Link className="link" to="/verify">
+                        {(verified === "false") && 
+                        <Link className="verify-link" to="/verify">
                             Verify your email
                         </Link>}
+                        <button className="logout-btn" onClick={logout}>
+                            Logout
+                        </button>
                     </div>
                     : 
                     <div className="logsign-container">
@@ -40,7 +41,7 @@ const Header = () => {
                     </div>
                 }
                 <div>
-                    The top 50 boba shops in the San Gabriel Valley with a comprehensive rating system. 
+                    The top 50 boba shops in cities where the drink itself is a cultural icon.
                 </div>
             </div>
         </div>

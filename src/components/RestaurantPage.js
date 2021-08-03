@@ -76,13 +76,17 @@ const RestaurantPage = (props) => {
     }
 
     const colorCode = (ratingType) => {
-        if (ratingType >= 0 && ratingType <= 4) {
+        if (ratingType <= 4 || ratingType === "N/A") {
             return <div className="rating-item rating-item--red">{ratingType}</div>
         } else if (ratingType >= 4 && ratingType <= 7.5) {
             return <div className="rating-item rating-item--yellow">{ratingType}</div>
         } else {
             return <div className="rating-item rating-item--green">{ratingType}</div>
         }
+    }
+
+    const goBack = () => {
+        props.history.goBack();
     }
 
     useEffect(() => {
@@ -101,6 +105,7 @@ const RestaurantPage = (props) => {
     return foundShop ? 
     <div className="restaurant-page-container"> 
         <Header />
+        <button onClick={goBack} className="back-btn">&#8592;</button>
         <div className="restaurant-page-name"> {foundShop.name} </div>
         <div className="restaurant-page-contact"> 
             {foundShop.location.address1 + " " + foundShop.location.city + ", " + foundShop.location.state + ", " + foundShop.location.zip_code}<br></br><br></br>

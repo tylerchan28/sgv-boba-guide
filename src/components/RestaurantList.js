@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
 
-const RestaurantList = () => {
-    
-    let city = useLocation();
-
+const RestaurantList = (props) => {
+    // let city = useLocation();
     const [restaurants, setRestaurants] = useState([]);
-
     useEffect(() => {
-        axios.get(`http://localhost:3000/cities/${city.state.city}`)   
+        const cityName = window.location.pathname.toString().split("/")[2]
+        // axios.get(`http://localhost:3000/cities/${city.state.city}`)
+        axios.get(`http://localhost:3000/cities/${cityName}`) 
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
             })
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const scrollToTop = (e) => {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+    }
 
     return (
         <div>
@@ -49,6 +52,7 @@ const RestaurantList = () => {
                     </Link>
                 )
             })}
+            <button onClick={scrollToTop} className="go-top-btn">SCROLL TO TOP</button>
         </div>
     )
 }

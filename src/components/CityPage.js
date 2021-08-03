@@ -2,46 +2,49 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 
-const CityPage = () => (
-    <div>
-        <Header />
-        <div className="city-container">
-            <Link to={
-                    { 
-                        pathname: "/cities/san-gabriel",
-                        state: { city: "san-gabriel" }
-                    }
-                } 
-                className="city city--san-gabriel">
-                <div className="city-name">  
-                    San Gabriel Valley
-                </div>  
-            </Link>
-            <Link to={
-                    { 
-                        pathname: "/cities/san-francisco",
-                        state: { city: "san-francisco" }
-                    }
-                } 
-                className="city city--san-francisco">
-                <div className="city-name">  
-                    San Francisco
-                </div>  
-            </Link>
-            <Link to={
-                    { 
-                        pathname: "/cities/manhattan",
-                        state: { city: "manhattan" }
-                    }
-                } 
-                className="city city--manhattan">
-                <div className="city-name">  
-                    Manhattan
-                </div>  
-            </Link>
+const CityPage = () => {
+
+    return (
+        <div>
+            <Header />
+            <div className="city-container">
+                <Link to={
+                        { 
+                            pathname: "/cities/san-gabriel",
+                            state: { city: "san-gabriel" }
+                        }
+                    } 
+                    className="city city--san-gabriel">
+                    <div className="city-name">  
+                        San Gabriel Valley
+                    </div>  
+                </Link>
+                <Link to={
+                        { 
+                            pathname: "/cities/san-francisco",
+                            state: { city: "san-francisco" }
+                        }
+                    } 
+                    className="city city--san-francisco">
+                    <div className="city-name">  
+                        San Francisco
+                    </div>  
+                </Link>
+                <Link to={
+                        { 
+                            pathname: "/cities/manhattan",
+                            state: { city: "manhattan" }
+                        }
+                    } 
+                    className="city city--manhattan">
+                    <div className="city-name">  
+                        Manhattan
+                    </div>  
+                </Link>
+            </div>
         </div>
-    </div>
-)
+    )        
+}
 
 export default CityPage;
 

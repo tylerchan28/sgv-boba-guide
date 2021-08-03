@@ -70,7 +70,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
                     closeTimeoutMS={200}
                     className="modal" 
                 >
-                    <UpdateForm onSubmit={updateReview} /> 
+                    <UpdateForm onSubmit={updateReview} {...review} /> 
                 </Modal>
             }
         </div> 
