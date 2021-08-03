@@ -33,7 +33,7 @@ const RestaurantList = (props) => {
                             </div>
                             <div className="restaurant-name-container">
                                 <div className="restaurant-name">
-                                    {idx+1}. {shop.name}
+                                    {shop.name}
                                 </div>
                             </div>
                             {shop.location.address2 ? 

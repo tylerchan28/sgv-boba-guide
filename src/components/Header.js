@@ -39,10 +39,8 @@ const Header = () => {
                             Sign up
                         </Link>
                     </div>
-                }
-                <div>
-                    The top 50 boba shops in cities where the drink itself is a cultural icon.
-                </div>
+                }   
+                
             </div>
         </div>
     )

@@ -21,7 +21,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
         }).then(window.location.reload())
     }
 
-    const updateReview = ({ review, foodRating, drinkRating, studyRating, hangoutRating }) => { // get data from form into updates (still not working, maybe UpdateForm doesn't work)
+    const updateReview = ({ review, foodRating, drinkRating, studyRating, hangoutRating }) => {
         const inputs = {
             reviewId,
             review,
@@ -31,8 +31,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
             hangoutRating
         }
         axios.put("http://localhost:3000/reviews/update", inputs, { headers: { "Authorization": token }})
-        .then((res) => console.log(res))
-        .then(window.location.reload())
+            .then(window.location.reload())
         showModal(false)
     }
 
