@@ -105,31 +105,42 @@ const RestaurantPage = (props) => {
     return foundShop ? 
     <div className="restaurant-page-container"> 
         <Header />
-        <button onClick={goBack} className="back-btn">&#8592;</button>
-        <div className="restaurant-page-name"> {foundShop.name} </div>
-        <div className="restaurant-page-contact"> 
-            {foundShop.location.address1 + " " + foundShop.location.city + ", " + foundShop.location.state + ", " + foundShop.location.zip_code}<br></br><br></br>
-            {foundShop.display_phone} 
-        </div>
-        { restaurantReviews.length > 0 ? 
-            <div className="image-rating-container">
-                <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />   
-                <div>
-                    <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
-                    <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
-                    <div className="rating-item">Hangout &#128107;: {colorCode(hangoutAvg)}</div>
-                    <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}<br></br></div>
+        <div className="flexbox-row">
+            <div className="flexbox-column">
+                <div className="flexbox-row">
+                <button onClick={goBack} className="back-btn">&#8592;</button>
+                <div className="restaurant-page-name"> {foundShop.name} </div>
                 </div>
-            </div> 
-            :
-            <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
-        }
-
+                <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
+            </div>
+            <div className="flexbox-column">
+                <div className="restaurant-page-contact"> 
+                    {foundShop.location.address1 + " " + foundShop.location.city + ", " + foundShop.location.state + ", " + foundShop.location.zip_code}<br></br>
+                    <br></br>
+                    {foundShop.display_phone} 
+                </div>
+                { restaurantReviews.length > 0 ?
+                        <div className="restaurant-page-ratings">
+                            <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
+                            <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
+                            <div className="rating-item">Hangout &#128107;: {colorCode(hangoutAvg)}</div>
+                            <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}</div>
+                        </div>
+                        :
+                        <div className="restaurant-page-ratings">
+                            <div className="rating-item">Drinks &#129380;: {colorCode("N/A")} </div>
+                            <div className="rating-item">Food &#127858;: {colorCode("N/A")}</div>
+                            <div className="rating-item">Hangout &#128107;: {colorCode("N/A")}</div>
+                            <div className="rating-item">Study &#128214;: {colorCode("N/A")}</div>
+                        </div>
+                }
+            </div>
+        </div>
         { (token && verified === "true") ? 
-            <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
-            : 
-            <div className="no-login">Log in and verify your account to write a review.</div>
-        }
+                <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
+                : 
+                <div className="no-login">Log in and verify your account to write a review.</div>
+                }
         
         {restaurantReviews.length > 0 && 
         <div className="review-container"> 

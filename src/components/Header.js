@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Icon from "../images/PngItem_1601796.png";
 
 const Header = () => {
     const username = sessionStorage.getItem("username");
@@ -15,7 +16,7 @@ const Header = () => {
         <div className="header-layout">
             <div className="header-container">
                 <Link className="link" to="/">
-                    <div className="header-title"> Boba Guide </div>
+                    <div className="header-title"> Boba Guide <span><img className="icon" src={Icon} alt="A boba drink logo" /></span> </div>
                 </Link>               
                 { username ? 
                     <div className="logout-container">
