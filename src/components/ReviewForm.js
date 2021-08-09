@@ -8,6 +8,13 @@ const ReviewForm = (props) => {
     const [hangoutRating, setHangoutRating] = useState("");
     const [studyRating, setStudyRating] = useState("");
 
+    const [showForm, setShowForm] = useState(false);
+
+    const displayForm = (e) => {
+        e.preventDefault();
+        setShowForm(!showForm)
+    }
+
     const onReviewChange = (e) => {
         const review = e.target.value;
         setReview(review);
@@ -67,9 +74,11 @@ const ReviewForm = (props) => {
         setStudyRating("");
     }
 
-    return (
-        <form className="review-form" onSubmit={onSubmit}>
-            <label htmlFor="review" className="review-form-title">Add a Review (Ratings Optional):</label>
+    return ( 
+        <div>
+        <button onClick={displayForm} className="add-review-btn">Add a Review (Ratings Optional): </button>
+        { showForm && <form className="review-form" onSubmit={onSubmit}>
+            
             <textarea 
                 type="text"
                 placeholder="Write a review..."
@@ -117,7 +126,8 @@ const ReviewForm = (props) => {
                 />
             </div>
             <button type="submit" className="review-submit">Submit Review</button>
-        </form> 
+        </form> }
+        </div>
     )
 }
 

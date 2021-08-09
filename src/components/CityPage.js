@@ -8,7 +8,7 @@ const CityPage = () => {
         <div>
             <Header />
             <div className="city-container">
-                <div className="city-title">Welcome to Boba Guide.<br></br>Choose a city to see the top 50 boba shops in that area and leave a review if you've been there!</div>
+                <div className="city-title">Welcome to Boba Guide.<br></br>Click on a city to see the top 50 boba shops in the area and leave a review if you've been there!</div>
                 <Link to={
                         { 
                             pathname: "/cities/san-gabriel",

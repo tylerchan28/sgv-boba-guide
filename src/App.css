@@ -5,11 +5,11 @@
 
 @font-face {
   font-family: "cereal-bold";
-  src: local("cereal-bold", url(./fonts/AirbnbCerealBlack.woff));
+  src: url(./fonts/AirbnbCerealBold.woff);
 }
 
 body {
-  background-color: #E5D3b3;
+  background-image: url(../src/images/boba-home-bg.jpg);
   font-family: "cereal";
   margin: 0;
   padding: 0;
@@ -20,6 +20,8 @@ html {
 }
 
 textarea {
+  border: none;
+  border-radius: 5px;
   font-family: cereal;
   font-size: 16px;
   height: 200px;
@@ -36,6 +38,24 @@ textarea {
 }
 
 /* Buttons */
+.add-review-btn {
+  background-color: #9a8ccf;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-family: cereal;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  margin-top: 50px;
+  padding: 0px 10px;
+}
+
+.add-review-btn:hover {
+  background-color: rgb(61, 61, 61);
+}
+
 .review-btn {
   color: gray;
   cursor: pointer;
@@ -44,27 +64,44 @@ textarea {
 }
 
 .go-top-btn {
-  background-color: black;
+  background-color: #9a8ccf;
   border: none;
   border-radius: 20px;
-  bottom: 10px;
+  bottom: 5px;
   color: white;
   cursor: pointer;
   font-family: cereal;
   font-weight: bold;
-  right: 10px;
+  right: 5px;
   padding: 10px 15px;
   position: fixed;
 }
 
 .back-btn {
-  background: none;
+  background-color: #e8cdb2;
   border: none;
   cursor: pointer;
-  left: 525px;
-  font-size: 36px;
+  left: 50px;
+  font-size: 48px;
   position: absolute;
-  top: 150px;
+  top: 120px;
+}
+
+.back-btn-text {
+  font-size: 20px;
+}
+
+.show-more-btn {
+  background-color: #9a8ccf;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-family: cereal;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  padding: 0px 10px;
 }
 
 /* Cities */
@@ -112,10 +149,11 @@ textarea {
 }
 
 .city-title {
+  background-color: #e8cdb2;
   font-family: cereal-bold;
   font-size: 24px;
   margin-top: 30px;
-  width: 1500px;
+  width: 800px;
   text-align: center;
 }
   
@@ -128,7 +166,7 @@ textarea {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 120px;
+  height: 100px;
   width: 100%;
 }
 
@@ -201,6 +239,7 @@ textarea {
 .restaurant-contact {
   display: flex;
   flex-direction: column;
+  font-weight: bolder;
   text-align: right;
   margin: auto 5% auto auto;
 }
@@ -218,10 +257,14 @@ textarea {
   width: 300px;
 }
 
-/* Restaurant Page */
+/* Restaurant Page  (added width to contact)*/ 
 .restaurant-page-contact {
+  /* border: 3px solid black;
+  border-radius: 10px; */
   font-size: 24px;
-  margin: 38px auto;
+  font-weight: bolder;
+  margin: auto auto;
+  padding: 10px;
 }
 
 .restaurant-page-container {
@@ -237,23 +280,21 @@ textarea {
 .restaurant-page-image {
   border: 2px solid black;
   border-radius: 50%;
-  width: 450px;
-  height: 450px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  width: 500px;
+  height: 500px;
+  margin-top: 100px;
+  margin-left: 50px;
+  position: absolute;
 }
 
-
-.restaurant-page-name {
-  font-family: "cereal-bold";
+.restaurant-page-name { 
+  border: none;
+  border-radius: 10px;
+  font-family: cereal-bold;
   font-size: 38px;
-  margin: 30px auto;
+  margin: auto auto 10px auto ;
+  text-align: center;
 }
-
-.restaurant-page-ratings {
-  margin-top: 40px;
-}
-
 
 /* Review */
 
@@ -273,7 +314,7 @@ textarea {
 }
 
 .rating-item--red {
-  color: rgb(255, 91, 91);
+  color: rgb(255, 57, 57);
   margin-top: 5px;
 }
 
@@ -306,6 +347,8 @@ textarea {
   background-color: #c0cfb2;
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
+  padding-bottom: 10px;
   width: 100%;
 }
 
@@ -327,6 +370,8 @@ textarea {
 }
 
 .review-form-rating {
+  border: none;
+  border-radius: 5px;
   margin-right: 10px;
   width: 30px;
 }
@@ -340,7 +385,6 @@ textarea {
 .review-item-container {
   background-color: #c0cfb2;
   border: 1px black;
-  margin-bottom: 30px;
   padding: 10px;
   width: 60%;
   word-break: break-all;
@@ -364,6 +408,8 @@ textarea {
 }
 
 .review-rating-container {
+  background-color: #e8cdb2;
+  border-radius: 15px;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -378,8 +424,9 @@ textarea {
 }
 
 .review-submit {
-  background-color: #7c93bb;
+  background-color: #9a8ccf;
   border: none;
+  border-radius: 5px;
   color: white;
   cursor: pointer;
   font-family: cereal;
@@ -428,8 +475,10 @@ textarea {
 }
 
 .no-login {
-  margin: 25px auto;
+  color: red;
+  margin: 50px auto;
   font-style: italic;
+  font-weight: bold;
 }
 
 /* Logout */
@@ -442,7 +491,7 @@ textarea {
   font-size: 14px;
   grid-gap: 5px;
   right: 30px;
-  top: 30px;
+  top: 20px;
 }
 
 .logout-btn {
@@ -532,14 +581,6 @@ textarea {
   margin-top: 10px;
 }
 
-.image-rating-container {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  margin-top: 30px;
-  grid-gap: 50px;
-}
-
 .welcome {
   font-size: 14px;
 }
@@ -577,20 +618,29 @@ textarea {
   padding: 5px 30px;
 }
 
-
-
 .flexbox-row {
-  align-items: flex-start;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 50%;
+  justify-content: space-around;
+  width: 65%;
 }
 
 .flexbox-column {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+.flexbox-column__container {
+  background-color: #e4c19e;
+  /* background-color: #c3e1ff; */
+  /* background-color: #fdbd88; */
+  border: 2px solid black;
+  border-radius: 40px;
+  margin-left: 100px;
+  margin-top: 40px;
+  padding: 5px;
+  max-width: 450px;
 }
 
 .icon {
