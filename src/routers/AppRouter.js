@@ -35,4 +35,7 @@ const AppRouter = () => {
     )
 }
 
+
 export default AppRouter;
+
+// <Route path="cities/:name/shop/:id" component={RestaurantPage} />

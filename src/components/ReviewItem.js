@@ -40,7 +40,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
             <div className="review-ratings">
                 Drinks: {drinkRating}<br></br><br></br>
                 Food: {foodRating}<br></br><br></br>
-                Hangout: {hangoutRating}<br></br><br></br>
+                Atmosphere: {hangoutRating}<br></br><br></br>
                 Study: {studyRating}<br></br><br></br>
             </div>
             <div className="review-content">

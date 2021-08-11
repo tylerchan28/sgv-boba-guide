@@ -118,10 +118,6 @@ const RestaurantPage = (props) => {
         <Header />
         <div className="flexbox-row">
             <div className="flexbox-column">
-                <button onClick={goBack} className="back-btn">&#8592;</button>
-                <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
-            </div>
-            <div className="flexbox-column">
                 <div className="flexbox-column__container">
                     <div className="restaurant-page-contact"> 
                         <div className="restaurant-page-name"> {foundShop.name} </div>
@@ -136,18 +132,22 @@ const RestaurantPage = (props) => {
                             <div>
                                 <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
                                 <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
-                                <div className="rating-item">Hangout &#128107;: {colorCode(hangoutAvg)}</div>
+                                <div className="rating-item">Atmosphere &#128107;: {colorCode(hangoutAvg)}</div>
                                 <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}</div>
                             </div>
                             :
                             <div>
                                 <div className="rating-item">Drinks &#129380;: {colorCode("N/A")} </div>
                                 <div className="rating-item">Food &#127858;: {colorCode("N/A")}</div>
-                                <div className="rating-item">Hangout &#128107;: {colorCode("N/A")}</div>
+                                <div className="rating-item">Atmosphere &#128107;: {colorCode("N/A")}</div>
                                 <div className="rating-item">Study &#128214;: {colorCode("N/A")}</div>
                             </div>
                     }
                 </div>
+            </div>
+            <div className="flexbox-column">
+                <button onClick={goBack} className="back-btn">&#8592;</button>
+                <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
             </div>
         </div>
         { (token && verified === "true") ? 

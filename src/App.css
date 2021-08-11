@@ -114,7 +114,7 @@ textarea {
     height: 200px;
     text-align: center;
     text-decoration: none;
-    width: 40%;
+    width: 760px;
 }
 
 .city-container {
@@ -149,12 +149,17 @@ textarea {
 }
 
 .city-title {
-  background-color: #e8cdb2;
+  color: white;
   font-family: cereal-bold;
   font-size: 24px;
   margin-top: 30px;
   width: 800px;
   text-align: center;
+  text-shadow:
+		-1.3px -1.3px 0 #000,
+		1.3px -1.3px 0 #000,
+		-1.3px 1.3px 0 #000,
+		1.3px 1.3px 0 #000
 }
   
 
@@ -282,9 +287,6 @@ textarea {
   border-radius: 50%;
   width: 500px;
   height: 500px;
-  margin-top: 100px;
-  margin-left: 50px;
-  position: absolute;
 }
 
 .restaurant-page-name { 
@@ -292,7 +294,8 @@ textarea {
   border-radius: 10px;
   font-family: cereal-bold;
   font-size: 38px;
-  margin: auto auto 10px auto ;
+  margin: auto auto 10px auto;
+  padding: 0 10px;
   text-align: center;
 }
 
@@ -335,7 +338,6 @@ textarea {
 
 .review {
   background-color: white;
-  border: 3px solid #b2bea8;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -344,7 +346,8 @@ textarea {
 
 .review-container {
   align-items: center;
-  background-color: #c0cfb2;
+  background: linear-gradient(#fdbd88, #c0cfb2 );
+  /* background-color: black; */
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -383,7 +386,7 @@ textarea {
 }
 
 .review-item-container {
-  background-color: #c0cfb2;
+  /* background-color: #c0cfb2; */
   border: 1px black;
   padding: 10px;
   width: 60%;
@@ -420,7 +423,7 @@ textarea {
   border-right: 1px solid black;
   padding: 10px 0 0 10px;
   text-align: left;
-  width: 150px;
+  width: 200px;
 }
 
 .review-submit {
@@ -619,10 +622,11 @@ textarea {
 }
 
 .flexbox-row {
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 65%;
+  width: 80%;
 }
 
 .flexbox-column {
@@ -632,9 +636,7 @@ textarea {
 }
 
 .flexbox-column__container {
-  background-color: #e4c19e;
-  /* background-color: #c3e1ff; */
-  /* background-color: #fdbd88; */
+  background: linear-gradient(#fdbd88, #c0cfb2 );
   border: 2px solid black;
   border-radius: 40px;
   margin-left: 100px;
