@@ -10,7 +10,6 @@ const RestaurantPage = (props) => {
     let restaurants = useLocation();
     let cityShops = restaurants.state.restaurants;
     const verified = sessionStorage.getItem("verified");
-
     const [restaurantReviews, setRestaurantReviews] = useState([]);
     const [drinkAvg, setDrinkAvg] = useState("");
     const [foodAvg, setFoodAvg] = useState("");
@@ -33,8 +32,7 @@ const RestaurantPage = (props) => {
         await axios.get("http://localhost:3000/reviews")
             .then(({ data }) => {
                 let pageReviews = data.filter((review) => review.restaurantId === props.match.params.id)
-                setRestaurantReviews(pageReviews)
-                
+                setRestaurantReviews(pageReviews)             
                 if (pageReviews.length > 0) {
                     let drinkRatingAvg = getRatingAverage(pageReviews, "drinkRating")
                     if (drinkRatingAvg === "N/A") {
@@ -63,9 +61,7 @@ const RestaurantPage = (props) => {
                     } else {
                         setStudyAvg((Math.floor(studyRatingAvg * 10) / 10))
                     }
-
-                }
-                
+                }              
             })
     }
         
@@ -105,7 +101,7 @@ const RestaurantPage = (props) => {
     }, [])
 
     useEffect(() => {
-        fetchReviews();
+        fetchReviews()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
@@ -114,13 +110,13 @@ const RestaurantPage = (props) => {
     const foundShop = cityShops.find((shop) => shop.id === props.match.params.id);
 
     return foundShop ? 
-    <div className="restaurant-page-container"> 
+    <div className="restaurant-page__container"> 
         <Header />
         <div className="flexbox-row">
             <div className="flexbox-column">
                 <div className="flexbox-column__container">
-                    <div className="restaurant-page-contact"> 
-                        <div className="restaurant-page-name"> {foundShop.name} </div>
+                    <div className="restaurant-page__contact"> 
+                        <div className="restaurant-page__name"> {foundShop.name} </div>
                         {foundShop.location.address1}  &#127968;<br></br>
                         {foundShop.location.city + ", " + foundShop.location.state + ", " + foundShop.location.zip_code}
                         <br></br>
@@ -147,7 +143,7 @@ const RestaurantPage = (props) => {
             </div>
             <div className="flexbox-column">
                 <button onClick={goBack} className="back-btn">&#8592;</button>
-                <img src={foundShop.image_url} className="restaurant-page-image" alt="A depiction representative of the restaurant" />
+                <img src={foundShop.image_url} className="restaurant-page__image" alt="A depiction representative of the restaurant" />
             </div>
         </div>
         { (token && verified === "true") ? 
@@ -160,14 +156,14 @@ const RestaurantPage = (props) => {
         
         <div className="review-container"> 
             <div className="review-count">  
-                Read {restaurantReviews.length} reviews:
+                Read {restaurantReviews.length} review(s):
             </div>
             <div className="review-item-container">
                 {restaurantReviews.slice(0, reviewsToShow).map((review) => {
                     return <ReviewItem key={review._id} {...review} />
                 })}
             </div>
-            {restaurantReviews.length > 5 && <button onClick={showMore} className="show-more-btn">Show 3 More</button>}
+            {restaurantReviews.length > 3 && <button onClick={showMore} className="show-more-btn">Show 3 More</button>}
         </div>}
         <button onClick={scrollToTop} className="go-top-btn">SCROLL TO TOP</button>
     </div>

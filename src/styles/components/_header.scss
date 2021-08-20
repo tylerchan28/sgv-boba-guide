@@ -1,0 +1,38 @@
+.header-container {
+    align-items: center;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+  }
+
+.header__icon {
+    height: 35px;
+    width: 30px;
+}
+
+.header-layout {
+width: 100%;
+}
+
+.header-title {
+font-size: 36px;
+margin: 30px;
+text-decoration: none;
+}
+
+.header-title:hover {
+color: red;
+}
+
+.link {
+  align-self: center;
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: red;
+  }
+}

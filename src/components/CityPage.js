@@ -8,7 +8,7 @@ const CityPage = () => {
         <div>
             <Header />
             <div className="city-container">
-                <div className="city-title">Welcome to Boba Guide.<br></br>Click on a city to see the top 50 boba shops in the area and leave a review if you've been there!</div>
+                <div className="city__title">Welcome to Boba Guide.<br></br>Click on a city and start reviewing 50 of the top shops in the area!</div>
                 <Link to={
                         { 
                             pathname: "/cities/san-gabriel",
@@ -16,7 +16,7 @@ const CityPage = () => {
                         }
                     } 
                     className="city city--san-gabriel">
-                    <div className="city-name">  
+                    <div className="city__name">  
                         San Gabriel Valley
                     </div>  
                 </Link>
@@ -27,7 +27,7 @@ const CityPage = () => {
                         }
                     } 
                     className="city city--san-francisco">
-                    <div className="city-name">  
+                    <div className="city__name">  
                         San Francisco
                     </div>  
                 </Link>
@@ -38,7 +38,7 @@ const CityPage = () => {
                         }
                     } 
                     className="city city--manhattan">
-                    <div className="city-name">  
+                    <div className="city__name">  
                         Manhattan
                     </div>  
                 </Link>

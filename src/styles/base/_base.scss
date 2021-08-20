@@ -1,0 +1,31 @@
+@font-face {
+    font-family: "cereal";
+    src: local("cereal"), url("../../../src/fonts/AirbnbCerealLight.woff");
+}
+@font-face {
+    font-family: "cereal-bold";
+    src: url("../../../src/fonts/AirbnbCerealBold.woff");
+}
+  
+  
+body {
+    background: url(../../../src/images/boba-home-bg.jpg);
+    font-family: "cereal";
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+textarea {
+    border: none;
+    border-radius: 5px;
+    font-family: cereal;
+    font-size: 16px;
+    height: 200px;
+    padding: 10px;
+    resize: none;
+    width: 600px;
+};

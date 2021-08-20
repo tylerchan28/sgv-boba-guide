@@ -1,0 +1,59 @@
+.flexbox-row {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 75%;
+}
+  
+.flexbox-column {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.flexbox-column__container {
+    background: linear-gradient(#fdbd88, #c0cfb2);
+    border: 2px solid black;
+    border-radius: 40px;
+    margin-left: 100px;
+    margin-top: 40px;
+    padding: 5px;
+    max-width: 450px;
+}
+
+.restaurant-page__contact {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: auto auto;
+    padding: 10px;
+}
+
+.restaurant-page__container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.restaurant-page__image {
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+}
+
+.restaurant-page__name { 
+    border: none;
+    border-radius: 10px;
+    font-family: cereal-bold;
+    font-size: 38px;
+    margin: auto auto 10px auto;
+    padding: 0 10px;
+    text-align: center;
+}
+
+

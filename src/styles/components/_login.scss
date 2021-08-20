@@ -1,0 +1,39 @@
+.login-link { 
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    text-decoration: none;
+    &:hover {
+        color: red;
+    }
+}
+
+.login-container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+.login__forgot-password {
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px;
+    text-decoration: none;
+    &:hover {
+        color: red;
+    }
+}
+.login__verify-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: right;
+    &:hover {
+        color: red;
+    }
+}
+  
+  

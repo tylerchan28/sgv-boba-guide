@@ -1,0 +1,64 @@
+.add-review-btn {
+    background-color: #9a8ccf;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-family: cereal;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+    margin-top: 50px;
+    padding: 0px 10px;
+    &:hover {
+        background-color: rgb(61, 61, 61);
+    }
+}
+
+.review-btn {
+    color: gray;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.go-top-btn {
+    background-color: #9a8ccf;
+    border: none;
+    border-radius: 20px;
+    bottom: 5px;
+    color: white;
+    cursor: pointer;
+    font-family: cereal;
+    font-weight: bold;
+    right: 5px;
+    padding: 10px 15px;
+    position: fixed;
+}
+
+.back-btn {
+    background-color: #e8cdb2;
+    border: none;
+    cursor: pointer;
+    left: 50px;
+    font-size: 48px;
+    position: absolute;
+    top: 120px;
+}
+
+.back-btn-text {
+    font-size: 20px;
+}
+
+.show-more-btn {
+    background-color: #9a8ccf;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-family: cereal;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+    padding: 0px 10px;
+}

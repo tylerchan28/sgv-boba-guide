@@ -1,35 +1,21 @@
-import React from "react";
-import shops from "./fixtures/shops";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 require('dotenv').config();
 // const axios = require("axios");
 
 const RestaurantCard = () => {
-    // var APIkey = process.env.REACT_APP_API_KEY;
-    // const corsApiUrl = 'https://cors-anywhere.herokuapp.com/';
-    // let yelpRequest = axios.create({
-    //     baseURL: `${corsApiUrl}https://api.yelp.com/v3`,
-    //     headers: {
-    //         "Access-Control-Allow-Origin": "*",
-    //         Authorization: `Bearer ${APIkey}`,
-    //         "Content-Type": "application/json",
-    //     },
-    // })
-    
-    // yelpRequest("/businesses/search", {
-    //     params: {
-    //         term: "boba, milk tea",
-    //         latitude: 34.0333,
-    //         longitude: -118.105667,
-    //         radius: 20000,
-    //         limit: 50,
-    //         sort_by: "rating",
-    //     },
-    //   }).then(({ data }) => { // data.businesses gets just array of businesses
-    //     console.log(data.businesses)
-    //   })
+    const [restaurants, setRestaurants] = useState([]);
+    useEffect(() => {
+        axios.get("http://localhost:3000/cities/matcha")
+            .then((res) => {
+                setRestaurants(res.data[0].restaurants)
+            })
+    }, [])
+
     return (
         <div>
-            {shops.forEach((shop) => console.log(shop))}
+            {console.log(restaurants)}
+            Hello
         </div>
     )
 }

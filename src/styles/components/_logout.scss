@@ -1,0 +1,30 @@
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-between;
+    font-size: 14px;
+    grid-gap: 5px;
+    right: 30px;
+    top: 20px;
+}
+  
+.logout-btn {
+    color: white;
+    background-color: black;
+    font-family: cereal;
+    font-size: 14px;
+    border: none;
+    text-align: right;
+}
+
+.logout-btn:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.logout-container-welcome {
+    font-family: cereal;
+    font-size: 14px;
+    text-align: right;
+}

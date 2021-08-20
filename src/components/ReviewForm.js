@@ -81,11 +81,12 @@ const ReviewForm = (props) => {
             
             <textarea 
                 type="text"
-                placeholder="Write a review..."
+                placeholder="Write a review with ratings out of 10!"
                 id="review"
                 onChange={onReviewChange}
                 value={review}
                 required
+                autoFocus
             />
             <div className="review-rating-container">
                 <label htmlFor="drink-rating" className="rating-label">Drink Rating:</label>
@@ -106,7 +107,7 @@ const ReviewForm = (props) => {
                     value={foodRating}
                     className="review-form-rating"
                 />
-                <label htmlFor="hangout-rating" className="rating-label">Hangout Rating:</label>
+                <label htmlFor="hangout-rating" className="rating-label">Atmosphere Rating:</label>
                 <input 
                     type="string"
                     id="hangout-rating"

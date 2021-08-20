@@ -63,13 +63,14 @@ const UpdateForm = (props) => {
             <label htmlFor="review" className="review-form-title">Update Review (Ratings Optional):</label>
             <textarea 
                 type="text"
-                placeholder="Write a review..."
+                placeholder="Update your review..."
                 id="review"
                 onChange={onReviewChange}
                 value={review}
+                autoFocus
                 required
             />
-            <div className="review-rating-container">
+            <div className="review-rating-container review-rating-container--update">
                 <label htmlFor="drink-rating" className="rating-label">Drink Rating:</label>
                 <input  
                     type="string"

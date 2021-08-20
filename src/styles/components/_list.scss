@@ -1,0 +1,55 @@
+.list__restaurant-contact {
+    display: none;
+    @media (min-width: 1330px) {
+        display: flex;
+        flex-direction: column;
+        font-weight: bolder;
+        text-align: right;
+        margin: auto 5% auto auto;
+    }
+}
+  
+.list__restaurant-link {
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    display: block;
+    height: 175px;
+    margin: 10px auto;
+    text-decoration: none;
+    transition: background-color .3s ease;
+    width: 60%;
+}
+
+.list__restaurant-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &:hover {
+        background-color: rgb(34, 34, 34);
+        border-radius: 10px;
+        height: 175px;
+    }
+}
+
+.list__feed-img {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    height: 175px;
+    width: 200px;
+}
+
+.list__restaurant-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: auto auto auto 20%;
+    text-align: left;
+}
+
+.list__restaurant-name-container {
+    margin: auto auto auto 10%;
+    text-align: left;
+    width: 300px;
+}
+

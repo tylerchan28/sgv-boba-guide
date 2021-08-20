@@ -62,7 +62,7 @@ const LoginPage = (props) => {
                     />
                     <button className="signup-btn" type="submit">Log In</button>
                 </form>
-                <Link className="forgot-password" to="/forgot-password">Forgot Password</Link>
+                <Link className="login__forgot-password" to="/forgot-password">Forgot Password</Link>
                 <button className="signup-btn" onClick={() => props.history.push("/")}>Back to Home</button>
                 { error && 
                     <div className="error">
