@@ -24,17 +24,24 @@
 
 .list__restaurant-card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     &:hover {
         background-color: rgb(34, 34, 34);
         border-radius: 10px;
         height: 175px;
     }
+    @media (min-width: 740px) {
+        display: flex;
+        flex-direction: row;
+    }
 }
 
-.list__feed-img {
-    display: none;
+.list__feed-img {   
+    border-top-left-radius: 10px;
+    display: block;
+    height: 87.5px;
+    width: 100px;
     @media (min-width: 740px) {
         border-bottom-left-radius: 10px;
         border-top-left-radius: 10px;
@@ -47,7 +54,7 @@
 .list__restaurant-name {
     font-size: 24px;
     font-weight: bold;
-    margin-top: 25%;
+    margin-top: 10%;
     text-align: center;
     @media (min-width: 740px) {
         margin: auto auto auto 20%;

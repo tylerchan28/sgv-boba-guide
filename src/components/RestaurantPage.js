@@ -114,6 +114,10 @@ const RestaurantPage = (props) => {
         <Header />
         <div className="flexbox-row">
             <div className="flexbox-column">
+                <button onClick={goBack} className="back-btn">&#8592;</button>
+                <img src={foundShop.image_url} className="restaurant-page__image" alt="A depiction representative of the restaurant" />
+            </div>
+            <div className="flexbox-column">
                 <div className="flexbox-column__container">
                     <div className="restaurant-page__contact"> 
                         <div className="restaurant-page__name"> {foundShop.name} </div>
@@ -140,10 +144,6 @@ const RestaurantPage = (props) => {
                             </div>
                     }
                 </div>
-            </div>
-            <div className="flexbox-column">
-                <button onClick={goBack} className="back-btn">&#8592;</button>
-                <img src={foundShop.image_url} className="restaurant-page__image" alt="A depiction representative of the restaurant" />
             </div>
         </div>
         { (token && verified === "true") ? 
