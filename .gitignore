@@ -24,4 +24,8 @@ yarn-error.log*
 
 .env
 
-src/components/fixtures
+
+public/bundle.js
+public/bundle.js.map
+public/styles.css
+public/styles.css.map
