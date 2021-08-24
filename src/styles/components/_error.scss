@@ -8,7 +8,13 @@
 .error {
     color: rgb(255, 67, 67);
     height: 10px;
-    margin-top: 10px;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+    @media (min-width: 440px) {
+        font-size: 16px;
+        margin-top: 10px;
+    }
 }
 
 .not-found-error {

@@ -22,7 +22,7 @@ const ConfirmVerificationPage = (props) => {
         <div className="signup-layout">
             <div className="signup-container">
                 { message && <p>{message}</p>}
-                <Link to="/login" className="link">Log in to start writing reviews.</Link>
+                <Link to="/login" className="link">Log in</Link>
             </div>
         </div>
     )

@@ -3,10 +3,18 @@
     color: black;
     cursor: pointer;
     margin: 40px auto;
-    height: 200px;
+    height: 175px;
     text-align: center;
     text-decoration: none;
-    width: 760px;
+    width: 300px;
+    @media (min-width: 440px) {
+      height: 175px;
+      width: 600px;
+    }
+    @media (min-width: 770px) {
+      height: 200px;
+      width: 760px;
+    }
 }
 
 .city-container {
@@ -43,14 +51,18 @@
 .city__title {
   color: white;
   font-family: cereal-bold;
-  font-size: 24px;
+  font-size: 30px;
   margin-top: 30px;
-  width: 800px;
+  width: 300px;
   text-align: center;
-  text-shadow:
-		-1.3px -1.3px 0 #000,
-		1.3px -1.3px 0 #000,
-		-1.3px 1.3px 0 #000,
-		1.3px 1.3px 0 #000
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.25px;
+  -webkit-text-stroke-color: black;
+  @media (min-width: 440px) {
+    width: 400px;
+  }
+  @media (min-width: 770px) {
+    width: 700px;
+  }
 }
   
