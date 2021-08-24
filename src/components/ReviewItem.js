@@ -38,17 +38,25 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
     return (
         <div className="review">
             <div className="review-ratings">
-                Drinks: {drinkRating}<br></br><br></br>
-                Food: {foodRating}<br></br><br></br>
-                Atmosphere: {hangoutRating}<br></br><br></br>
-                Study: {studyRating}<br></br><br></br>
+                <div className="rating__rating-item">
+                    &#129380;: {drinkRating}<br></br><br></br>
+                </div>
+                <div className="rating__rating-item">
+                    &#127858;: {foodRating}<br></br><br></br>
+                </div>
+                <div className="rating__rating-item">
+                    &#128107;: {hangoutRating}<br></br><br></br>
+                </div>
+                <div className="rating__rating-item">
+                    &#128214;: {studyRating}<br></br><br></br>
+                </div>
             </div>
             <div className="review-content">
                 {review}
             </div>
             {(userId === currentUserId && token) ?
                 <div className="review-details">
-                    <div className="button-container">
+                    <div>
                         <button className="review-btn" onClick={() => removeReview(reviewId)}>Remove</button>
                         <button className="review-btn" onClick={() => showModal(true)}>Edit</button>
                     </div>

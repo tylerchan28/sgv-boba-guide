@@ -16,6 +16,7 @@
     width: 100%;
 }
 
+
 .review-count {
     font-weight: bold;
     margin: 10px auto;
@@ -41,8 +42,18 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    height: 250px;
     margin: 20px auto;
     padding: 30px 5px 10px 5px;
+    width: 300px;
+    @media (min-width: 770px) {
+        height: 250px;
+        width: 500px;
+    }
+    @media (min-width: 1160px) {
+        height: 327px;
+        width: 677px;
+    }
 }
 
 .review-form-rating {
@@ -51,6 +62,7 @@
     cursor: pointer;
     height: 30px;
     margin-right: 10px;
+    margin-top: 10px;
     text-align: center;
     width: 30px;
 }
@@ -69,11 +81,11 @@
 }
 
 .review-content {
-    margin: 10px;
-    padding: 25px;
+    padding: 20px;
     text-align: left;
     width: 75%;
     white-space: pre-line;
+    word-break: break-word;
 }
 
 .review-details {
@@ -82,15 +94,23 @@
     justify-content: space-between;
     padding: 10px 10px 10px 0;
     text-align: right;
-    width: 300px;
+    width: 220px;
 }
 
 .review-rating-container {
-    border-radius: 15px;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
     margin-top: 10px;
+    text-align: right;
+    @media (min-width: 770px) {
+        grid-template-columns: repeat(4, .25fr, .2fr, .3fr, .25fr);
+        text-align: right;
+    }
+    @media (min-width: 1160px) {
+        grid-template-columns: repeat(4, 1fr);
+        text-align: left;
+    }
 }
 
 .review-rating-container--update {
@@ -99,9 +119,9 @@
 
 .review-ratings {
     border-right: 1px solid black;
-    padding: 10px 10px 0 10px;
+    padding: 10px 5px 0 10px;
     text-align: left;
-    width: 200px;
+    width: 150px;
 }
 
 .review-submit {
@@ -118,6 +138,26 @@
     width: 125px;
     &:hover {
         background-color: rgb(61, 61, 61);
+    }
+}
+
+.review__textarea {
+    border: none;
+    border-radius: 5px;
+    font-family: cereal;
+    font-size: 16px;
+    height: 200px;
+    padding: 5px;
+    resize: none;
+    width: 272px;
+    word-break: normal;
+    @media (min-width: 770px) {
+        height: 200px;
+        width: 450px;
+    }
+    @media (min-width: 1160px) {
+        height: 200px;
+        width: 600px;
     }
 }
 

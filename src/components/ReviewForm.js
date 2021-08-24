@@ -7,7 +7,6 @@ const ReviewForm = (props) => {
     const [drinkRating, setDrinkRating] = useState("");
     const [hangoutRating, setHangoutRating] = useState("");
     const [studyRating, setStudyRating] = useState("");
-
     const [showForm, setShowForm] = useState(false);
 
     const displayForm = (e) => {
@@ -86,10 +85,12 @@ const ReviewForm = (props) => {
                 onChange={onReviewChange}
                 value={review}
                 required
+                className="review__textarea"
                 autoFocus
             />
             <div className="review-rating-container">
-                <label htmlFor="drink-rating" className="rating-label">Drink Rating:</label>
+                <div>  
+                <label htmlFor="drink-rating" className="rating-label">Drinks:</label>
                 <input  
                     type="string"
                     id="drink-rating"
@@ -98,7 +99,9 @@ const ReviewForm = (props) => {
                     value={drinkRating}
                     className="review-form-rating"
                 />    
-                <label htmlFor="food-rating" className="rating-label">Food Rating:</label>
+                </div>
+                <div>  
+                <label htmlFor="food-rating" className="rating-label">Food:</label>
                 <input 
                     type="string"
                     id="food-rating"
@@ -107,7 +110,9 @@ const ReviewForm = (props) => {
                     value={foodRating}
                     className="review-form-rating"
                 />
-                <label htmlFor="hangout-rating" className="rating-label">Atmosphere Rating:</label>
+                </div>
+                <div>  
+                <label htmlFor="hangout-rating" className="rating-label">Ambiance:</label>
                 <input 
                     type="string"
                     id="hangout-rating"
@@ -116,7 +121,9 @@ const ReviewForm = (props) => {
                     value={hangoutRating}
                     className="review-form-rating"
                 />
-                <label htmlFor="study-rating" className="rating-label">Study Rating:</label>
+                </div>  
+                <div>  
+                <label htmlFor="study-rating" className="rating-label">Study:</label>
                 <input  
                     type="string"
                     id="study-rating"
@@ -125,6 +132,7 @@ const ReviewForm = (props) => {
                     value={studyRating}
                     className="review-form-rating"
                 />
+                </div>  
             </div>
             <button type="submit" className="review-submit">Submit Review</button>
         </form> }
