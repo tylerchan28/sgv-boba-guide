@@ -15,7 +15,7 @@ const ResetPasswordPage = (props) => {
         e.preventDefault();
         const id = props.match.params.id;
         setLoading(true);
-        axios.post(`http://localhost:3000/users/reset-password/${id}`, { password: password, secretCode: secretCode, email: email })
+        axios.post(`https://boba-api-tyler.herokuapp.com/reset-password/${id}`, { password: password, secretCode: secretCode, email: email })
             .then((res) => { 
                 setLoading(false);
                 setMessage(res.data.msg) 

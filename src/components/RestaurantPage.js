@@ -29,7 +29,7 @@ const RestaurantPage = (props) => {
     }
 
     const fetchReviews = async () => {
-        await axios.get("http://localhost:3000/reviews")
+        await axios.get("https://boba-api-tyler.herokuapp.com/reviews")
             .then(({ data }) => {
                 let pageReviews = data.filter((review) => review.restaurantId === props.match.params.id)
                 setRestaurantReviews(pageReviews)             
@@ -67,7 +67,7 @@ const RestaurantPage = (props) => {
         
     const onSubmit = (entry) => {
         const token = sessionStorage.getItem("token");
-        axios.post("http://localhost:3000/reviews/add", entry, {
+        axios.post("https://boba-api-tyler.herokuapp.com/reviews/add", entry, {
             headers: {"Authorization": token}
         }).then(() => fetchReviews())
     }

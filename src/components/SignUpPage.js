@@ -16,7 +16,7 @@ const SignUpPage = (props) => {
             email,
             userId: uuidv4()
         }
-        axios.post("http://localhost:3000/users/signup", signupDetails)
+        axios.post("https://boba-api-tyler.herokuapp.com/users/signup", signupDetails)
         .then(() => alert("Signup successful!"))
         .then(() => props.history.push("/login"))
         .catch(function (error) {

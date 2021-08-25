@@ -7,7 +7,7 @@ const Header = () => {
     const username = sessionStorage.getItem("username");
     const verified = sessionStorage.getItem("verified");
     const logout = () => {
-        axios.get("http://localhost:3000/users/logout")
+        axios.get("https://boba-api-tyler.herokuapp.com/users/logout")
         sessionStorage.clear();
         window.location.reload();
     }

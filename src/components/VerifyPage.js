@@ -15,7 +15,7 @@ const VerifyPage = (props) => {
         const details = {
             email: currentEmail
         }
-        axios.post("http://localhost:3000/users/verify", details)
+        axios.post("https://boba-api-tyler.herokuapp.com/users/verify", details)
             .then((res) => {
                 setLoading(false)
                 setMessage(res.data.msg)

@@ -16,7 +16,7 @@ const LoginPage = (props) => {
               password: password,
             },
             withCredentials: true,
-            url: "http://localhost:3000/users/login",
+            url: "https://boba-api-tyler.herokuapp.com/users/login",
         })
         .then((res) => {
             sessionStorage.setItem("token", res.data.token)

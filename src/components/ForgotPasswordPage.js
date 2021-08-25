@@ -13,7 +13,7 @@ const ForgotPasswordPage = (props) => {
         const data = {
             email
         }
-        axios.post("http://localhost:3000/users/send-forgot-email", data)
+        axios.post("https://boba-api-tyler.herokuapp.com/users/send-forgot-email", data)
             .then((res) => {
                 setMessage(res.data.msg)
                 setLoading(false)

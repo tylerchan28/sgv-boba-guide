@@ -7,7 +7,7 @@ const ConfirmVerificationPage = (props) => {
     useEffect(() => {
         const id = props.match.params.id;
         if (id.length === 24) {
-        axios.get(`http://localhost:3000/users/change-verification/${id}`)
+        axios.get(`https://boba-api-tyler.herokuapp.com/users/change-verification/${id}`)
             .then((res) => {
                 setMessage(res.data.msg)
             })

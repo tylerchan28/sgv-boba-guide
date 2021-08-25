@@ -7,7 +7,7 @@ const RestaurantList = (props) => {
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
         const cityName = window.location.pathname.toString().split("/")[2]
-        axios.get(`http://localhost:3000/cities/${cityName}`) 
+        axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) 
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
             })
