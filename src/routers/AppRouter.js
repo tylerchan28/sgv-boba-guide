@@ -10,7 +10,6 @@ import ResetPasswordPage from "../components/ResetPasswordPage";
 import RestaurantPage from "../components/RestaurantPage";
 import SignUpPage from "../components/SignUpPage";
 import VerifyPage from "../components/VerifyPage";
-import RestaurantCard from "../components/RestaurantCard";
 import RestaurantList from "../components/RestaurantList";
 export const history = createBrowserHistory();
 
@@ -28,7 +27,6 @@ const AppRouter = () => {
                     <Route path="/confirm/:id" component={ConfirmVerificationPage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/signup" component={SignUpPage} />
-                    <Route path="/test" component={RestaurantCard} />
                     <Route component={NotFoundPage} />
                 </Switch>
             </div>
