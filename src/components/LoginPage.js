@@ -27,9 +27,10 @@ const LoginPage = (props) => {
             sessionStorage.setItem("verified", res.data.user.verified)
         })
         .then(() => props.history.push("/"))
-        .catch(function (error) {
-            if (error) {
-                setError(error.response.data)
+        .catch(function (err) {
+            if (err) {
+                console.log(err)
+                setError(err.response.data)
                 setUsername("")
                 setPassword("")
             }

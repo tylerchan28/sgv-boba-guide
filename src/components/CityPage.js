@@ -1,47 +1,86 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Fade } from "react-slideshow-image"; 
 import Header from "./Header";
+import 'react-slideshow-image/dist/styles.css'
+import SanFrancisco from "../images/maarten-van-den-heuvel-gZXx8lKAb7Y-unsplash.jpg";
+import Manhattan from "../images/edward-mer-zkFvaJFYdvw-unsplash.jpg";
+
+
 
 const CityPage = () => {
 
+    const slideImages = [
+        {
+          url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+          caption: 'Explore San Gabriel Valley',
+          city: "san-gabriel"
+        },
+        {
+        //   url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80"
+          url: SanFrancisco,
+          caption: 'Explore San Francisco',
+          city: "san-francisco"
+        },
+        {
+          url: Manhattan,
+          caption: 'Explore Manhattan',
+          city: "manhattan"
+        },
+      ];
+    const properties = {
+        duration: 5000,
+        transitionDuration: 500,
+        infinite: true,
+        indicators: false,
+        arrows: true,
+        canSwipe: true,
+        autoPlay: true
+    }
     return (
         <div>
             <Header />
-            <div className="city-container">
-                <div className="city__title">Welcome to Boba Guide.<br></br>Click on a city and start reviewing 50 of the highest rated boba shops in the area!</div>
-                <Link to={
-                        { 
-                            pathname: "/cities/san-gabriel",
-                            state: { city: "san-gabriel" }
-                        }
-                    } 
-                    className="city city--san-gabriel">
-                    <div className="city__name">  
-                        San Gabriel Valley
-                    </div>  
-                </Link>
-                <Link to={
-                        { 
-                            pathname: "/cities/san-francisco",
-                            state: { city: "san-francisco" }
-                        }
-                    } 
-                    className="city city--san-francisco">
-                    <div className="city__name">  
-                        San Francisco
-                    </div>  
-                </Link>
-                <Link to={
-                        { 
-                            pathname: "/cities/manhattan",
-                            state: { city: "manhattan" }
-                        }
-                    } 
-                    className="city city--manhattan">
-                    <div className="city__name">  
-                        Manhattan
-                    </div>  
-                </Link>
+            <div className="slide-container">
+                <Fade {...properties}>
+                    {slideImages.map((slideImage, index)=> (
+                        <div className="city__slide" key={index}>
+                            <div style={{'backgroundImage': `url(${slideImage.url})`}}>
+                                <span>
+                                    <Link className="city__link" to={`/cities/${slideImage.city}`}>{slideImage.caption}</Link>
+                                </span>
+                            </div>
+                        </div>
+                    ))} 
+                </Fade>
+            </div>
+            
+            <div className="city__info-container">
+                <div className="city__who">
+                    <h1 className="city__info-header">Not All Boba Shops are the Same.</h1>
+                    <div className="city__info-subsection">
+                        "Let's get boba."<br/><br/>
+                        If you've heard this before, you know that it's than just drinks.<br/><br/>
+                        As someone who's been to too many boba shops to remember, I realize that <br/><br/>
+                        At the bare minimum, you're getting delicious drinks and food.
+                    </div>
+                </div>
+                <div className="city__what">
+                   <h1 className="city__info-header city__info-header--right">Our Goal</h1>
+                   <div className="city__info-subsection--right">
+                        To some, boba is just a drink. Originate Taiwan, large breasts. Asian-American culture transformed the identity entirely.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                   </div>
+                </div>
+                <div className="city__goal">
+                   <h1 className="city__info-header">Boba's Cultural Impact</h1>
+                   <div className="city__info-subsection">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                   </div>
+                </div>
             </div>
         </div>
     )        

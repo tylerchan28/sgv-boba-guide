@@ -1,68 +1,136 @@
-.city {
-    border-radius: 10px;
-    color: black;
-    cursor: pointer;
-    margin: 40px auto;
-    height: 175px;
-    text-align: center;
-    text-decoration: none;
-    width: 300px;
-    @media (min-width: 440px) {
-      height: 175px;
-      width: 600px;
-    }
-    @media (min-width: 770px) {
-      height: 200px;
-      width: 760px;
-    }
+// .city {
+//     border-radius: 10px;
+//     color: black;
+//     cursor: pointer;
+//     margin: 40px auto;
+//     height: 175px;
+//     text-align: center;
+//     text-decoration: none;
+//     width: 300px;
+//     @media (min-width: 440px) {
+//       height: 175px;
+//       width: 600px;
+//     }
+//     @media (min-width: 770px) {
+//       height: 200px;
+//       width: 760px;
+//     }
+// }
+
+// .city-container {
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// }
+
+// .city__name {
+//   color: white;
+//   margin-top: 85px;
+//   font-family: "cereal";
+//   font-size: 26px;
+//   font-weight: bolder;
+//   text-shadow:
+// 		-1.3px -1.3px 0 #000,
+// 		1.3px -1.3px 0 #000,
+// 		-1.3px 1.3px 0 #000,
+// 		1.3px 1.3px 0 #000;
+// }
+
+// .city--manhattan {
+//   background: url("../../../src/images/new-york-resize.jpg");
+// }
+// .city--san-francisco {
+//   background: url("../../../src/images/san-francisco-resize.jpg");
+// }
+
+// .city--san-gabriel {
+//   background: url("../../../src/images/san-gabriel-resize.jpg");
+// }
+
+// .city__title {
+//   color: white;
+//   font-family: cereal-bold;
+//   font-size: 30px;
+//   margin-top: 30px;
+//   width: 300px;
+//   text-align: center;
+//   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+//   -webkit-text-stroke-width: 1.25px;
+//   -webkit-text-stroke-color: black;
+//   @media (min-width: 440px) {
+//     width: 400px;
+//   }
+//   @media (min-width: 770px) {
+//     width: 700px;
+//   }
+// }
+  
+
+.city__slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
 }
 
-.city-container {
-  align-items: center;
+.city__slide span {
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  background: black;
+  text-align: center;
+  text-decoration: none;
+}
+
+.slide-container {
+  height: 80vh
+}
+.city__link {
+  color: white;
+  text-decoration: none;
+}
+
+.city__info-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.city__name {
-  color: white;
-  margin-top: 85px;
-  font-family: "cereal";
-  font-size: 26px;
-  font-weight: bolder;
-  text-shadow:
-		-1.3px -1.3px 0 #000,
-		1.3px -1.3px 0 #000,
-		-1.3px 1.3px 0 #000,
-		1.3px 1.3px 0 #000;
+.city__info-header {
+  margin-left: 3vw;
+  margin-top: 1vw;
 }
 
-.city--manhattan {
-  background: url("../../../src/images/new-york-resize.jpg");
-}
-.city--san-francisco {
-  background: url("../../../src/images/san-francisco-resize.jpg");
+.city__info-header--right {
+  margin-left: none;
+  margin-right: 3vw;
 }
 
-.city--san-gabriel {
-  background: url("../../../src/images/san-gabriel-resize.jpg");
+.city__info-subsection {
+  margin-bottom: 3vh;
+  margin-left: 3vw;
+  width: 60%;
 }
 
-.city__title {
-  color: white;
-  font-family: cereal-bold;
-  font-size: 30px;
-  margin-top: 30px;
-  width: 300px;
-  text-align: center;
-  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1.25px;
-  -webkit-text-stroke-color: black;
-  @media (min-width: 440px) {
-    width: 400px;
-  }
-  @media (min-width: 770px) {
-    width: 700px;
-  }
+.city__info-subsection--right {
+  float: right;
+  margin-bottom: 3vh;
+  margin-right: 3vw;
+  width: 60%;
 }
-  
+
+.city__goal {
+  border-top: 1px solid gray;
+}
+
+.city__what {
+  border-top: 1px solid gray;
+  height: 50%;
+  text-align: right;
+}
+
+.city__who {
+  height: 50%;
+}

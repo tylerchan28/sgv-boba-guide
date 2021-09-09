@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
 
-const RestaurantList = (props) => {
+const RestaurantList = () => {
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
         const cityName = window.location.pathname.toString().split("/")[2]
-        axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) 
+        // axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) // PRODUCTION
+        axios.get(`http://localhost:3000/cities/${cityName}`) 
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
             })
