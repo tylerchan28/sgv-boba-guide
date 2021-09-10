@@ -4,6 +4,7 @@ import Header from "./Header";
 import LoadingPage from "./LoadingPage";
 import ReviewForm from "./ReviewForm";
 import ReviewItem from "./ReviewItem";
+import { getRatingAverage, colorCode, scrollToTop } from "../RestaurantPage-helpers";
 const axios = require("axios");
 
 const RestaurantPage = (props) => { 
@@ -19,18 +20,6 @@ const RestaurantPage = (props) => {
     const [studyAvg, setStudyAvg] = useState("");
     const [reviewsToShow, setReviewsToShow] = useState(3);
     const [restaurant, setRestaurant] = useState("");
-
-
-    const getRatingAverage = (pageReviews, ratingType) => {
-        let ratings = pageReviews.filter((review) => review[ratingType] !== "N/A")
-            .map((review) => parseInt(review[ratingType]));
-        if (ratings.length === 0) {
-            return "N/A";
-        } else {
-            let ratingAvg = (ratings.reduce((value, accumulator) => accumulator + value)) / ratings.length;
-            return ratingAvg;
-        }
-    }
 
     const fetchShop = async () => {
         await axios.get(`http://localhost:3000/cities/city-shops/${id}`)
@@ -85,16 +74,6 @@ const RestaurantPage = (props) => {
         }).then(() => fetchReviews())
     }
 
-    const colorCode = (ratingType) => {
-        if (ratingType <= 4 || ratingType === "N/A") {
-            return <div className="rating-item rating-item--red">{ratingType}</div>
-        } else if (ratingType >= 4 && ratingType <= 7.5) {
-            return <div className="rating-item rating-item--yellow">{ratingType}</div>
-        } else {
-            return <div className="rating-item rating-item--green">{ratingType}</div>
-        }
-    }
-
     const showMore = (e) => {
         e.preventDefault();
         setReviewsToShow(reviewsToShow + 3)
@@ -103,15 +82,6 @@ const RestaurantPage = (props) => {
     const goBack = () => {
         props.history.goBack();
     }
-
-    const scrollToTop = (e) => {
-        e.preventDefault();
-        window.scrollTo(0, 0);
-    }
-
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, [])
 
     useEffect(() => {
         fetchShop();

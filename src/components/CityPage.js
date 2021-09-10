@@ -12,18 +12,21 @@ const CityPage = () => {
     const slideImages = [
         {
           url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-          caption: 'Explore San Gabriel Valley',
-          city: "san-gabriel"
+          caption: "Explore Boba in San Gabriel Valley", // change to make more descriptive
+          city: "san-gabriel",
+          cityDescription: "san gabriel valley"
         },
         {
           url: SanFrancisco,
-          caption: 'Explore San Francisco',
-          city: "san-francisco"
+          caption: 'Explore Boba in San Francisco',
+          city: "san-francisco",
+          cityDescription: "san francisco"
         },
         {
           url: Manhattan,
-          caption: 'Explore Manhattan',
-          city: "manhattan"
+          caption: 'Explore Boba in Manhattan',
+          city: "manhattan",
+          cityDescription: "manhattan"
         },
       ];
     const properties = {
@@ -45,7 +48,7 @@ const CityPage = () => {
                             <div style={{'backgroundImage': `url(${slideImage.url})`}}>
                                 <Link className="city__link" to={{
                                     pathname: `/cities/${slideImage.city}`,
-                                    state: { city: slideImage.city }
+                                    state: { cityDescription: slideImage.cityDescription }
                                   }}>
                                     <span>{slideImage.caption}</span>
                                 </Link>                                

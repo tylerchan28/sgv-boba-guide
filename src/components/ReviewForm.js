@@ -76,8 +76,7 @@ const ReviewForm = (props) => {
     return ( 
         <div>
         <button onClick={displayForm} className="add-review-btn">Add a Review (Ratings Optional): </button>
-        { showForm && <form className="review-form" onSubmit={onSubmit}>
-            
+        { showForm && <form className="review-form" onSubmit={onSubmit}>       
             <textarea 
                 type="text"
                 placeholder="Write a review with ratings out of 10!"
