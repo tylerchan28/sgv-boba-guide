@@ -6,7 +6,8 @@ import axios from "axios";
 const RestaurantList = () => {
     const parameters = useParams();
     let city = parameters.name;
-    console.log(city)
+    
+    const [filter, setFilter] = useState("");
 
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
@@ -18,15 +19,36 @@ const RestaurantList = () => {
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // useEffect(() => {
+    //     setRestaurants(() => restaurants.filter((shop) => shop.name.toLowerCase().includes(filter.toLowerCase())))
+    // }, [filter])
+
     const scrollToTop = (e) => {
         e.preventDefault();
         window.scrollTo(0, 0);
     }
 
+    const filteredShops = restaurants.filter((shop) =>
+        shop.name.toLowerCase().includes(filter.toLowerCase())
+    )
+
     return (
         <div>
             <Header />
-            {restaurants.map((shop, idx) => {
+            <div>
+                <input
+                    type="text"
+                    className="list__filter"
+                    placeholder="Search..."
+                    value={filter}
+                    onChange={(e) => {
+                        setFilter(e.target.value)
+                        // console.log(filter)
+                        // console.log(restaurants)
+                    }}
+                />
+            </div>
+            {filteredShops.map((shop, idx) => {
                 return (
                     <Link className="list__restaurant-link" key={idx+1} to={`/shop/${shop.id}`}>
                         <div className="list__restaurant-card">
@@ -35,7 +57,7 @@ const RestaurantList = () => {
                             </div>
                             <div className="list__restaurant-name-container">
                                 <div className="list__restaurant-name">
-                                    {shop.name}
+                                    {idx+1}. {shop.name}
                                 </div>
                             </div>
                             {shop.location.address2 ? 
