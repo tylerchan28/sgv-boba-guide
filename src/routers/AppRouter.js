@@ -14,6 +14,7 @@ import RestaurantList from "../components/RestaurantList";
 export const history = createBrowserHistory();
 
 const AppRouter = () => {
+    
     return (
         <Router history={history} >
             <div>

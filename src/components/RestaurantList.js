@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
 
 const RestaurantList = () => {
+    const parameters = useParams();
+    let city = parameters.name;
+    console.log(city)
+
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
-        const cityName = window.location.pathname.toString().split("/")[2]
         // axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) // PRODUCTION
-        axios.get(`http://localhost:3000/cities/${cityName}`) 
+        axios.get(`http://localhost:3000/cities/${city}`) 
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
             })
@@ -25,7 +28,7 @@ const RestaurantList = () => {
             <Header />
             {restaurants.map((shop, idx) => {
                 return (
-                    <Link className="list__restaurant-link" key={idx+1} to={{ pathname: `/shop/${shop.id}`, state: { restaurants: restaurants }}}>
+                    <Link className="list__restaurant-link" key={idx+1} to={`/shop/${shop.id}`}>
                         <div className="list__restaurant-card">
                             <div>
                                 <img src={shop.image_url} className="list__feed-img" alt="A depiction representative of the restaurant" />

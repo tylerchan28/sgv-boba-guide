@@ -9,7 +9,6 @@ import Manhattan from "../images/edward-mer-zkFvaJFYdvw-unsplash.jpg";
 
 
 const CityPage = () => {
-
     const slideImages = [
         {
           url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
@@ -17,7 +16,6 @@ const CityPage = () => {
           city: "san-gabriel"
         },
         {
-        //   url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80"
           url: SanFrancisco,
           caption: 'Explore San Francisco',
           city: "san-francisco"
@@ -45,9 +43,12 @@ const CityPage = () => {
                     {slideImages.map((slideImage, index)=> (
                         <div className="city__slide" key={index}>
                             <div style={{'backgroundImage': `url(${slideImage.url})`}}>
-                                <span>
-                                    <Link className="city__link" to={`/cities/${slideImage.city}`}>{slideImage.caption}</Link>
-                                </span>
+                                <Link className="city__link" to={{
+                                    pathname: `/cities/${slideImage.city}`,
+                                    state: { city: slideImage.city }
+                                  }}>
+                                    <span>{slideImage.caption}</span>
+                                </Link>                                
                             </div>
                         </div>
                     ))} 
@@ -67,11 +68,7 @@ const CityPage = () => {
                 <div className="city__what">
                    <h1 className="city__info-header city__info-header--right">Our Goal</h1>
                    <div className="city__info-subsection--right">
-                        To some, boba is just a drink. Originate Taiwan, large breasts. Asian-American culture transformed the identity entirely.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        cards
                    </div>
                 </div>
                 <div className="city__goal">

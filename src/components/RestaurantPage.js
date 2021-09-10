@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; 
+import { useParams } from "react-router-dom"; 
 import Header from "./Header";
-import NotFoundPage from "./NotFoundPage";
+import LoadingPage from "./LoadingPage";
 import ReviewForm from "./ReviewForm";
 import ReviewItem from "./ReviewItem";
 const axios = require("axios");
 
 const RestaurantPage = (props) => { 
-    let restaurants = useLocation();
-    let cityShops = restaurants.state.restaurants;
+    let info = useParams();
+    console.log(info)
+    let id = info.id;
+    
     const verified = sessionStorage.getItem("verified");
     const [restaurantReviews, setRestaurantReviews] = useState([]);
     const [drinkAvg, setDrinkAvg] = useState("");
@@ -16,6 +18,8 @@ const RestaurantPage = (props) => {
     const [hangoutAvg, setHangoutAvg] = useState("");
     const [studyAvg, setStudyAvg] = useState("");
     const [reviewsToShow, setReviewsToShow] = useState(3);
+    const [restaurant, setRestaurant] = useState("");
+
 
     const getRatingAverage = (pageReviews, ratingType) => {
         let ratings = pageReviews.filter((review) => review[ratingType] !== "N/A")
@@ -28,12 +32,19 @@ const RestaurantPage = (props) => {
         }
     }
 
+    const fetchShop = async () => {
+        await axios.get(`http://localhost:3000/cities/city-shops/${id}`)
+            .then((res) => {
+                setRestaurant(res.data[0])
+            })
+    }
+
     const fetchReviews = async () => {
         // await axios.get("https://boba-api-tyler.herokuapp.com/reviews") PRODUCTION
         await axios.get("http://localhost:3000/reviews")
             .then(({ data }) => {
                 let pageReviews = data.filter((review) => review.restaurantId === props.match.params.id)
-                setRestaurantReviews(pageReviews)             
+                setRestaurantReviews(pageReviews)          
                 if (pageReviews.length > 0) {
                     let drinkRatingAvg = getRatingAverage(pageReviews, "drinkRating")
                     if (drinkRatingAvg === "N/A") {
@@ -98,36 +109,41 @@ const RestaurantPage = (props) => {
         window.scrollTo(0, 0);
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, [])
 
     useEffect(() => {
-        fetchReviews()
+        fetchShop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
+    useEffect(() => {
+        fetchReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     const token = sessionStorage.getItem("token");
 
-    const foundShop = cityShops.find((shop) => shop.id === props.match.params.id);
 
-    return foundShop ? 
+    return restaurant ? 
     <div className="restaurant-page__container"> 
         <Header />
         <div className="flexbox-row">
             <div className="flexbox-column">
                 <button onClick={goBack} className="back-btn">&#8592;</button>
-                <img src={foundShop.image_url} className="restaurant-page__image" alt="A depiction representative of the restaurant" />
+                <img src={restaurant.image_url} className="restaurant-page__image" alt="A depiction representative of the restaurant" />
             </div>
             <div className="flexbox-column">
                 <div className="flexbox-column__container">
                     <div className="restaurant-page__contact"> 
-                        <div className="restaurant-page__name"> {foundShop.name} </div>
-                        {foundShop.location.address1}  &#127968;<br></br>
-                        {foundShop.location.city + ", " + foundShop.location.state + ", " + foundShop.location.zip_code}
+                        <div className="restaurant-page__name"> {restaurant.name} </div>
+                        {restaurant.location.address1}  &#127968;<br></br>
+                        {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}
                         <br></br>
                         <br></br>
-                        {foundShop.display_phone} &#9742;&#65039; 
+                        {restaurant.display_phone} &#9742;&#65039; 
                     </div>
                     <br></br>
                     { restaurantReviews.length > 0 ?
@@ -169,8 +185,8 @@ const RestaurantPage = (props) => {
         </div>}
         <button onClick={scrollToTop} className="go-top-btn">SCROLL TO TOP</button>
     </div>
-        :
-    <NotFoundPage />
+    :
+    <LoadingPage />
 }
     
 
