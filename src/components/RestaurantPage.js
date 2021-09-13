@@ -8,8 +8,8 @@ import { getRatingAverage, colorCode, scrollToTop } from "../RestaurantPage-help
 const axios = require("axios");
 
 const RestaurantPage = (props) => { 
+    
     let info = useParams();
-    console.log(info)
     let id = info.id;
     
     const verified = sessionStorage.getItem("verified");

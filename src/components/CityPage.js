@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Fade } from "react-slideshow-image"; 
 import Header from "./Header";
@@ -6,9 +6,31 @@ import 'react-slideshow-image/dist/styles.css'
 import SanFrancisco from "../images/maarten-van-den-heuvel-gZXx8lKAb7Y-unsplash.jpg";
 import Manhattan from "../images/edward-mer-zkFvaJFYdvw-unsplash.jpg";
 
-
-
 const CityPage = () => {
+
+    const [latitude, setLatitude] = useState("")
+    const [longitude, setLongitude] = useState("")
+    
+
+    const getLocation = () => {
+        if (navigator.geolocation && !latitude && !longitude) {
+           navigator.geolocation.getCurrentPosition(setPosition, setPosition, { timeout: 1000} )
+        } else {
+            console.log("user didn't allow")
+        }
+    }
+    const setPosition = (position) => {
+        setLatitude(position.coords.latitude)
+        setLongitude(position.coords.longitude)
+        sessionStorage.setItem("userLongitude", longitude);
+        sessionStorage.setItem("userLatitude", latitude);
+    }
+    useEffect(() => {
+        getLocation()
+        console.log("Latitude: " + latitude, "Longitude: " + longitude)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const slideImages = [
         {
           url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
@@ -57,7 +79,6 @@ const CityPage = () => {
                     ))} 
                 </Fade>
             </div>
-            
             <div className="city__info-container">
                 <div className="city__who">
                     <h1 className="city__info-header">Not All Boba Shops are the Same.</h1>

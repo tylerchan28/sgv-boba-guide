@@ -8,7 +8,9 @@ const RestaurantList = () => {
     
     const parameters = useParams();
     let city = parameters.name;
-    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    // const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    const userLong = sessionStorage.getItem("userLongitude")
+    const userLat = sessionStorage.getItem("userLatitude")
 
     const chooseCityDescription = () => {
         switch(city) {
