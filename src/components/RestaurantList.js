@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { scrollToTop } from "../RestaurantPage-helpers";
+import { DistanceMatrixService, LoadScript } from "@react-google-maps/api";
 import Header from "./Header";
 import axios from "axios";
 
@@ -8,9 +9,11 @@ const RestaurantList = () => {
     
     const parameters = useParams();
     let city = parameters.name;
-    // const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-    const userLong = sessionStorage.getItem("userLongitude")
-    const userLat = sessionStorage.getItem("userLatitude")
+    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    const userLong = sessionStorage.getItem("userLongitude");
+    const userLat = sessionStorage.getItem("userLatitude");
+    
+    let storeCoordinates = [];
 
     const chooseCityDescription = () => {
         switch(city) {
@@ -42,6 +45,9 @@ const RestaurantList = () => {
         axios.get(`http://localhost:3000/cities/${city}`) 
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
+                res.data[0].restaurants.forEach((shop) => {
+                    storeCoordinates.push({ lat: shop.latitude, lng: shop.longitude})
+                })
             })
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

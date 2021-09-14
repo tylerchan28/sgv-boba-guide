@@ -13,18 +13,20 @@ const CityPage = () => {
     
 
     const getLocation = () => {
-        if (navigator.geolocation && !latitude && !longitude) {
-           navigator.geolocation.getCurrentPosition(setPosition, setPosition, { timeout: 1000} )
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                setLatitude(position.coords.latitude)
+                setLongitude(position.coords.longitude)
+                sessionStorage.setItem("userLongitude", position.coords.longitude);
+                sessionStorage.setItem("userLatitude", position.coords.latitude);
+            },
+            function error(msg) {alert('Please enable your GPS position feature.');},
+            {maximumAge:10000, timeout:5000, enableHighAccuracy: true});
         } else {
-            console.log("user didn't allow")
+            alert("Geolocation API is not supported in your browser.");
         }
     }
-    const setPosition = (position) => {
-        setLatitude(position.coords.latitude)
-        setLongitude(position.coords.longitude)
-        sessionStorage.setItem("userLongitude", longitude);
-        sessionStorage.setItem("userLatitude", latitude);
-    }
+
     useEffect(() => {
         getLocation()
         console.log("Latitude: " + latitude, "Longitude: " + longitude)
