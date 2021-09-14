@@ -10,6 +10,10 @@
     width: 100%;
 }
 
+.list__distance {
+    align-self: flex-end;
+}
+
 .list__restaurant-contact {
     display: none;
     @media (min-width: 1330px) {

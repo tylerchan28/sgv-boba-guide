@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { scrollToTop } from "../RestaurantPage-helpers";
-import { DistanceMatrixService, LoadScript } from "@react-google-maps/api";
+import { absoluteDistanceInMiles, scrollToTop } from "../RestaurantPage-helpers";
+// import { DistanceMatrixService, LoadScript } from "@react-google-maps/api";
 import Header from "./Header";
 import axios from "axios";
 
@@ -9,11 +9,11 @@ const RestaurantList = () => {
     
     const parameters = useParams();
     let city = parameters.name;
-    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     const userLong = sessionStorage.getItem("userLongitude");
     const userLat = sessionStorage.getItem("userLatitude");
     
-    let storeCoordinates = [];
+    const [storeDistances, setStoreDistances] = useState([]);
+    let distanceInMiles = [];
 
     const chooseCityDescription = () => {
         switch(city) {
@@ -42,12 +42,14 @@ const RestaurantList = () => {
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
         // axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) // PRODUCTION
-        axios.get(`http://localhost:3000/cities/${city}`) 
+        axios.get(`http://localhost:3000/cities/${city}`)
             .then((res) => {
                 setRestaurants(res.data[0].restaurants)
                 res.data[0].restaurants.forEach((shop) => {
-                    storeCoordinates.push({ lat: shop.latitude, lng: shop.longitude})
+                    const distance = Math.round(absoluteDistanceInMiles(userLat, userLong, shop.latitude, shop.longitude) * 10) / 10
+                    shop.shopDistance = distance
                 })
+                setStoreDistances(distanceInMiles);
             })
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -82,7 +84,7 @@ const RestaurantList = () => {
                             </div>
                             <div className="list__restaurant-name-container">
                                 <div className="list__restaurant-name">
-                                    {shop.name}
+                                    {shop.name} 
                                 </div>
                             </div>
                             {shop.location.address2 ? 
@@ -90,12 +92,15 @@ const RestaurantList = () => {
                                     {shop.location.address1 + " " + shop.location.address2}<br></br>
                                     {shop.location.city + ", " + shop.location.state + ", " + shop.location.zip_code}<br></br>
                                     {shop.display_phone}
+                                    {userLong && <div className="list__distance">{shop.shopDistance} miles</div>}
                                 </div> 
                                 : 
                                 <div className="list__restaurant-contact">
                                     {shop.location.address1}<br></br>
                                     {shop.location.city + ", " + shop.location.state + ", " + shop.location.zip_code}<br></br>
                                     {shop.display_phone}
+                                    {userLong && <div className="list__distance">{shop.shopDistance} miles</div>}
+
                                 </div>}
                         </div>
                     </Link>
