@@ -98,63 +98,62 @@ const RestaurantPage = (props) => {
 
 
     return restaurant ? 
-    <div>
+    <div className="restaurant-page__container"> 
         <Header />
-        <div className="restaurant-page-container-test"> 
-            <div className="page-info-div">
-                <div className="title-div">
-                    {restaurant.name}   <img src={restaurant.image_url} className="test-image" />
-                </div>
-                <div className="shop-info">
-                    {restaurant.location.address1}  &#127968;<br></br>
-                    {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}
-                    <br></br>
-                    <br></br>
-                    {restaurant.display_phone} &#9742;&#65039; 
-                </div>
-                { restaurantReviews.length > 0 ?
-                    <div>
-                        <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
-                        <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
-                        <div className="rating-item">Atmosphere &#128107;: {colorCode(hangoutAvg)}</div>
-                        <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}</div>
-                    </div>
-                    :
-                    <div>
-                        <div className="rating-item">Drinks &#129380;: {colorCode("N/A")} </div>
-                        <div className="rating-item">Food &#127858;: {colorCode("N/A")}</div>
-                        <div className="rating-item">Atmosphere &#128107;: {colorCode("N/A")}</div>
-                        <div className="rating-item">Study &#128214;: {colorCode("N/A")}</div>
-                    </div>
-                }
-                <div>
-                jajajaj
-                </div>
+        <div className="flexbox-row">
+            <div className="flexbox-column">
+                <button onClick={goBack} className="back-btn">&#8592;</button>
+                <img src={restaurant.image_url} className="restaurant-page__image" alt="A depiction representative of the restaurant" />
             </div>
-            <div className="review-div">
-                <div className="review-div-text">
-                    <div>Hello what is going on </div>
-                    { (token && verified === "true") ? 
-                        <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
-                        : 
-                        <div className="no-login">Log in and verify your account to write a review.</div>
-                     }   
+            <div className="flexbox-column">
+                <div className="flexbox-column__container">
+                    <div className="restaurant-page__contact"> 
+                        <div className="restaurant-page__name"> {restaurant.name} </div>
+                        {restaurant.location.address1}  &#127968;<br></br>
+                        {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}
+                        <br></br>
+                        <br></br>
+                        {restaurant.display_phone} &#9742;&#65039; 
+                    </div>
+                    <br></br>
+                    { restaurantReviews.length > 0 ?
+                            <div>
+                                <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
+                                <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
+                                <div className="rating-item">Atmosphere &#128107;: {colorCode(hangoutAvg)}</div>
+                                <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}</div>
+                            </div>
+                            :
+                            <div>
+                                <div className="rating-item">Drinks &#129380;: {colorCode("N/A")} </div>
+                                <div className="rating-item">Food &#127858;: {colorCode("N/A")}</div>
+                                <div className="rating-item">Atmosphere &#128107;: {colorCode("N/A")}</div>
+                                <div className="rating-item">Study &#128214;: {colorCode("N/A")}</div>
+                            </div>
+                    }
                 </div>
-                {restaurantReviews.length > 0 && 
-        
-                    <div className="review-container-test"> 
-                        <div className="review-count">  
-                            Read {restaurantReviews.length} review(s):
-                        </div>
-                        <div className="review-item-container">
-                            {restaurantReviews.slice(0, reviewsToShow).map((review) => {
-                                return <ReviewItem key={review._id} {...review} />
-                            })}
-                        </div>
-                        {restaurantReviews.length > 3 && <button onClick={showMore} className="show-more-btn">Show 3 More</button>}
-                    </div>}
             </div>
         </div>
+        { (token && verified === "true") ? 
+                <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
+                : 
+                <div className="no-login">Log in and verify your account to write a review.</div>
+        }
+        
+        {restaurantReviews.length > 0 && 
+        
+        <div className="review-container"> 
+            <div className="review-count">  
+                Read {restaurantReviews.length} review(s):
+            </div>
+            <div className="review-item-container">
+                {restaurantReviews.slice(0, reviewsToShow).map((review) => {
+                    return <ReviewItem key={review._id} {...review} />
+                })}
+            </div>
+            {restaurantReviews.length > 3 && <button onClick={showMore} className="show-more-btn">Show 3 More</button>}
+        </div>}
+        <button onClick={scrollToTop} className="go-top-btn">SCROLL TO TOP</button>
     </div>
     :
     <LoadingPage />

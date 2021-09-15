@@ -111,7 +111,7 @@ const ReviewForm = (props) => {
                 />
                 </div>
                 <div>  
-                <label htmlFor="hangout-rating" className="rating-label">Ambiance:</label>
+                <label htmlFor="hangout-rating" className="rating-label">Atmosphere:</label>
                 <input 
                     type="string"
                     id="hangout-rating"

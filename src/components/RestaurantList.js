@@ -17,6 +17,9 @@ const RestaurantList = () => {
     // switch statement cases for "drink", "food", "atmosphere", "study"
         // each statement changes filteredShops
 
+    // const chooseRatingFilter = () => {
+    //     switch(rating)
+    // }
 
     const chooseCityDescription = () => {
         switch(city) {
