@@ -14,6 +14,20 @@
     align-self: flex-end;
 }
 
+.list__distance-filter {
+    align-items: center;
+    margin-left: 2vw;
+}
+
+.list__filter-label {
+    margin-left: 20px;
+}
+
+.list__filter-input {
+    justify-self: center;
+    margin-left: 10px;
+}
+
 .list__restaurant-contact {
     display: none;
     @media (min-width: 1330px) {
@@ -69,13 +83,18 @@
     }
 }
 
-.list__filter {
+.list__text-filter {
+    border: 1px solid black;
     height: 3vh;
+    line-height: 2;
+    padding: 3px 5px;
     width: 10vw;
 }
 
 .list__filter-container {
+    display: flex;
     margin: 4vh auto auto 20%;
+    align-items: center;
 }
 
 .list__restaurant-name {
@@ -98,4 +117,3 @@
         width: 20%;
     }
 }
-

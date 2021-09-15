@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { absoluteDistanceInMiles, scrollToTop } from "../RestaurantPage-helpers";
-// import { DistanceMatrixService, LoadScript } from "@react-google-maps/api";
 import Header from "./Header";
 import axios from "axios";
 
@@ -12,8 +11,12 @@ const RestaurantList = () => {
     const userLong = sessionStorage.getItem("userLongitude");
     const userLat = sessionStorage.getItem("userLatitude");
     
-    const [storeDistances, setStoreDistances] = useState([]);
-    let distanceInMiles = [];
+    const [distanceFilter, setDistanceFilter] = useState(true);
+    const [ratingFilter, setRatingFilter] = useState("");
+    // onChange function = switch statement
+    // switch statement cases for "drink", "food", "atmosphere", "study"
+        // each statement changes filteredShops
+
 
     const chooseCityDescription = () => {
         switch(city) {
@@ -44,19 +47,26 @@ const RestaurantList = () => {
         // axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) // PRODUCTION
         axios.get(`http://localhost:3000/cities/${city}`)
             .then((res) => {
-                setRestaurants(res.data[0].restaurants)
                 res.data[0].restaurants.forEach((shop) => {
                     const distance = Math.round(absoluteDistanceInMiles(userLat, userLong, shop.latitude, shop.longitude) * 10) / 10
                     shop.shopDistance = distance
                 })
-                setStoreDistances(distanceInMiles);
+                setRestaurants(res.data[0].restaurants)
             })
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const filteredShops = restaurants.filter((shop) =>
+    let filteredShops;
+    distanceFilter === true ? 
+    filteredShops = restaurants.filter((shop) =>
         shop.name.toLowerCase().includes(filter.toLowerCase())
-    )
+    ) 
+    :
+    filteredShops = restaurants.filter((shop) =>
+        shop.name.toLowerCase().includes(filter.toLowerCase())
+    ).sort((a, b) => {
+        return a.shopDistance < b.shopDistance ? -1 : 1
+    })
 
     return (
         <div>
@@ -67,13 +77,29 @@ const RestaurantList = () => {
             <div className="list__filter-container">
                 <input
                     type="text"
-                    className="list__filter"
+                    className="list__text-filter"
                     placeholder="Search..."
                     value={filter}
                     onChange={(e) => {
                         setFilter(e.target.value)
                     }}
                 />
+                <div className="list__distance-filter">
+                    <label htmlFor="distance-filter">
+                    <span className="list__filter-label">Filter By Distance</span>
+                    <input
+                        className="list__filter-input"
+                        type="checkbox"
+                        value={distanceFilter}
+                        id="distance-filter"
+                        name="distance-filter"
+                        onChange={() => {
+                            setDistanceFilter(!distanceFilter)
+                        }}
+                    />
+                    </label>
+                    
+                </div>
             </div>
             {filteredShops.map((shop, idx) => {
                 return (
@@ -92,15 +118,22 @@ const RestaurantList = () => {
                                     {shop.location.address1 + " " + shop.location.address2}<br></br>
                                     {shop.location.city + ", " + shop.location.state + ", " + shop.location.zip_code}<br></br>
                                     {shop.display_phone}
-                                    {userLong && <div className="list__distance">{shop.shopDistance} miles</div>}
+                                    {userLong && 
+                                        <div className="list__distance">
+                                            {shop.shopDistance} {shop.shopDistance === 1 ? "mile" : "miles"}
+                                        </div>
+                                    }
                                 </div> 
                                 : 
                                 <div className="list__restaurant-contact">
                                     {shop.location.address1}<br></br>
                                     {shop.location.city + ", " + shop.location.state + ", " + shop.location.zip_code}<br></br>
                                     {shop.display_phone}
-                                    {userLong && <div className="list__distance">{shop.shopDistance} miles</div>}
-
+                                    {userLong && 
+                                        <div className="list__distance">
+                                            {shop.shopDistance} {shop.shopDistance === 1 ? "mile" : "miles"}
+                                        </div>
+                                    }
                                 </div>}
                         </div>
                     </Link>

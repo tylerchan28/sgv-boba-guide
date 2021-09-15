@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <div className="header-layout">
             <div className="header-container">
-                <Link className="link" to="/">
+                <Link className="header__link" to="/">
                     <div className="header-title"> Boba Guide <span><img className="header__icon" src={Icon} alt="A boba drink logo" /></span> </div>
                 </Link>               
                 { username ? 
