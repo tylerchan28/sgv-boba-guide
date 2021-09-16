@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Fade } from "react-slideshow-image"; 
 import Header from "./Header";
@@ -8,19 +8,13 @@ import Manhattan from "../images/edward-mer-zkFvaJFYdvw-unsplash.jpg";
 
 const CityPage = () => {
 
-    const [latitude, setLatitude] = useState("")
-    const [longitude, setLongitude] = useState("")
-    
-
     const getLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                setLatitude(position.coords.latitude)
-                setLongitude(position.coords.longitude)
                 sessionStorage.setItem("userLongitude", position.coords.longitude);
                 sessionStorage.setItem("userLatitude", position.coords.latitude);
             },
-            function error(msg) {alert('Please enable your GPS position feature.');},
+            function error(msg) {console.log("User has chosen to not enable GPS location feature.");},
             {maximumAge:10000, timeout:5000, enableHighAccuracy: true});
         } else {
             alert("Geolocation API is not supported in your browser.");
@@ -29,7 +23,6 @@ const CityPage = () => {
 
     useEffect(() => {
         getLocation()
-        console.log("Latitude: " + latitude, "Longitude: " + longitude)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

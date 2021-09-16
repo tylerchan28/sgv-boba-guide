@@ -5,6 +5,7 @@ import LoadingPage from "./LoadingPage";
 import ReviewForm from "./ReviewForm";
 import ReviewItem from "./ReviewItem";
 import GoogleMap from "./GoogleMap";
+import Pagination from "./Pagination";
 import { getRatingAverage, colorCode } from "../RestaurantPage-helpers";
 
 const axios = require("axios");
@@ -15,13 +16,25 @@ const RestaurantPage = (props) => {
     let id = info.id;
     
     const verified = sessionStorage.getItem("verified");
+    const token = sessionStorage.getItem("token");
+    
     const [restaurantReviews, setRestaurantReviews] = useState([]);
     const [drinkAvg, setDrinkAvg] = useState("");
     const [foodAvg, setFoodAvg] = useState("");
     const [hangoutAvg, setHangoutAvg] = useState("");
     const [studyAvg, setStudyAvg] = useState("");
-    const [reviewsToShow, setReviewsToShow] = useState(3);
+    
     const [restaurant, setRestaurant] = useState("");
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [reviewsPerPage] = useState(3);
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    const currentReviews = restaurantReviews.slice(indexOfFirstReview, indexOfLastReview)
+    
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     const fetchShop = async () => {
         await axios.get(`http://localhost:3000/cities/city-shops/${id}`)
@@ -76,11 +89,6 @@ const RestaurantPage = (props) => {
         }).then(() => fetchReviews())
     }
 
-    const showMore = (e) => {
-        e.preventDefault();
-        setReviewsToShow(reviewsToShow + 3)
-    }
-
     const goBack = () => {
         props.history.goBack();
     }
@@ -95,9 +103,6 @@ const RestaurantPage = (props) => {
         fetchReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
-    const token = sessionStorage.getItem("token");
-
 
     return restaurant ? 
     <div>
@@ -153,11 +158,11 @@ const RestaurantPage = (props) => {
                             Read {restaurantReviews.length} review(s):
                         </div>
                         <div className="review-item-container">
-                            {restaurantReviews.slice(0, reviewsToShow).map((review) => {
+                            {currentReviews.map((review) => {
                                 return <ReviewItem key={review._id} {...review} />
                             })}
+                            <Pagination reviewsPerPage={reviewsPerPage} totalReviews={restaurantReviews.length} paginate={paginate}/>
                         </div>
-                        {restaurantReviews.length > 3 && <button onClick={showMore} className="show-more-btn">Show 3 More</button>}
                     </div>}
             </div>
         </div>
