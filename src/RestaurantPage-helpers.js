@@ -11,11 +11,11 @@ export const getRatingAverage = (pageReviews, ratingType) => {
 
 export const colorCode = (ratingType) => {
     if (ratingType <= 4 || ratingType === "N/A") {
-        return <div className="rating-item rating-item--red">{ratingType}</div>
+        return <div className="rating__item rating__item--red">{ratingType}</div>
     } else if (ratingType >= 4 && ratingType <= 7.5) {
-        return <div className="rating-item rating-item--yellow">{ratingType}</div>
+        return <div className="rating__item rating__item--yellow">{ratingType}</div>
     } else {
-        return <div className="rating-item rating-item--green">{ratingType}</div>
+        return <div className="rating__item rating__item--green">{ratingType}</div>
     }
 }
 

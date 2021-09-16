@@ -1,20 +1,24 @@
-.rating-item {
+.rating__container {
+    text-align: center;
+}
+
+.rating__item {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.rating-item--red {
+.rating__item--red {
     color: rgb(255, 57, 57);
     margin-top: 5px;
 }
 
-.rating-item--yellow {
+.rating__item--yellow {
     color: rgb(255, 255, 0);
     margin-top: 5px;
 }
 
-.rating-item--green {
+.rating__item--green {
     color: rgb(0, 172, 0);
     margin-top: 5px;
 }
@@ -30,3 +34,4 @@
 .rating__rating-item {
     word-break: break-word;
 }
+

@@ -1,75 +1,56 @@
-.flexbox-row {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-top: 100px;
-    width: 75%;
-    @media (min-width: 770px) {
-        flex-direction: row;
-        width: 75%;
-    }
-}
-  
-.flexbox-column {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.flexbox-column__container {
-    background: linear-gradient(#fdbd88, #c0cfb2);
-    border: 2px solid black;
-    border-radius: 40px;
-    margin-top: 40px;
-    padding: 5px;
-    max-width: 450px;
-    @media (min-width: 770px) {
-        margin-left: 100px;
-    }
-}
-
-.restaurant-page__contact {
-    font-size: 24px;
-    font-weight: bolder;
-    margin: auto auto;
-    padding: 10px;
-}
-
 .restaurant-page__container {
+    display: grid;
+    grid-template-columns: .4fr .6fr
+}
+
+// Left
+.restauraunt-page__info-container {
+    display: grid;
     align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 80%;
+    grid-template-rows: .1fr .1fr .5fr .3fr;
+    gap: 3vh;
     justify-content: center;
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
+    border-right: 1px solid black;
+    height: 92vh;
 }
 
 .restaurant-page__image {
-    border: 2px solid black;
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    @media (min-width: 770px) {
-        width: 400px;
-        height: 400px;
-    }
-    @media (min-width: 1160px) {
-        height: 500px;
-        width: 500px;
-    }
+    height: 75px;
+    width: 75px;
 }
 
-.restaurant-page__name { 
-    border: none;
-    border-radius: 10px;
-    font-family: cereal-bold;
-    font-size: 38px;
-    margin: auto auto 10px auto;
-    padding: 0 10px;
+.restaurant-page__title-container {
+    margin-top: 0;
+    align-self: center;
+}
+
+.restaurant-page__title {
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 3vh;
+}
+
+.restaurant-page__info {
+    font-size: 24px;
     text-align: center;
 }
 
 
+// Right
+.restaurant-page__review-container {
+    display: grid;
+    grid-template-rows: .15fr .85fr;
+    height: 92vh;
+}
+
+.review__container {
+    align-items: center;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}

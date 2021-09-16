@@ -107,57 +107,57 @@ const RestaurantPage = (props) => {
     return restaurant ? 
     <div>
         <Header />
-        <div className="restaurant-page-container-test"> 
-            <div className="page-info-div">
-                <button onClick={goBack} className="back-btn">&#8592;</button>
-                <div className="title-div">
-                    <div className="title">
+        <div className="restaurant-page__container"> 
+            <div className="restauraunt-page__info-container">
+                <button onClick={goBack} className="button__back">&#8592;</button>
+                <div className="restaurant-page__title-container">
+                    <div className="restaurant-page__title">
                         {restaurant.name} 
-                        <img src={restaurant.image_url} className="test-image" alt="Depiction of the restaurant." />
+                        <img src={restaurant.image_url} className="restaurant-page__image" alt="Depiction of the restaurant." />
                     </div>  
                 </div>
-                <div className="shop-info">
+                <div className="restaurant-page__info">
                     {restaurant.location.address1}  &#127968;<br/>
                     {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}<br/>
                     {restaurant.display_phone} &#9742;&#65039; 
                 </div>
                 { restaurantReviews.length > 0 ?
-                    <div className="ratings-container">
-                        <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
-                        <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
-                        <div className="rating-item">Atmosphere &#128107;: {colorCode(hangoutAvg)}</div>
-                        <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}</div>
+                    <div className="rating__container">
+                        <div className="rating__item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
+                        <div className="rating__item">Food &#127858;: {colorCode(foodAvg)}</div>
+                        <div className="rating__item">Atmosphere &#128107;: {colorCode(hangoutAvg)}</div>
+                        <div className="rating__item">Study &#128214;: {colorCode(studyAvg)}</div>
                     </div>
                     :
-                    <div className="ratings-container">
-                        <div className="rating-item">Drinks &#129380;: {colorCode("N/A")} </div>
-                        <div className="rating-item">Food &#127858;: {colorCode("N/A")}</div>
-                        <div className="rating-item">Atmosphere &#128107;: {colorCode("N/A")}</div>
-                        <div className="rating-item">Study &#128214;: {colorCode("N/A")}</div>
+                    <div className="rating__container">
+                        <div className="rating__item">Drinks &#129380;: {colorCode("N/A")} </div>
+                        <div className="rating__item">Food &#127858;: {colorCode("N/A")}</div>
+                        <div className="rating__item">Atmosphere &#128107;: {colorCode("N/A")}</div>
+                        <div className="rating__item">Study &#128214;: {colorCode("N/A")}</div>
                     </div>
                 }
                 <div>
                     <GoogleMap {...restaurant}/>
                 </div>
             </div>
-            <div className="review-div">
+            <div className="restaurant-page__review-container">
                     { (token && verified === "true") ? 
-                        <div className="review-div-text">
+                        <div className="review__message">
                             <div> Hello what is going on </div>
                             <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
                         </div>
                         : 
-                        <div className="review-div-text">
-                        <div className="no-login">Log in and verify your account to write a review.</div>
+                        <div className="review__message">
+                        <div className="error__no-login">Log in and verify your account to write a review.</div>
                         </div>
                      }   
                 {restaurantReviews.length > 0 && 
         
-                    <div className="review-container-test"> 
-                        <div className="review-count">  
+                    <div className="review__container"> 
+                        <div className="review__count">  
                             Read {restaurantReviews.length} review(s):
                         </div>
-                        <div className="review-item-container">
+                        <div className="review__item-container">
                             {currentReviews.map((review) => {
                                 return <ReviewItem key={review._id} {...review} />
                             })}

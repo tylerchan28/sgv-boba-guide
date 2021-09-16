@@ -39,7 +39,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
 
     return (
         <div className="review">
-            <div className="review-ratings">
+            <div className="review__ratings">
                 <div className="rating__rating-item">
                     &#129380;: {drinkRating}<br></br><br></br>
                 </div>
@@ -53,21 +53,21 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
                     &#128214;: {studyRating}<br></br><br></br>
                 </div>
             </div>
-            <div className="review-content">
+            <div className="review__content">
                 {review}
             </div>
             {(userId === currentUserId && token) ?
-                <div className="review-details">
+                <div className="review__details">
                     <div>
-                        <button className="review-btn" onClick={() => removeReview(reviewId)}>Remove</button>
-                        <button className="review-btn" onClick={() => showModal(true)}>Edit</button>
+                        <button className="review__btn" onClick={() => removeReview(reviewId)}>Remove</button>
+                        <button className="review__btn" onClick={() => showModal(true)}>Edit</button>
                     </div>
-                    <div className="review-date"> {moment(date).format("MM/DD/YYYY")} <br/> {user} </div>
+                    <div className="review__date"> {moment(date).format("MM/DD/YYYY")} <br/> {user} </div>
                 </div>
                 :
-                <div className="review-details"> 
+                <div className="review__details"> 
                     <div></div>
-                    <div className="review-date"> {moment(date).format("MM/DD/YYYY")} <br/> {user} </div>
+                    <div className="review__date"> {moment(date).format("MM/DD/YYYY")} <br/> {user} </div>
                 </div>
             }
             {modal && 
