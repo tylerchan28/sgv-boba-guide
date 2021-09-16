@@ -9,6 +9,7 @@ const GoogleMap = (props) => {
                 alt="A map with a marker on the restaurant."
             />
         </div>
+        console.log("test")
     )
 }
 
