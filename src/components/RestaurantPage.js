@@ -4,7 +4,9 @@ import Header from "./Header";
 import LoadingPage from "./LoadingPage";
 import ReviewForm from "./ReviewForm";
 import ReviewItem from "./ReviewItem";
-import { getRatingAverage, colorCode, scrollToTop } from "../RestaurantPage-helpers";
+import GoogleMap from "./GoogleMap";
+import { getRatingAverage, colorCode } from "../RestaurantPage-helpers";
+
 const axios = require("axios");
 
 const RestaurantPage = (props) => { 
@@ -102,25 +104,27 @@ const RestaurantPage = (props) => {
         <Header />
         <div className="restaurant-page-container-test"> 
             <div className="page-info-div">
+                <button onClick={goBack} className="back-btn">&#8592;</button>
                 <div className="title-div">
-                    {restaurant.name}   <img src={restaurant.image_url} className="test-image" />
+                    <div className="title">
+                        {restaurant.name} 
+                        <img src={restaurant.image_url} className="test-image" alt="Depiction of the restaurant." />
+                    </div>  
                 </div>
                 <div className="shop-info">
-                    {restaurant.location.address1}  &#127968;<br></br>
-                    {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}
-                    <br></br>
-                    <br></br>
+                    {restaurant.location.address1}  &#127968;<br/>
+                    {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}<br/>
                     {restaurant.display_phone} &#9742;&#65039; 
                 </div>
                 { restaurantReviews.length > 0 ?
-                    <div>
+                    <div className="ratings-container">
                         <div className="rating-item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
                         <div className="rating-item">Food &#127858;: {colorCode(foodAvg)}</div>
                         <div className="rating-item">Atmosphere &#128107;: {colorCode(hangoutAvg)}</div>
                         <div className="rating-item">Study &#128214;: {colorCode(studyAvg)}</div>
                     </div>
                     :
-                    <div>
+                    <div className="ratings-container">
                         <div className="rating-item">Drinks &#129380;: {colorCode("N/A")} </div>
                         <div className="rating-item">Food &#127858;: {colorCode("N/A")}</div>
                         <div className="rating-item">Atmosphere &#128107;: {colorCode("N/A")}</div>
@@ -128,18 +132,20 @@ const RestaurantPage = (props) => {
                     </div>
                 }
                 <div>
-                jajajaj
+                    <GoogleMap {...restaurant}/>
                 </div>
             </div>
             <div className="review-div">
-                <div className="review-div-text">
-                    <div>Hello what is going on </div>
                     { (token && verified === "true") ? 
-                        <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
+                        <div className="review-div-text">
+                            <div> Hello what is going on </div>
+                            <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
+                        </div>
                         : 
+                        <div className="review-div-text">
                         <div className="no-login">Log in and verify your account to write a review.</div>
+                        </div>
                      }   
-                </div>
                 {restaurantReviews.length > 0 && 
         
                     <div className="review-container-test"> 
