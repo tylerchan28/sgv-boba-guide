@@ -1,6 +1,6 @@
 .restaurant-page__container {
     display: grid;
-    grid-template-columns: .4fr .6fr
+    grid-template-columns: .325fr .675fr
 }
 
 // Left
@@ -26,15 +26,18 @@
 }
 
 .restaurant-page__title {
-    font-size: 48px;
+    align-items: center;
+    font-size: 36px;
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 3vh;
+    text-align: center;
+    width: 400px;
 }
 
 .restaurant-page__info {
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -48,7 +51,6 @@
 
 .review__container {
     align-items: center;
-    background: black;
     display: flex;
     flex-direction: column;
     width: 100%;

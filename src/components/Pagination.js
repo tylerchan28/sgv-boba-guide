@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import { makeStyles} from "@material-ui/core/styles";
+import Button from "@mui/material/Button";
+import { makeStyles} from "@material-ui/styles";
 
 const Pagination = ({ reviewsPerPage, totalReviews, paginate }) => {
     
@@ -11,9 +11,8 @@ const Pagination = ({ reviewsPerPage, totalReviews, paginate }) => {
 
     const useStyles = makeStyles(theme => ({
         pagination__button: {
-            "width": "1vw",
-            "&:hover": { backgroundColor: "gray"},
-            "&:focus": { backgroundColor: "gray"}
+            width: "1vw",
+            "&:focus": { backgroundColor: "gray"},
         }
     }))
     
@@ -24,7 +23,8 @@ const Pagination = ({ reviewsPerPage, totalReviews, paginate }) => {
             <div className="pagination__container">
                 {pageNumbers.map(number => (
                     <Button 
-                        variant="outlined" 
+                        key={number}
+                        variant="standard" 
                         onClick={() => paginate(number)}
                         className={classes.pagination__button}
                     >

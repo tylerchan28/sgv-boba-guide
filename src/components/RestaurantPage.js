@@ -7,6 +7,14 @@ import ReviewItem from "./ReviewItem";
 import GoogleMap from "./GoogleMap";
 import Pagination from "./Pagination";
 import { getRatingAverage, colorCode } from "../RestaurantPage-helpers";
+import Rating from '@mui/material/Rating';
+import LocalCafe from "@mui/icons-material/LocalCafe";
+import Fastfood from "@mui/icons-material/Fastfood";
+import Laptop from "@mui/icons-material/Laptop";
+import Group from "@mui/icons-material/Group";
+import Home from "@mui/icons-material/Home";
+import Phone from "@mui/icons-material/Phone";
+
 
 const axios = require("axios");
 
@@ -112,8 +120,7 @@ const RestaurantPage = (props) => {
                 <button onClick={goBack} className="button__back">&#8592;</button>
                 <div className="restaurant-page__title-container">
                     <div className="restaurant-page__title">
-                        {restaurant.name} 
-                        <img src={restaurant.image_url} className="restaurant-page__image" alt="Depiction of the restaurant." />
+                        {restaurant.name}
                     </div>  
                 </div>
                 <div className="restaurant-page__info">
@@ -123,17 +130,21 @@ const RestaurantPage = (props) => {
                 </div>
                 { restaurantReviews.length > 0 ?
                     <div className="rating__container">
-                        <div className="rating__item">Drinks &#129380;: {colorCode(drinkAvg)} </div>
-                        <div className="rating__item">Food &#127858;: {colorCode(foodAvg)}</div>
-                        <div className="rating__item">Atmosphere &#128107;: {colorCode(hangoutAvg)}</div>
-                        <div className="rating__item">Study &#128214;: {colorCode(studyAvg)}</div>
+                        <div className="rating__item">Drinks <LocalCafe className="rating__icon" /></div>
+                        <Rating value={drinkAvg} precision={.5} readOnly max={5} size="large"/>
+                        <div className="rating__item">Food <Fastfood className="rating__icon" /></div>
+                        <Rating value={foodAvg} precision={.5} readOnly max={5} size="large"/>
+                        <div className="rating__item">Atmosphere <Group className="rating__icon"/></div>
+                        <Rating value={hangoutAvg} precision={.5} readOnly max={5} size="large"/>
+                        <div className="rating__item">Study <Laptop className="rating__icon"/></div>
+                        <Rating value={studyAvg} precision={.5} readOnly max={5} size="large"/>
                     </div>
                     :
                     <div className="rating__container">
-                        <div className="rating__item">Drinks &#129380;: {colorCode("N/A")} </div>
-                        <div className="rating__item">Food &#127858;: {colorCode("N/A")}</div>
-                        <div className="rating__item">Atmosphere &#128107;: {colorCode("N/A")}</div>
-                        <div className="rating__item">Study &#128214;: {colorCode("N/A")}</div>
+                        <div className="rating__item">Drinks &#129380; {colorCode("N/A")} </div>
+                        <div className="rating__item">Food &#127858; {colorCode("N/A")}</div>
+                        <div className="rating__item">Atmosphere &#128107; {colorCode("N/A")}</div>
+                        <div className="rating__item">Study &#128214; {colorCode("N/A")}</div>
                     </div>
                 }
                 <div>
@@ -143,7 +154,9 @@ const RestaurantPage = (props) => {
             <div className="restaurant-page__review-container">
                     { (token && verified === "true") ? 
                         <div className="review__message">
-                            <div> Hello what is going on </div>
+                            <div className="review__text"> 
+                                Hello what is going on 
+                            </div>
                             <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
                         </div>
                         : 
