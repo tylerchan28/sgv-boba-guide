@@ -6,7 +6,7 @@ import ReviewForm from "./ReviewForm";
 import ReviewItem from "./ReviewItem";
 import GoogleMap from "./GoogleMap";
 import Pagination from "./Pagination";
-import { getRatingAverage, colorCode } from "../RestaurantPage-helpers";
+import { getRatingAverage } from "../RestaurantPage-helpers";
 import Rating from '@mui/material/Rating';
 import LocalCafe from "@mui/icons-material/LocalCafe";
 import Fastfood from "@mui/icons-material/Fastfood";
@@ -124,9 +124,9 @@ const RestaurantPage = (props) => {
                     </div>  
                 </div>
                 <div className="restaurant-page__info">
-                    {restaurant.location.address1}  &#127968;<br/>
+                    <div className="restaurant-page__info-icon">{restaurant.location.address1} <Home className="rating__icon" /></div>
                     {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}<br/>
-                    {restaurant.display_phone} &#9742;&#65039; 
+                    <div className="restaurant-page__info-icon">{restaurant.display_phone} <Phone className="rating__icon"/></div>
                 </div>
                 { restaurantReviews.length > 0 ?
                     <div className="rating__container">
@@ -141,10 +141,14 @@ const RestaurantPage = (props) => {
                     </div>
                     :
                     <div className="rating__container">
-                        <div className="rating__item">Drinks &#129380; {colorCode("N/A")} </div>
-                        <div className="rating__item">Food &#127858; {colorCode("N/A")}</div>
-                        <div className="rating__item">Atmosphere &#128107; {colorCode("N/A")}</div>
-                        <div className="rating__item">Study &#128214; {colorCode("N/A")}</div>
+                        <div className="rating__item">Drinks <LocalCafe className="rating__icon" /></div>
+                        <Rating value={drinkAvg} readOnly max={5} size="large" />
+                        <div className="rating__item">Food <Fastfood className="rating__icon" /></div>
+                        <Rating value={foodAvg} readOnly max={5} size="large"/>
+                        <div className="rating__item">Atmosphere <Group className="rating__icon"/></div>
+                        <Rating value={hangoutAvg} readOnly max={5} size="large"/>
+                        <div className="rating__item">Study <Laptop className="rating__icon"/></div>
+                        <Rating value={studyAvg} readOnly max={5} size="large"/>
                     </div>
                 }
                 <div>

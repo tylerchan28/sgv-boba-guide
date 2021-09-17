@@ -5,6 +5,7 @@
 
 // Left
 .restauraunt-page__info-container {
+    background-color: #F9F6EE;
     display: grid;
     align-items: center;
     grid-template-rows: .1fr .1fr .5fr .3fr;
@@ -28,6 +29,7 @@
 .restaurant-page__title {
     align-items: center;
     font-size: 36px;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -41,6 +43,11 @@
     text-align: center;
 }
 
+.restaurant-page__info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 // Right
 .restaurant-page__review-container {
