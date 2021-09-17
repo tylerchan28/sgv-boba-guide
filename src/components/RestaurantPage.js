@@ -14,9 +14,8 @@ import Laptop from "@mui/icons-material/Laptop";
 import Group from "@mui/icons-material/Group";
 import Home from "@mui/icons-material/Home";
 import Phone from "@mui/icons-material/Phone";
-
-
-const axios = require("axios");
+import LeftArrow from '@mui/icons-material/KeyboardArrowLeft';
+import axios from "axios";
 
 const RestaurantPage = (props) => { 
     
@@ -35,7 +34,7 @@ const RestaurantPage = (props) => {
     const [restaurant, setRestaurant] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [reviewsPerPage] = useState(3);
+    const [reviewsPerPage] = useState(5);
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
     const currentReviews = restaurantReviews.slice(indexOfFirstReview, indexOfLastReview)
@@ -117,7 +116,7 @@ const RestaurantPage = (props) => {
         <Header />
         <div className="restaurant-page__container"> 
             <div className="restauraunt-page__info-container">
-                <button onClick={goBack} className="button__back">&#8592;</button>
+                <button onClick={goBack} className="button__back"><LeftArrow /></button>
                 <div className="restaurant-page__title-container">
                     <div className="restaurant-page__title">
                         {restaurant.name}
@@ -128,8 +127,7 @@ const RestaurantPage = (props) => {
                     {restaurant.location.city + ", " + restaurant.location.state + ", " + restaurant.location.zip_code}<br/>
                     <div className="restaurant-page__info-icon">{restaurant.display_phone} <Phone className="rating__icon"/></div>
                 </div>
-                { restaurantReviews.length > 0 ?
-                    <div className="rating__container">
+                <div className="rating__container">
                         <div className="rating__item">Drinks <LocalCafe className="rating__icon" /></div>
                         <Rating value={drinkAvg} precision={.5} readOnly max={5} size="large"/>
                         <div className="rating__item">Food <Fastfood className="rating__icon" /></div>
@@ -138,37 +136,23 @@ const RestaurantPage = (props) => {
                         <Rating value={hangoutAvg} precision={.5} readOnly max={5} size="large"/>
                         <div className="rating__item">Study <Laptop className="rating__icon"/></div>
                         <Rating value={studyAvg} precision={.5} readOnly max={5} size="large"/>
-                    </div>
-                    :
-                    <div className="rating__container">
-                        <div className="rating__item">Drinks <LocalCafe className="rating__icon" /></div>
-                        <Rating value={drinkAvg} readOnly max={5} size="large" />
-                        <div className="rating__item">Food <Fastfood className="rating__icon" /></div>
-                        <Rating value={foodAvg} readOnly max={5} size="large"/>
-                        <div className="rating__item">Atmosphere <Group className="rating__icon"/></div>
-                        <Rating value={hangoutAvg} readOnly max={5} size="large"/>
-                        <div className="rating__item">Study <Laptop className="rating__icon"/></div>
-                        <Rating value={studyAvg} readOnly max={5} size="large"/>
-                    </div>
-                }
+                </div>
                 <div>
                     <GoogleMap {...restaurant}/>
                 </div>
             </div>
             <div className="restaurant-page__review-container">
-                    { (token && verified === "true") ? 
-                        <div className="review__message">
-                            <div className="review__text"> 
-                                Hello what is going on 
-                            </div>
+                    { (token && verified === "true") ?
+                        <div className="review__add-button-container">
                             <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
                         </div>
-                        : 
-                        <div className="review__message">
-                        <div className="error__no-login">Log in and verify your account to write a review.</div>
+                        :
+                        <div className="error__no-login">
+                                Log in and verify your account to write a review.
                         </div>
-                     }   
-                {restaurantReviews.length > 0 && 
+                    }   
+                {
+                    restaurantReviews.length > 0 ? 
         
                     <div className="review__container"> 
                         <div className="review__count">  
@@ -180,7 +164,10 @@ const RestaurantPage = (props) => {
                             })}
                             <Pagination reviewsPerPage={reviewsPerPage} totalReviews={restaurantReviews.length} paginate={paginate}/>
                         </div>
-                    </div>}
+                    </div>
+                    :
+                    <div className="restaurant-page__no-reviews"> Be the first user to write a review for {restaurant.name}! </div>
+                }
             </div>
         </div>
     </div>
