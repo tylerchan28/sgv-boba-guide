@@ -129,28 +129,32 @@ const RestaurantPage = (props) => {
                 </div>
                 <div className="rating__container">
                         <div className="rating__item rating__item--average">Drinks <LocalCafe className="rating__icon" /></div>
-                        <Rating value={drinkAvg} precision={.25} readOnly max={5} size="large"/>
+                        <Rating value={drinkAvg} precision={.5} readOnly max={5} size="large"/>
+                        ({drinkAvg})
                         <div className="rating__item rating__item--average">Food <Fastfood className="rating__icon" /></div>
-                        <Rating value={foodAvg} precision={.25} readOnly max={5} size="large"/>
+                        <Rating value={foodAvg} precision={.5} readOnly max={5} size="large"/>
+                        ({foodAvg})
                         <div className="rating__item rating__item--average">Atmosphere <Group className="rating__icon"/></div>
-                        <Rating value={hangoutAvg} precision={.25} readOnly max={5} size="large"/>
+                        <Rating value={hangoutAvg} precision={.5} readOnly max={5} size="large"/>
+                        ({hangoutAvg})
                         <div className="rating__item rating__item--average">Study <Laptop className="rating__icon"/></div>
-                        <Rating value={studyAvg} precision={.25} readOnly max={5} size="large"/>
+                        <Rating value={studyAvg} precision={.5} readOnly max={5} size="large"/>
+                        ({studyAvg})
                 </div>
                 <div>
                     <GoogleMap {...restaurant}/>
                 </div>
             </div>
             <div className="restaurant-page__review-container">
-                    { (token && verified === "true") ?
-                        <div className="review__add-button-container">
-                            <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
-                        </div>
-                        :
-                        <div className="error__no-login">
-                                Log in and verify your account to write a review.
-                        </div>
-                    }   
+                { (token && verified === "true") ?
+                    <div className="review__add-button-container">
+                        <ReviewForm onSubmit={onSubmit} restaurantid={props.match.params.id} /> 
+                    </div>
+                    :
+                    <div className="error__no-login">
+                            Log in and verify your account to write a review.
+                    </div>
+                }   
                 {
                     restaurantReviews.length > 0 ? 
         

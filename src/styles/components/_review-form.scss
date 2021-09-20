@@ -1,0 +1,60 @@
+.review-form {
+    background-color: lighten(gray, 40%);
+    border: 1px solid lighten(gray, 10%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px grey;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    margin: 20px auto;
+    padding: 30px 20px;
+    width: 40vw;
+}
+
+.review-form__container {
+    display: grid;
+    grid-template-columns: .3fr .7fr;
+    gap: 30px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.review-form__ratings {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.review-form__submit-button {
+    background-color: darken(#A5C9FF, 5%);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-family: cereal;
+    font-size: 16px;
+    font-weight: bold;
+    height: 40px;
+    margin-top: 20px;
+    width: 125px;
+    &:hover {
+        background-color: rgb(61, 61, 61);
+    }
+}
+
+.review-form__textarea {
+    border: none;
+    border: 1px solid lighten(gray, 30%);
+    border-radius: 5px;
+    font-family: cereal;
+    font-size: 16px;
+    padding: 10px;
+    resize: none;
+    width: 30vw;
+    word-break: normal;
+}
+
+.review-rating-container--update {
+    display: grid;
+    grid-template-columns: .3fr .7fr;
+}

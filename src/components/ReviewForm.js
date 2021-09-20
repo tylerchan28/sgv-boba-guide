@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Modal from "react-modal";
+import Rating from "@mui/material/Rating";
 
 const ReviewForm = (props) => {
     const [review, setReview] = useState("");
@@ -42,77 +43,51 @@ const ReviewForm = (props) => {
 
     return ( 
         <div>
-        <button onClick={displayModal} className="add-review-btn">Add a Review </button>
-        { modal &&        
-            <Modal
-                    isOpen={!!modal} 
-                    onRequestClose={() => showModal(false)}
-                    contentLabel="Update form" 
-                    ariaHideApp={false}
-                    closeTimeoutMS={200}
-                    className="modal"
-            >
-                <form className="review-form" onSubmit={onSubmit}>       
-                    <textarea 
-                        type="text"
-                        placeholder="Write a review..."
-                        id="review"
-                        onChange={(e) => setReview(e.target.value)}
-                        value={review}
-                        required
-                        className="review__textarea"
-                        autoFocus
-                    />
-                    <div className="review-rating-container">
-                        <div>  
-                            <label htmlFor="drink-rating" className="rating-label">Drinks:</label>
-                            <input  
-                                type="string"
-                                id="drink-rating"
-                                name="drink-rating"
-                                onChange={(e) => setDrinkRating(parseFloat(e.target.value))}
-                                value={drinkRating}
-                                className="review-form-rating"
+            <button onClick={displayModal} className="button__write-review">Write a Review </button>
+            { modal &&        
+                <Modal
+                        isOpen={!!modal} 
+                        onRequestClose={() => showModal(false)}
+                        contentLabel="Update form" 
+                        ariaHideApp={false}
+                        closeTimeoutMS={200}
+                        className="modal"
+                >
+                    <form className="review-form" onSubmit={onSubmit}>                     
+                        <div className="review-form__container">
+                            <div className="review-form__ratings">
+                                <div>  
+                                    <label htmlFor="drink-rating" className="rating-label">Drinks</label>
+                                    <Rating precision={.5} max={5} onChange={(e) => setDrinkRating(parseFloat(e.target.value))} />
+                                </div>
+                                <div>  
+                                    <label htmlFor="food-rating" className="rating-label">Food</label>
+                                    <Rating precision={.5} max={5} onChange={(e) => setFoodRating(parseFloat(e.target.value))} />
+                                </div>
+                                <div>  
+                                    <label htmlFor="hangout-rating" className="rating-label">Atmosphere</label>
+                                    <Rating precision={.5} max={5} onChange={(e) => setHangoutRating(parseFloat(e.target.value))} />
+                                </div>  
+                                <div>  
+                                    <label htmlFor="study-rating" className="rating-label">Study</label>
+                                    <Rating precision={.5} max={5} onChange={(e) => setStudyRating(parseFloat(e.target.value))} />
+                                </div>  
+                                <button type="submit" className="review-form__submit-button">Post Review</button>
+                            </div>
+                            <textarea 
+                                type="text"
+                                placeholder='Write a review...&#13;&#13;If a rating is left empty, it will not count towards the average score.'
+                                id="review"
+                                onChange={(e) => setReview(e.target.value)}
+                                value={review}
+                                required
+                                className="review-form__textarea"
+                                autoFocus
                             />
                         </div>
-                    <div>  
-                    <label htmlFor="food-rating" className="rating-label">Food:</label>
-                        <input 
-                            type="string"
-                            id="food-rating"
-                            name="food-rating"
-                            onChange={(e) => setFoodRating(parseFloat(e.target.value))}
-                            value={foodRating}
-                            className="review-form-rating"
-                        />
-                        </div>
-                        <div>  
-                            <label htmlFor="hangout-rating" className="rating-label">Atmosphere:</label>
-                            <input 
-                                type="string"
-                                id="hangout-rating"
-                                name="hangout-rating"
-                                onChange={(e) => setHangoutRating(parseFloat(e.target.value))}
-                                value={hangoutRating}
-                                className="review-form-rating"
-                            />
-                        </div>  
-                        <div>  
-                            <label htmlFor="study-rating" className="rating-label">Study:</label>
-                            <input  
-                                type="string"
-                                id="study-rating"
-                                name="study-rating"
-                                onChange={(e) => setStudyRating(parseFloat(e.target.value))}
-                                value={studyRating}
-                                className="review-form-rating"
-                            />
-                        </div>  
-                    </div>
-                    <button type="submit" className="review-submit">Submit Review</button>
-                </form> 
-            </Modal>
-    }
+                    </form> 
+                </Modal>
+            }
         </div>
     )
 }
