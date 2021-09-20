@@ -15,40 +15,6 @@ const ReviewForm = (props) => {
         showModal(!modal)
     }
 
-    const onReviewChange = (e) => {
-        const review = e.target.value;
-        setReview(review);
-    }
-
-    const onFoodRatingChange = (e) => {
-        const foodRating = e.target.value;
-        if (!foodRating || foodRating.match(/^[0-5](\.[5]{0,1})?$/) || foodRating.match(/^(10)$/)) {
-            setFoodRating(foodRating)
-        }
-    }
-
-    const onDrinkRatingChange = (e) => {
-        const drinkRating = e.target.value;
-        if (!drinkRating || drinkRating.match(/^[0-5](\.[5]{0,1})?$/) || drinkRating.match(/^(10)$/)) {
-            setDrinkRating(drinkRating)
-        }
-    }
-
-    const onHangoutRatingChange = (e) => {
-        const hangoutRating = e.target.value;
-        if (!hangoutRating || hangoutRating.match(/^[0-5](\.[5]{0,1})?$/) || hangoutRating.match(/^(10)$/)) {
-            setHangoutRating(hangoutRating)
-        }
-    }
-
-    const onStudyRatingChange = (e) => {
-        const studyRating = e.target.value;
-        if (!studyRating || studyRating.match(/^[0-5](\.[0-9]{0,1})?$/) || studyRating.match(/^(10)$/)) {
-            setStudyRating(studyRating)
-        }
-    }
-
-
     const onSubmit = (e) => { 
         e.preventDefault();
         const user = sessionStorage.getItem("username");
@@ -65,13 +31,13 @@ const ReviewForm = (props) => {
             userId,
             date: Date.now()
         })
-
         props.onSubmit(submittedContent)
         setReview("");
         setFoodRating("");
         setDrinkRating("");
         setHangoutRating("");
         setStudyRating("");
+        showModal(false);
     }
 
     return ( 
@@ -89,9 +55,9 @@ const ReviewForm = (props) => {
                 <form className="review-form" onSubmit={onSubmit}>       
                     <textarea 
                         type="text"
-                        placeholder="Write a review with ratings out of 10!"
+                        placeholder="Write a review..."
                         id="review"
-                        onChange={onReviewChange}
+                        onChange={(e) => setReview(e.target.value)}
                         value={review}
                         required
                         className="review__textarea"
@@ -104,10 +70,10 @@ const ReviewForm = (props) => {
                                 type="string"
                                 id="drink-rating"
                                 name="drink-rating"
-                                onChange={onDrinkRatingChange}
+                                onChange={(e) => setDrinkRating(parseFloat(e.target.value))}
                                 value={drinkRating}
                                 className="review-form-rating"
-                            />    
+                            />
                         </div>
                     <div>  
                     <label htmlFor="food-rating" className="rating-label">Food:</label>
@@ -115,7 +81,7 @@ const ReviewForm = (props) => {
                             type="string"
                             id="food-rating"
                             name="food-rating"
-                            onChange={onFoodRatingChange}
+                            onChange={(e) => setFoodRating(parseFloat(e.target.value))}
                             value={foodRating}
                             className="review-form-rating"
                         />
@@ -126,7 +92,7 @@ const ReviewForm = (props) => {
                                 type="string"
                                 id="hangout-rating"
                                 name="hangout-rating"
-                                onChange={onHangoutRatingChange}
+                                onChange={(e) => setHangoutRating(parseFloat(e.target.value))}
                                 value={hangoutRating}
                                 className="review-form-rating"
                             />
@@ -137,7 +103,7 @@ const ReviewForm = (props) => {
                                 type="string"
                                 id="study-rating"
                                 name="study-rating"
-                                onChange={onStudyRatingChange}
+                                onChange={(e) => setStudyRating(parseFloat(e.target.value))}
                                 value={studyRating}
                                 className="review-form-rating"
                             />

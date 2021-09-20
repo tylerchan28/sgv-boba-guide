@@ -3,6 +3,11 @@ import UpdateForm from "./UpdateForm";
 import moment from "moment";
 import axios from "axios";
 import Modal from "react-modal";
+import LocalCafe from "@mui/icons-material/LocalCafe";
+import Fastfood from "@mui/icons-material/Fastfood";
+import Laptop from "@mui/icons-material/Laptop";
+import Group from "@mui/icons-material/Group";
+import Rating from "@mui/material/Rating";
 
 const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, review, date, user, userId, reviewId }) => {
     let [modal, showModal] = useState(false);
@@ -41,16 +46,48 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
         <div className="review">
             <div className="review__ratings">
                 <div className="rating__rating-item">
-                    &#129380;: {drinkRating}<br></br><br></br>
+                    <div className="rating__item">
+                        <LocalCafe />
+                        { 
+                            drinkRating > 0 ?
+                            <Rating value={parseFloat(drinkRating)} precision={.5} readOnly size="small" className="rating__individual"/>
+                            :
+                            <div className="rating__none">N/A</div>
+                        }
+                    </div>
                 </div>
                 <div className="rating__rating-item">
-                    &#127858;: {foodRating}<br></br><br></br>
+                    <div className="rating__item">
+                        <Fastfood />
+                        { 
+                            foodRating > 0 ?
+                            <Rating value={parseFloat(foodRating)} precision={.5} readOnly size="small" className="rating__individual"/>
+                            :
+                            <div className="rating__none">N/A</div>
+                        }
+                    </div>
                 </div>
                 <div className="rating__rating-item">
-                    &#128107;: {hangoutRating}<br></br><br></br>
+                    <div className="rating__item">
+                        <Group />
+                        {
+                            hangoutRating > 0 ?
+                            <Rating value={parseFloat(hangoutRating)} precision={.5} readOnly size="small" className="rating__individual"/>
+                            :
+                            <div className="rating__none">N/A</div>
+                        }
+                    </div>
                 </div>
                 <div className="rating__rating-item">
-                    &#128214;: {studyRating}<br></br><br></br>
+                    <div className="rating__item">
+                        <Laptop />
+                        {
+                            studyRating > 0 ?
+                            <Rating value={parseFloat(studyRating)} precision={.5} readOnly size="small" className="rating__individual"/>
+                            :
+                            <div className="rating__none">N/A</div>
+                        }
+                    </div>
                 </div>
             </div>
             <div className="review__content">

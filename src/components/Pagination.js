@@ -12,7 +12,7 @@ const Pagination = ({ reviewsPerPage, totalReviews, paginate }) => {
     const useStyles = makeStyles(theme => ({
         pagination__button: {
             width: "1vw",
-            "&:focus": { backgroundColor: "gray"},
+            "&:focus": { backgroundColor: "#D3D3D3"},
         }
     }))
     

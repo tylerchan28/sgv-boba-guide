@@ -26,10 +26,10 @@ const RestaurantPage = (props) => {
     const token = sessionStorage.getItem("token");
     
     const [restaurantReviews, setRestaurantReviews] = useState([]);
-    const [drinkAvg, setDrinkAvg] = useState("");
-    const [foodAvg, setFoodAvg] = useState("");
-    const [hangoutAvg, setHangoutAvg] = useState("");
-    const [studyAvg, setStudyAvg] = useState("");
+    const [drinkAvg, setDrinkAvg] = useState(0);
+    const [foodAvg, setFoodAvg] = useState(0);
+    const [hangoutAvg, setHangoutAvg] = useState(0);
+    const [studyAvg, setStudyAvg] = useState(0);
     
     const [restaurant, setRestaurant] = useState("");
 
@@ -128,14 +128,14 @@ const RestaurantPage = (props) => {
                     <div className="restaurant-page__info-icon">{restaurant.display_phone} <Phone className="rating__icon"/></div>
                 </div>
                 <div className="rating__container">
-                        <div className="rating__item">Drinks <LocalCafe className="rating__icon" /></div>
-                        <Rating value={drinkAvg} precision={.5} readOnly max={5} size="large"/>
-                        <div className="rating__item">Food <Fastfood className="rating__icon" /></div>
-                        <Rating value={foodAvg} precision={.5} readOnly max={5} size="large"/>
-                        <div className="rating__item">Atmosphere <Group className="rating__icon"/></div>
-                        <Rating value={hangoutAvg} precision={.5} readOnly max={5} size="large"/>
-                        <div className="rating__item">Study <Laptop className="rating__icon"/></div>
-                        <Rating value={studyAvg} precision={.5} readOnly max={5} size="large"/>
+                        <div className="rating__item rating__item--average">Drinks <LocalCafe className="rating__icon" /></div>
+                        <Rating value={drinkAvg} precision={.25} readOnly max={5} size="large"/>
+                        <div className="rating__item rating__item--average">Food <Fastfood className="rating__icon" /></div>
+                        <Rating value={foodAvg} precision={.25} readOnly max={5} size="large"/>
+                        <div className="rating__item rating__item--average">Atmosphere <Group className="rating__icon"/></div>
+                        <Rating value={hangoutAvg} precision={.25} readOnly max={5} size="large"/>
+                        <div className="rating__item rating__item--average">Study <Laptop className="rating__icon"/></div>
+                        <Rating value={studyAvg} precision={.25} readOnly max={5} size="large"/>
                 </div>
                 <div>
                     <GoogleMap {...restaurant}/>

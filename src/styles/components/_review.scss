@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
+    min-height: 20vh;
 }
 
 .review__count {
@@ -46,20 +47,23 @@
 
 
 .review__ratings {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
     border-right: 1px solid black;
-    padding: 10px 5px 0 10px;
+    padding: 10px 0 10px 10px;
     text-align: left;
     width: 150px;
 }
 
 .review__text {
     font-size: 18px;
+    padding: 10px 5px 0 10px;
     margin: 20px;
 }
 
 .review__add-button-container {
+    margin: 5px auto;
     text-align: center;
-    margin: 3px auto;
 }
 // Review Form
 

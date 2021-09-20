@@ -12,9 +12,21 @@
 .rating__item {
     display: flex;
     align-items: center;
+    margin-top: 10px;
+}
+
+.rating__item--average {
     font-size: 24px;
     font-weight: bold;
-    margin-top: 10px;
+}
+
+
+.rating__individual {
+    margin: auto 5px;
+}
+
+.rating__none {
+    margin-left: 10px
 }
 
 .rating__item--red {
