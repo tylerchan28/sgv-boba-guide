@@ -26,7 +26,7 @@ const UpdateForm = (props) => {
     }
 
     return (
-        <form className="review-form" onSubmit={onSubmit}>                     
+        <form className="review-form review-form--update" onSubmit={onSubmit}>                     
                         <div className="review-form__container">
                             <div className="review-form__ratings">
                                 <div>  

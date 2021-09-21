@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Fade } from "react-slideshow-image"; 
+import { cities } from "../RestaurantPage-helpers";
+import CityCard from "./CityCard";
 import Header from "./Header";
 import 'react-slideshow-image/dist/styles.css'
 import SanFrancisco from "../images/maarten-van-den-heuvel-gZXx8lKAb7Y-unsplash.jpg";
@@ -87,7 +89,7 @@ const CityPage = () => {
                 <div className="city__what">
                    <h1 className="city__info-header city__info-header--right">Our Goal</h1>
                    <div className="city__info-subsection--right">
-                        cards
+                        {cities.map((city) => <CityCard name={city.name} />)}
                    </div>
                 </div>
                 <div className="city__goal">

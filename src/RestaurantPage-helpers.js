@@ -24,3 +24,15 @@ export const absoluteDistanceInMiles = (lat1, lon1, lat2, lon2) => {
   
     return 12742 * Math.asin(Math.sqrt(a)) * .62; 
 }
+
+export const cities = [
+    {
+        name: "San Gabriel"
+    },
+    {
+        name: "San Francisco"
+    },
+    {
+        name: "Manhattan"
+    }
+]
