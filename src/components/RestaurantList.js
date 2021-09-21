@@ -10,8 +10,17 @@ const RestaurantList = () => {
     let city = parameters.name;
     const userLong = sessionStorage.getItem("userLongitude");
     const userLat = sessionStorage.getItem("userLatitude");
-    const [distanceFilter, setDistanceFilter] = useState(true);
     
+    const [distanceFilter, setDistanceFilter] = useState(true);
+    const [ratingFilter, setRatingFilter] = useState("");
+    // onChange function = switch statement
+    // switch statement cases for "drink", "food", "atmosphere", "study"
+        // each statement changes filteredShops
+
+    // const chooseRatingFilter = () => {
+    //     switch(rating)
+    // }
+
     const chooseCityDescription = () => {
         switch(city) {
             case "san-gabriel":
@@ -79,7 +88,7 @@ const RestaurantList = () => {
                     }}
                 />
                 <div className="list__distance-filter">
-                    <label htmlFor="distance-filter" />
+                    <label htmlFor="distance-filter">
                     <span className="list__filter-label">Filter By Distance</span>
                     <input
                         className="list__filter-input"
@@ -90,7 +99,9 @@ const RestaurantList = () => {
                         onChange={() => {
                             setDistanceFilter(!distanceFilter)
                         }}
-                    />  
+                    />
+                    </label>
+                    
                 </div>
             </div>
             {filteredShops.map((shop, idx) => {
