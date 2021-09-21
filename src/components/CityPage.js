@@ -7,6 +7,7 @@ import Header from "./Header";
 import 'react-slideshow-image/dist/styles.css'
 import SanFrancisco from "../images/maarten-van-den-heuvel-gZXx8lKAb7Y-unsplash.jpg";
 import Manhattan from "../images/edward-mer-zkFvaJFYdvw-unsplash.jpg";
+import BobaInfographic from "../images/boba-infographic.jpg";
 
 const CityPage = () => {
 
@@ -86,17 +87,26 @@ const CityPage = () => {
                         At the bare minimum, you're getting delicious drinks and food.
                     </div>
                 </div>
-                <div className="city__what">
-                   <h1 className="city__info-header city__info-header--right">Our Goal</h1>
-                   <div className="city__info-subsection--right">
-                        {cities.map((city) => <CityCard name={city.name} />)}
-                   </div>
+                <div className="city__cards">
+                    <h1 className="city__info-header">Cities</h1>
+                    <div className="city__card-container">
+                        {
+                            cities.map((city) => 
+                                <Link to={`/cities/${city.linkName}`} className="city-card__link city-card__container" style={{ "backgroundColor": city.backgroundColor }}>
+                                    <CityCard name={city.name} linkName={city.linkName} key={city.name} />
+                                </Link>
+                            )
+                        }
+                    </div>
                 </div>
                 <div className="city__goal">
                    <h1 className="city__info-header">Boba's Cultural Impact</h1>
-                   <div className="city__info-subsection">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                   <div className="city__subsection-container">
+                       <div className="city__info-subsection">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                       </div>
+                       <img src={BobaInfographic} className="city__image" alt="Infographic about boba in a few countries" />
                    </div>
                 </div>
             </div>

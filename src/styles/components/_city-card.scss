@@ -1,0 +1,21 @@
+.city-card__container {
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    width: 15%;
+}
+
+.city-card__content {
+    color: darken(gray, 20%);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.city-card__link {
+    border: none;
+    box-shadow: 1px 1px 10px gray;
+    text-decoration: none;
+}

@@ -7,6 +7,8 @@ import LocalCafe from "@mui/icons-material/LocalCafe";
 import Fastfood from "@mui/icons-material/Fastfood";
 import Laptop from "@mui/icons-material/Laptop";
 import Group from "@mui/icons-material/Group";
+import Edit from "@mui/icons-material/Edit";
+import Delete from "@mui/icons-material/Delete";
 import Rating from "@mui/material/Rating";
 
 const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, review, date, user, userId, reviewId }) => {
@@ -96,8 +98,8 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
             {(userId === currentUserId && token) ?
                 <div className="review__details">
                     <div>
-                        <button className="review__btn" onClick={() => removeReview(reviewId)}>Remove</button>
-                        <button className="review__btn" onClick={() => showModal(true)}>Edit</button>
+                        <button className="review__btn" onClick={() => removeReview(reviewId)}><Delete fontSize="small" /></button>
+                        <button className="review__btn" onClick={() => showModal(true)}><Edit fontSize="small" /></button>
                     </div>
                     <div className="review__date"> {moment(date).format("MM/DD/YYYY")} <br/> {user} </div>
                 </div>

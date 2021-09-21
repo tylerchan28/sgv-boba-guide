@@ -1,9 +1,8 @@
 import React from "react";
 
 const CityCard = (props) => (
-    <div>
+    <div className="city-card__content">
         {props.name}
-        {console.log(props)}
     </div>
 )
 export default CityCard;

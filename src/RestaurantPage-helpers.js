@@ -27,12 +27,18 @@ export const absoluteDistanceInMiles = (lat1, lon1, lat2, lon2) => {
 
 export const cities = [
     {
-        name: "San Gabriel"
+        name: "San Gabriel",
+        linkName: "san-gabriel",
+        backgroundColor: "#ffdcbf"
     },
     {
-        name: "San Francisco"
+        name: "San Francisco",
+        linkName: "san-francisco",
+        backgroundColor: "#f3eef9"
     },
     {
-        name: "Manhattan"
+        name: "Manhattan",
+        linkName: "manhattan",
+        backgroundColor: "#f4f9ee"
     }
 ]
