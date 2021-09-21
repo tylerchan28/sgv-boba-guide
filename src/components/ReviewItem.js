@@ -99,12 +99,12 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
                         <button className="review__btn" onClick={() => removeReview(reviewId)}>Remove</button>
                         <button className="review__btn" onClick={() => showModal(true)}>Edit</button>
                     </div>
-                    <div className="review__date"> {moment(date).format("MM/DD/YYYY")} <br/> {user} </div>
+                    <div className="review__date"> {moment(date).format("l")} <br/> {user} </div>
                 </div>
                 :
                 <div className="review__details"> 
                     <div></div>
-                    <div className="review__date"> {moment(date).format("MM/DD/YYYY")} <br/> {user} </div>
+                    <div className="review__date"> {moment(date).format("l")} <br/> {user} </div>
                 </div>
             }
             {modal && 

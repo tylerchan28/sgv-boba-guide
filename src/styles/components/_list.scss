@@ -15,9 +15,11 @@
 }
 
 .list__distance-filter {
+    display: flex;
     align-items: center;
     margin-left: 2vw;
 }
+
 
 .list__filter-label {
     margin-left: 20px;
