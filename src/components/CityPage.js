@@ -92,8 +92,8 @@ const CityPage = () => {
                     <div className="city__card-container">
                         {
                             cities.map((city) => 
-                                <Link to={`/cities/${city.linkName}`} className="city-card__link city-card__container" style={{ "backgroundColor": city.backgroundColor }}>
-                                    <CityCard name={city.name} linkName={city.linkName} key={city.name} />
+                                <Link to={`/cities/${city.linkName}`} className="city-card__link city-card__container" style={{ 'backgroundImage': `url(${city.backgroundImage})` }} key={city.name}>
+                                    <CityCard name={city.name} linkName={city.linkName} />
                                 </Link>
                             )
                         }

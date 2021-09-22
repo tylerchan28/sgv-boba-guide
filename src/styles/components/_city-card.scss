@@ -3,15 +3,18 @@
     border: 1px solid gray;
     border-radius: 5px;
     display: flex;
-    height: 80%;
+    height: 100%;
     justify-content: center;
     width: 15%;
 }
 
 .city-card__content {
-    color: darken(gray, 20%);
+    background-color: black;
+    border-radius: 5px;
+    color: white;
     font-size: 20px;
     font-weight: bold;
+    padding: 5px 10px;
 }
 
 .city-card__link {

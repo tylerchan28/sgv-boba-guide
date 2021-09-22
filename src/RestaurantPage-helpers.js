@@ -1,3 +1,7 @@
+import Manhattan from "../src/images/ny-resize.jpg";
+import SanFrancisco from "../src/images/sf-resize.jpg";
+import SanGabriel from "../src/images/sg-resize.jpg";
+
 export const getRatingAverage = (pageReviews, ratingType) => {
     let ratings = pageReviews.filter((review) => review[ratingType] !== "N/A")
         .map((review) => parseInt(review[ratingType]));
@@ -29,16 +33,16 @@ export const cities = [
     {
         name: "San Gabriel",
         linkName: "san-gabriel",
-        backgroundColor: "#ffdcbf"
+        backgroundImage: SanGabriel
     },
     {
         name: "San Francisco",
         linkName: "san-francisco",
-        backgroundColor: "#f3eef9"
+        backgroundImage: SanFrancisco
     },
     {
         name: "Manhattan",
         linkName: "manhattan",
-        backgroundColor: "#f4f9ee"
+        backgroundImage: Manhattan
     }
 ]
