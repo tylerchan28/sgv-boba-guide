@@ -15,6 +15,7 @@ import Group from "@mui/icons-material/Group";
 import Home from "@mui/icons-material/Home";
 import Phone from "@mui/icons-material/Phone";
 import LeftArrow from '@mui/icons-material/KeyboardArrowLeft';
+import Infographic from "../images/boba_types.jpg";
 import axios from "axios";
 
 const RestaurantPage = (props) => { 
@@ -166,7 +167,10 @@ const RestaurantPage = (props) => {
                         </div>
                     </div>
                     :
-                    <div className="restaurant-page__no-reviews"> Be the first user to write a review for {restaurant.name}! </div>
+                    <div className="restaurant-page__infographic-container">
+                        <div className="restaurant-page__no-reviews"> Be the first user to write a review for {restaurant.name}! </div>
+                        <img src={Infographic} alt="Different types of boba (tapiocs, bursting, and crystal)" className="restaurant-page__infographic" />
+                    </div>
                 }
             </div>
         </div>
