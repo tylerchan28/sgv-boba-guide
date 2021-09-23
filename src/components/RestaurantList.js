@@ -29,14 +29,11 @@ const RestaurantList = () => {
                 return <div className="list__description">
                             <h1>San Francisco</h1>
                             <div className="list__description-text">
-                                In neighborhoods like Manhattan’s Chinatown, Flushing in Queens, and 8th Avenue, boba shops are abundant. If you want to grab a drink on the go, hang out with friends, or even go on a date, there’s a boba shop for you.
-    
-                                San Francisco was found to have an average of 2.39 boba shops/square mile in a study finding the boba capital of the world (excluding Manhattan).
-                                However, Flushing was found to have an average of 33 boba shops/square mile.
-    
-                                If you ever end up in Manhattan and need something to do, try out a new boba shop &ndash; you can’t miss them!
+                                Boba shops typically follow Asian communities in America, and San Francisco is no exception.
+                                The drink was introduced to the area in the 1990s and continued to evolve, lending to the wide variety of flavors you can choose from today. <br/><br/>
+                                
+                                With choices ranging from classic Taiwanese stores to new-era homegrown shops, you’ll definitely find a drink you love in San Francisco.
                             </div>
-
                         </div>
             case "manhattan":
                 return <div className="list__description">
@@ -59,8 +56,8 @@ const RestaurantList = () => {
 
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
-        // axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) // PRODUCTION
-        axios.get(`http://localhost:3000/cities/${city}`)
+        axios.get(`https://boba-api-tyler.herokuapp.com/cities/${cityName}`) 
+        // axios.get(`http://localhost:3000/cities/${city}`)
             .then((res) => {
                 res.data[0].restaurants.forEach((shop) => {
                     const distance = Math.round(absoluteDistanceInMiles(userLat, userLong, shop.latitude, shop.longitude) * 10) / 10

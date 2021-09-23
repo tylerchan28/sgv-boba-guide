@@ -45,15 +45,16 @@ const RestaurantPage = (props) => {
     }
 
     const fetchShop = async () => {
-        await axios.get(`http://localhost:3000/cities/city-shops/${id}`)
+        // await axios.get(`http://localhost:3000/cities/city-shops/${id}`)
+        await axios.get(`https://boba-api-tyler.herokuapp.com/cities/city-shops/${id}`)
             .then((res) => {
                 setRestaurant(res.data[0])
             })
     }
 
     const fetchReviews = async () => {
-        // await axios.get("https://boba-api-tyler.herokuapp.com/reviews") PRODUCTION
-        await axios.get("http://localhost:3000/reviews")
+        await axios.get("https://boba-api-tyler.herokuapp.com/reviews") 
+        // await axios.get("http://localhost:3000/reviews")
             .then(({ data }) => {
                 let pageReviews = data.filter((review) => review.restaurantId === props.match.params.id)
                 setRestaurantReviews(pageReviews)          
@@ -91,8 +92,8 @@ const RestaurantPage = (props) => {
         
     const onSubmit = (entry) => {
         const token = sessionStorage.getItem("token");
-        // axios.post("https://boba-api-tyler.herokuapp.com/reviews/add", entry, { PRODUCTION
-        axios.post("http://localhost:3000/reviews/add", entry, {
+        axios.post("https://boba-api-tyler.herokuapp.com/reviews/add", entry, { 
+        // axios.post("http://localhost:3000/reviews/add", entry, {
             headers: {"Authorization": token}
         }).then(() => fetchReviews())
     }
@@ -138,7 +139,7 @@ const RestaurantPage = (props) => {
                         <div className="rating__item rating__item--average">Study <Laptop className="rating__icon"/></div>
                         <Rating value={studyAvg} precision={.5} readOnly max={5} size="large"/>
                 </div>
-                <div>
+                <div className="restaurant-page__map-container">
                     <GoogleMap {...restaurant}/>
                 </div>
             </div>

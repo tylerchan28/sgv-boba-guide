@@ -49,10 +49,23 @@
     justify-content: center;
 }
 
+.restaurant-page__map {
+    height: 100%;
+    width: 100%;
+}
+
+.restaurant-page__map-container {
+    height: 25vh;
+    width: 20vw;
+    margin-top: 3vh;
+}
+
 // Right
 .restaurant-page__infographic {
-    height: 600px;
-    width: 400px;
+    // height: 600px;
+    // width: 400px;
+    height: 100%;
+    width: 30%;
 }
 
 .restaurant-page__infographic-container {
