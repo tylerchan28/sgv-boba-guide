@@ -34,6 +34,11 @@
   text-decoration: none;
 }
 
+
+.city__date {
+  font-weight: bold;
+}
+
 .city__image {
   height: 10%;
   width: 30%;
@@ -56,21 +61,29 @@
 
 
 .city__info-subsection {
+  font-size: 16px;
   margin-bottom: 3vh;
   margin-left: 3vw;
   width: 60%;
 }
 
+
 .city__subsection-container {
   align-items: center;
   display: flex;
+  gap: 2vw;
   margin: 10px auto 30px auto;
 }
 
-.city__goal {
+.city__cultural-impact {
   border-top: 1px solid lighten(gray, 30%);
 }
 
+.city__quote {
+  font-style: italic;
+  font-weight: bolder;
+}
+
 .city__who {
-  height: 50%;
+  height: 100%;
 }

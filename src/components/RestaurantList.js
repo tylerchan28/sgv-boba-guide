@@ -17,17 +17,38 @@ const RestaurantList = () => {
             case "san-gabriel":
                 return <div className="list__description">
                             <h1>San Gabriel</h1>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            <div className="list__description-text">
+                                With over half a million Asian residents in the San Gabriel Valley, it’s no wonder why the area is seen as a mecca for all things Asian &ndash; especially boba. <br/> <br/>
+    
+                                After the boom in popularity of boba in the 2000s, shops have been opening up left and right starting with Ten Ren’s Tea Time, Quickly, Tapioca Express, and Lollicup. Nowadays, there are so many shops that it’s hard to choose. <br/> <br/>
+    
+                                In the San Gabriel Valley, you’ll find traditional boba shops using high quality ingredients, shops experimenting with new ideas and flavors, and places to just get a standard boba milk tea.
+                            </div>
                         </div>
             case "san-francisco":
                 return <div className="list__description">
                             <h1>San Francisco</h1>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            <div className="list__description-text">
+                                In neighborhoods like Manhattan’s Chinatown, Flushing in Queens, and 8th Avenue, boba shops are abundant. If you want to grab a drink on the go, hang out with friends, or even go on a date, there’s a boba shop for you.
+    
+                                San Francisco was found to have an average of 2.39 boba shops/square mile in a study finding the boba capital of the world (excluding Manhattan).
+                                However, Flushing was found to have an average of 33 boba shops/square mile.
+    
+                                If you ever end up in Manhattan and need something to do, try out a new boba shop &ndash; you can’t miss them!
+                            </div>
+
                         </div>
             case "manhattan":
                 return <div className="list__description">
                             <h1>Manhattan</h1>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            <div className="list__description-text">
+                                In neighborhoods like Manhattan’s Chinatown, Flushing in Queens, and 8th Avenue, boba shops are abundant. If you want to grab a drink on the go, hang out with friends, or even go on a date, there’s a boba shop for you. <br/><br/>
+    
+                                San Francisco was found to have an average of 2.39 boba shops/square mile in a study finding the boba capital of the world (excluding Manhattan). <br/><br/>
+                                However, Flushing was found to have an average of 33 boba shops/square mile.
+    
+                                If you ever end up in Manhattan and need something to do, try out a new boba shop &ndash; you can’t miss them!
+                            </div>
                         </div>
             default:
                 return <div className="list__description">error</div>
@@ -80,7 +101,7 @@ const RestaurantList = () => {
                 />
                 <div className="list__distance-filter">
                     <label htmlFor="distance-filter">
-                    <span className="list__filter-label">Filter By Distance</span>
+                    <span className="list__filter-label">Sort By Distance</span>
                     <input
                         className="list__filter-input"
                         type="checkbox"

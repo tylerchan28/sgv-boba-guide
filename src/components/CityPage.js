@@ -5,6 +5,7 @@ import { cities } from "../RestaurantPage-helpers";
 import CityCard from "./CityCard";
 import Header from "./Header";
 import 'react-slideshow-image/dist/styles.css'
+import SanGabriel from "../images/san-gabriel.png";
 import SanFrancisco from "../images/maarten-van-den-heuvel-gZXx8lKAb7Y-unsplash.jpg";
 import Manhattan from "../images/edward-mer-zkFvaJFYdvw-unsplash.jpg";
 import BobaInfographic from "../images/boba-infographic.jpg";
@@ -31,7 +32,7 @@ const CityPage = () => {
 
     const slideImages = [
         {
-          url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+          url: SanGabriel,
           caption: "Explore Boba in San Gabriel Valley", // change to make more descriptive
           city: "san-gabriel",
           cityDescription: "san gabriel valley"
@@ -81,10 +82,15 @@ const CityPage = () => {
                 <div className="city__who">
                     <h1 className="city__info-header">Not All Boba Shops are the Same.</h1>
                     <div className="city__info-subsection">
-                        "Let's get boba."<br/><br/>
-                        If you've heard this before, you know that it's than just drinks.<br/><br/>
-                        As someone who's been to too many boba shops to remember, I realize that <br/><br/>
-                        At the bare minimum, you're getting delicious drinks and food.
+                        <span className="city__quote">"You wanna get boba?"</span> <br/><br/>
+
+                        A question I’ve heard too many times to know it can be more than just grabbing drinks. <br/><br/>
+                        
+                        Nowadays, getting boba can mean different things &ndash; hanging out with friends, studying, or even a date. But at the bare minimum, you’re still getting a delicious drink. <br/><br/>
+                        
+                        I’ve been to too many boba shops to remember and found that there is no objectively “perfect” boba shop because each store has its own unique traits. <br/><br/>
+                        
+                        Boba Guide’s reviews are based on drinks, food, atmosphere, and study environment to help you find the perfect boba shop for any occasion.                  
                     </div>
                 </div>
                 <div className="city__cards">
@@ -99,12 +105,27 @@ const CityPage = () => {
                         }
                     </div>
                 </div>
-                <div className="city__goal">
+                <div className="city__cultural-impact">
                    <h1 className="city__info-header">Boba's Cultural Impact</h1>
                    <div className="city__subsection-container">
                        <div className="city__info-subsection">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/><br/>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            Bubble tea (colloquially known as “boba”) originated in Taiwan during the late <span className="city__date">1980s</span> when tapioca balls were added to the traditional tea with milk and sugar. <br/><br/>
+
+                            A decade later, the popularity of bubble tea exploded among young people in Asian countries as each region added their own twist to the classic drink. <br/><br/>
+                            
+                            Fantasia Coffee & Tea in Cupertino, California brought bubble tea to America in the <span className="city__date">1990s</span> and paved the way for boba shops like Ten Ren’s Tea Time, Quickly, Tapioca Express, and Lollicup to flourish. <br/><br/>
+                            
+                            As popularity grew in the <span className="city__date">2000s</span> and more stores opened, the drink eventually came to be a piece of cultural identity for Asian immigrants who opened the shops and Asian Americans who frequented them. <br/><br/>
+                            
+                            In <span className="city__date">2020</span>, Taiwan has declared April 30th as National Bubble Tea Day to further cement the drink as a cultural icon. <br/><br/>
+                            
+                            <span className="city__date">Now</span>, bubble tea is commonplace in many countries. <br/><br/>
+                            
+                            Some shops are focused on creating a drink from the highest quality ingredients to make a traditional and nostalgic bubble tea. <br/><br/>
+                            
+                            However, others continue to innovate and push the boundaries of what can be done with a simple ball made out of tapioca starch.  <br/><br/>
+                            
+                            No matter the mission, I’m just excited to see what’s coming next in the renaissance of bubble tea.                    
                        </div>
                        <img src={BobaInfographic} className="city__image" alt="Infographic about boba in a few countries" />
                    </div>

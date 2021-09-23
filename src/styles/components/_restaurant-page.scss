@@ -49,12 +49,12 @@
     justify-content: center;
 }
 
+// Right
 .restaurant-page__infographic {
     height: 600px;
     width: 400px;
 }
 
-// Right
 .restaurant-page__infographic-container {
     align-items: center;
     display: flex;
@@ -79,3 +79,6 @@
     font-weight: bold;
 }
 
+.MuiRating-sizeSmall {
+    opacity: .99;
+}
