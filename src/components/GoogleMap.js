@@ -16,4 +16,3 @@ const GoogleMap = (props) => {
 
 export default GoogleMap;
 
-// src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=${apiKey}`}>
