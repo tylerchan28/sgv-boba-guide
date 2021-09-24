@@ -1,10 +1,23 @@
 .city__card-container {
+  // align-items: center;
+  // display: flex;
+  // justify-content: center;
+  // gap: 10vw;
+  // height: 20vh;
+  // width: 100%;
   align-items: center;
-  display: flex;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10vh;
   justify-content: center;
-  gap: 10vw;
-  height: 20vh;
-  width: 100%;
+  @media (min-width: 430px) {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 10vw;
+    height: 20vh;
+    width: 100%;
+  }
 }
 
 .city__city-card {
@@ -14,6 +27,10 @@
 .city__cards {
   border-top: 1px solid lighten(gray, 30%);
   padding-bottom: 50px;
+  text-align: center;
+  @media (min-width: 770px) {
+    text-align: left;
+  }
 }
 
 .city__slide > div {
@@ -40,8 +57,12 @@
 }
 
 .city__image {
-  height: 10%;
-  width: 30%;
+  display: none;
+  @media (min-width: 770px) {
+    display: block;
+    height: 100%;
+    width: 30%;
+  }
 }
 
 .city__link {
@@ -55,8 +76,12 @@
 }
 
 .city__info-header {
-  margin-left: 3vw;
-  margin-top: 1vw;
+  margin-top: 2vh;
+  font-size: 24px;
+  @media (min-width: 770px) {
+    margin-left: 3vw;
+    font-size: 32px;
+  }
 }
 
 
@@ -73,10 +98,21 @@
   display: flex;
   gap: 2vw;
   margin: 10px auto 30px auto;
+  justify-content: center;
+  @media (min-width: 770px) {
+    justify-content: flex-start;
+  }
 }
 
 .city__cultural-impact {
-  border-top: 1px solid lighten(gray, 30%);
+  border-top: 1px solid lighten(gray, 30%); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 770px) {
+    display: block;
+  }
 }
 
 .city__quote {
@@ -86,4 +122,11 @@
 
 .city__who {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1vh;
+  @media (min-width: 770px) {
+    display: block;
+  }
 }

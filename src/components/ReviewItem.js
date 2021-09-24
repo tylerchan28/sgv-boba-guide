@@ -18,8 +18,8 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
 
     const removeReview = (reviewId) => {
         window.confirm("Are you sure you want to delete this review?") &&
-        axios.delete("https://boba-api-tyler.herokuapp.com/reviews/delete", { 
-        // axios.delete("http://localhost:3000/reviews/delete", {
+        // axios.delete("https://boba-api-tyler.herokuapp.com/reviews/delete", { 
+        axios.delete("http://localhost:3000/reviews/delete", {
             headers: {
                 "Authorization": token
             },
@@ -38,8 +38,8 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
             studyRating,
             hangoutRating
         }
-        axios.put("https://boba-api-tyler.herokuapp.com/reviews/update", inputs, { headers: { "Authorization": token }}) 
-        // axios.put("http://localhost:3000/reviews/update", inputs, { headers: { "Authorization": token }})
+        // axios.put("https://boba-api-tyler.herokuapp.com/reviews/update", inputs, { headers: { "Authorization": token }}) 
+        axios.put("http://localhost:3000/reviews/update", inputs, { headers: { "Authorization": token }})
             .then(window.location.reload())
         showModal(false)
     }

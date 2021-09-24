@@ -56,8 +56,8 @@ const RestaurantList = () => {
 
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
-        axios.get(`https://boba-api-tyler.herokuapp.com/cities/${city}`) 
-        // axios.get(`http://localhost:3000/cities/${city}`)
+        // axios.get(`https://boba-api-tyler.herokuapp.com/cities/${city}`) 
+        axios.get(`http://localhost:3000/cities/${city}`)
             .then((res) => {
                 res.data[0].restaurants.forEach((shop) => {
                     const distance = Math.round(absoluteDistanceInMiles(userLat, userLong, shop.latitude, shop.longitude) * 10) / 10
