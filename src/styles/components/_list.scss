@@ -34,12 +34,20 @@
 
 .list__restaurant-contact {
     display: none;
-    @media (min-width: 1330px) {
+    @media (min-width: 430px) {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        font-weight: bolder;
+        text-align: right;
+        margin: auto 5% auto auto;
+    }
+    @media (min-width: 1025px) {
         display: flex;
         flex-direction: column;
         font-weight: bolder;
         text-align: right;
-        margin: auto 5% auto auto;
+        margin: auto 5% auto auto;  
     }
 }
   
@@ -51,7 +59,10 @@
     height: 175px;
     margin: 10px auto;
     text-decoration: none;
-    width: 60%;
+    width: 80%;
+    @media (min-width: 770px) {
+        width: 60%;
+    }
 }
 
 .list__restaurant-card {
@@ -92,23 +103,33 @@
     height: 3vh;
     line-height: 2;
     padding: 3px 5px;
-    width: 10vw;
+    width: 20vw;
+    @media (min-width: 1025px) {
+        width: 10vw;
+    }
 }
 
 .list__filter-container {
     display: flex;
-    margin: 4vh auto auto 20%;
+    margin: 4vh auto auto 10%;
     align-items: center;
+    @media (min-width: 770px) {
+        margin: 4vh auto auto 20%;
+    }
 }
 
 .list__restaurant-name {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
-    // margin-top: 5px;
     text-align: center;
-    @media (min-width: 740px) {
-        margin: auto auto auto 50%;
-        // text-align: left;
+    margin: auto auto auto 30%;
+    @media (min-width: 770px) {
+        font-size: 22px;
+        margin: auto auto auto 30%;
+        width: 100px;
+    }
+    @media (min-width: 1025px) {
+        margin: auto auto auto 30%;
         width: 300px;
     }
 }
