@@ -40,10 +40,18 @@
     background-color: #F9F6EE;
     border: none;
     cursor: pointer;
-    left: 30px;
+    left: 20px;
     font-size: 16px;
     position: absolute;
-    top: 30px;
+    top: 100px;
+    @media (min-width: 430px) {
+        top: 120px;
+        left: 40px;
+    }
+    @media (min-width: 770px) {
+        left: 30px;
+        top: 30px;
+    }
 }
 
 .back-btn-text {

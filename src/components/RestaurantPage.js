@@ -60,32 +60,16 @@ const RestaurantPage = (props) => {
                 setRestaurantReviews(pageReviews)          
                 if (pageReviews.length > 0) {
                     let drinkRatingAvg = getRatingAverage(pageReviews, "drinkRating")
-                    if (drinkRatingAvg === "N/A") {
-                        setDrinkAvg("N/A")
-                    } else {
-                        setDrinkAvg((Math.floor(drinkRatingAvg * 10) / 10)) 
-                    }
+                    setDrinkAvg(parseFloat(drinkRatingAvg))
                     
                     let foodRatingAvg = getRatingAverage(pageReviews, "foodRating");  
-                    if (foodRatingAvg === "N/A") {
-                        setFoodAvg("N/A")
-                    } else {
-                    setFoodAvg((Math.floor(foodRatingAvg * 10) / 10))   
-                    } 
+                    setFoodAvg(foodRatingAvg)
                     
                     let hangoutRatingAvg = getRatingAverage(pageReviews, "hangoutRating")
-                    if (hangoutRatingAvg === "N/A") {
-                        setHangoutAvg("N/A")
-                    } else {
-                        setHangoutAvg((Math.floor(hangoutRatingAvg * 10) / 10)) 
-                    }
+                    setHangoutAvg(hangoutRatingAvg)
                     
                     let studyRatingAvg = getRatingAverage(pageReviews, "studyRating");  
-                    if (studyRatingAvg === "N/A") {
-                        setStudyAvg("N/A")
-                    } else {
-                        setStudyAvg((Math.floor(studyRatingAvg * 10) / 10))
-                    }
+                    setStudyAvg(studyRatingAvg)
                 }              
             })
     }
@@ -131,11 +115,11 @@ const RestaurantPage = (props) => {
                 </div>
                 <div className="rating__container">
                         <div className="rating__item rating__item--average">Drinks <LocalCafe className="rating__icon" /></div>
-                        <Rating value={drinkAvg} precision={.5} readOnly max={5} size="large"/>
+                        <Rating value={drinkAvg} precision={.5} readOnly max={5} size="large"/> 
                         <div className="rating__item rating__item--average">Food <Fastfood className="rating__icon" /></div>
-                        <Rating value={foodAvg} precision={.5} readOnly max={5} size="large"/>
+                        <Rating value={foodAvg} precision={.5} readOnly max={5} size="large"/> 
                         <div className="rating__item rating__item--average">Atmosphere <Group className="rating__icon"/></div>
-                        <Rating value={hangoutAvg} precision={.5} readOnly max={5} size="large"/>
+                        <Rating value={hangoutAvg} precision={.5} readOnly max={5} size="large"/> 
                         <div className="rating__item rating__item--average">Study <Laptop className="rating__icon"/></div>
                         <Rating value={studyAvg} precision={.5} readOnly max={5} size="large"/>
                 </div>

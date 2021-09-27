@@ -1,6 +1,9 @@
 .list__description {
     font-size: 18px;
-    width: 50%;
+    width: 75%;
+    @media (min-width: 770px) {
+        width: 50%;
+    }
 }
 
 .list__description-text {
@@ -68,11 +71,10 @@
 .list__restaurant-card {
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     @media (min-width: 740px) {
         display: flex;
-        flex-direction: row;
         &:hover {
             background-color: rgb(34, 34, 34);
             height: 100%;
@@ -83,11 +85,11 @@
 
 .list__feed-img {   
     border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     display: block;
-    height: 87.5px;
+    height: 175px;
     object-fit: cover;
-    width: 100px;
+    width: 150px;
     @media (min-width: 740px) {
         border-bottom-left-radius: 10px;
         border-top-left-radius: 10px;
@@ -122,9 +124,9 @@
     font-size: 18px;
     font-weight: bold;
     text-align: center;
-    margin: auto auto auto 30%;
-    @media (min-width: 770px) {
-        font-size: 22px;
+    margin-top: 40%;
+    @media (min-width: 430px) {
+        font-size: 20px;
         margin: auto auto auto 30%;
         width: 100px;
     }

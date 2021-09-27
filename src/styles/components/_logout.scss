@@ -1,12 +1,13 @@
 .logout-container {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    // position: absolute;
     justify-content: space-between;
     font-size: 14px;
-    grid-gap: 5px;
-    right: 30px;
-    top: 20px;
+    // grid-gap: 5px;
+    // right: 30px;
+    // top: 20px;
+    margin-right: 1vw;
 }
   
 .logout-btn {

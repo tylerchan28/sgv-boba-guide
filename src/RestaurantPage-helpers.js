@@ -4,7 +4,7 @@ import SanGabriel from "../src/images/sg-resize.jpg";
 
 export const getRatingAverage = (pageReviews, ratingType) => {
     let ratings = pageReviews.filter((review) => review[ratingType] !== "N/A")
-        .map((review) => parseInt(review[ratingType]));
+        .map((review) => parseFloat(review[ratingType]));
     if (ratings.length === 0) {
         return "N/A";
     } else {

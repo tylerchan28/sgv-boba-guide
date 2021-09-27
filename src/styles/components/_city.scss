@@ -1,10 +1,4 @@
 .city__card-container {
-  // align-items: center;
-  // display: flex;
-  // justify-content: center;
-  // gap: 10vw;
-  // height: 20vh;
-  // width: 100%;
   align-items: center;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
@@ -14,7 +8,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    gap: 10vw;
+    gap: 5vw;
     height: 20vh;
     width: 100%;
   }

@@ -52,7 +52,7 @@ const ReviewItem = ({ drinkRating, foodRating, hangoutRating, studyRating, revie
                         <LocalCafe />
                         { 
                             drinkRating > 0 ?
-                            <Rating value={parseFloat(drinkRating)} precision={.5} readOnly size="small" className="rating__individual"/>
+                            <Rating value={parseFloat(drinkRating)} precision={.5} readOnly size="small" className="rating__individual"/> 
                             :
                             <div className="rating__none">N/A</div>
                         }

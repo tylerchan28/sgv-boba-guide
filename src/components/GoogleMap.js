@@ -3,7 +3,6 @@ import React from "react";
 
 const GoogleMap = (props) => {
 
-    
     const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
     return (
         <img

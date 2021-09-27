@@ -146,7 +146,7 @@ const RestaurantList = () => {
                                             {shop.shopDistance} {shop.shopDistance === 1 ? "mile" : "miles"}
                                         </div>
                                     }
-                                </div>}
+                                </div>} 
                         </div>
                     </Link>
                 )

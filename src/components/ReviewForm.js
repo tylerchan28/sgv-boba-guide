@@ -70,7 +70,10 @@ const ReviewForm = (props) => {
                                 </div>  
                                 <div>  
                                     <label htmlFor="study-rating" className="rating-label">Study</label>
-                                    <Rating precision={.5} max={5} onChange={(e) => setStudyRating(parseFloat(e.target.value))} />
+                                    <Rating precision={.5} max={5} onChange={(e) => {
+                                        setStudyRating(parseFloat(e.target.value))
+                                        console.log(studyRating)
+                                    }} />
                                 </div>  
                                 <button type="submit" className="review-form__submit-button">Post Review</button>
                             </div>

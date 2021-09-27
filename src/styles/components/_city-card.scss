@@ -3,13 +3,13 @@
     border: 1px solid gray;
     border-radius: 5px;
     display: flex;
-    height: 25vh;
+    height: 15vh;
     justify-content: center;
     width: 60vw;
     max-width: 280px;
-    @media (min-width: 430px) {
+    @media (min-width: 1025px) {
         width: 15%;
-        height: 100%;
+        height: 100%; // 25vh
     }
 }
 

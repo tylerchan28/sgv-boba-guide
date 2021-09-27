@@ -3,9 +3,12 @@
     background-color: white;
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 10px;
-    min-height: 20vh;
+    min-height: 20vh;   
+    @media (min-width: 430px) {
+        flex-direction: row;
+    }
 }
 
 .review__count {
@@ -38,7 +41,7 @@
 .review__content {
     padding: 20px;
     text-align: left;
-    width: 75%;
+    width: 80%;
     white-space: pre-line;
     word-break: break-word;
 }
@@ -48,18 +51,45 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 10px 10px 10px 0;
+    margin-left: auto;
     text-align: right;
     width: 220px;
+    @media (min-width: 430px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 0;
+        padding: 10px 10px 10px 0;
+        text-align: right;
+        width: 220px;
+    }
 }
 
 
 .review__ratings {
+    border-bottom: 1px solid black;
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    border-right: 1px solid black;
-    padding: 10px 0 10px 10px;
-    text-align: left;
-    width: 150px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    @media (min-width: 430px) {
+        border-bottom: 0;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        border-right: 1px solid black;
+        margin: 0;
+        padding-left: 10px;
+        text-align: left;
+        width: 40%;
+    }
+    @media (min-width: 1430px) {
+        width: 25%;
+    }
+    @media (min-width: 1450px) {
+        width: 150px;
+    }
 }
 
 .review__text {
