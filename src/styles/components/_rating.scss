@@ -3,6 +3,7 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
+    width: 100%;
 }
 
 .rating__icon {
@@ -45,4 +46,10 @@
     word-break: break-word;
 }
 
-
+.rating__stars {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 430px) {
+        display: block;
+    }
+}

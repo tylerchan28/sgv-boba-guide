@@ -56,19 +56,19 @@ const ReviewForm = (props) => {
                     <form className="review-form" onSubmit={onSubmit}>                     
                         <div className="review-form__container">
                             <div className="review-form__ratings">
-                                <div>  
+                                <div className="rating__stars">  
                                     <label htmlFor="drink-rating" className="rating-label">Drinks</label>
                                     <Rating precision={.5} max={5} onChange={(e) => setDrinkRating(parseFloat(e.target.value))} />
                                 </div>
-                                <div>  
+                                <div className="rating__stars">  
                                     <label htmlFor="food-rating" className="rating-label">Food</label>
                                     <Rating precision={.5} max={5} onChange={(e) => setFoodRating(parseFloat(e.target.value))} />
                                 </div>
-                                <div>  
+                                <div className="rating__stars">  
                                     <label htmlFor="hangout-rating" className="rating-label">Atmosphere</label>
                                     <Rating precision={.5} max={5} onChange={(e) => setHangoutRating(parseFloat(e.target.value))} />
                                 </div>  
-                                <div>  
+                                <div className="rating__stars">  
                                     <label htmlFor="study-rating" className="rating-label">Study</label>
                                     <Rating precision={.5} max={5} onChange={(e) => {
                                         setStudyRating(parseFloat(e.target.value))

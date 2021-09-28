@@ -29,20 +29,20 @@ const UpdateForm = (props) => {
         <form className="review-form review-form--update" onSubmit={onSubmit}>                     
                         <div className="review-form__container">
                             <div className="review-form__ratings">
-                                <div>  
+                                <div className="rating__stars">  
                                     {console.log(props)}
                                     <label htmlFor="drink-rating" className="rating-label">Drinks</label>
                                     <Rating defaultValue={props.drinkRating} precision={.5} max={5} onChange={(e) => setDrinkRating(parseFloat(e.target.value))} />
                                 </div>
-                                <div>  
+                                <div className="rating__stars">  
                                     <label htmlFor="food-rating" className="rating-label">Food</label>
                                     <Rating defaultValue={props.foodRating} precision={.5} max={5} onChange={(e) => setFoodRating(parseFloat(e.target.value))} />
                                 </div>
-                                <div>  
+                                <div className="rating__stars">  
                                     <label htmlFor="hangout-rating" className="rating-label">Atmosphere</label>
                                     <Rating defaultValue={props.hangoutRating} precision={.5} max={5} onChange={(e) => setHangoutRating(parseFloat(e.target.value))} />
                                 </div>  
-                                <div>  
+                                <div className="rating__stars">  
                                     <label htmlFor="study-rating" className="rating-label">Study</label>
                                     <Rating defaultValue={props.studyRating} precision={.5} max={5} onChange={(e) => setStudyRating(parseFloat(e.target.value))} />
                                 </div>  
